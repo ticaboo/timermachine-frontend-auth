@@ -11,7 +11,7 @@ export const SuperTokensConfig = {
     appName: 'From SuperTokens Demo App',
     apiDomain: 'https://app.timermachine.com',
     apiBasePath: '/.netlify/functions/auth',
-    websiteDomain: 'https://front.timermachine.com',
+    websiteDomain: 'https://timermachine.com',
     websiteBasePath: '/member'
   },
   // recipeList contains all the modules that you want to
@@ -22,7 +22,14 @@ export const SuperTokensConfig = {
     //     providers: [Github.init(), Google.init(), Apple.init(), ]
     //   }
     // }),
-    EmailPassword.init(),
+    EmailPassword.init({
+      getRedirectionURL: async (context) => {
+        if (context.action === 'SUCCESS') {
+          return '/yourin';
+        }
+        return '/'; //default return
+      }
+    }),
     Session.init()
   ]
 };
