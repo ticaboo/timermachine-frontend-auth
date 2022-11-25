@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "localbuild": "GENERATE_SOURCEMAP=false react-scripts build && ./pushtosite.sh",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build && cp build/static/js/*.js  build/static/app.js",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build && cp build/static/js/*.js build/static/app.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
