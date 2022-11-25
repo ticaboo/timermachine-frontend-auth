@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "react-scripts build && rsync -av --exclude='build/static/js/*.map' build/static/js/*.js build/static/myapp.js  && cp build/static/js/*.map build/static/"
+  command = "GENERATE_SOURCEMAP=true react-scripts build && rsync -av --exclude='build/static/js/*.map' build/static/js/*.js build/static/myapp.js  && cp build/static/js/*.map build/static/"
   functions = "netlify/functions"
   publish = "build"
   NETLIFY_BUILD_DEBUG = true
