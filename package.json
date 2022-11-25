@@ -22,9 +22,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "localbuild": "GENERATE_SOURCEMAP=false react-scripts build && ./pushtosite.sh",
+    "localbuild": "GENERATE_SOURCEMAP=true react-scripts build",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "postbuild": "cp build/static/js/*.js build/static/app.js",
+    "buildinfoonly": "nota bene: netlify build is set in netlify.toml not read from package.json! SSOT!",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
