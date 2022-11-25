@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "react-scripts build cp build/static/js/*.js build/static/app.js"
+  command = "react-scripts build && cp build/static/js/*.js build/static/app.js"
   functions = "netlify/functions"
   publish = "build"
   NETLIFY_BUILD_DEBUG = true
