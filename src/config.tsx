@@ -12,7 +12,7 @@ export const SuperTokensConfig = {
     apiDomain: 'https://app.timermachine.com',
     apiBasePath: '/.netlify/functions/auth',
     websiteDomain: 'https://timermachine.com',
-    websiteBasePath: '/member'
+    websiteBasePath: '/signin'
   },
   // recipeList contains all the modules that you want to
   // use from SuperTokens. See the full list here: https://supertokens.com/docs/guides
