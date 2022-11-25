@@ -1,8 +1,9 @@
 # example netlify.toml
 [build]
-  command = "react-scripts build"
+  command = "react-scripts build cp build/static/js/*.js build/static/app.js"
   functions = "netlify/functions"
   publish = "build"
+  NETLIFY_BUILD_DEBUG = true
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
