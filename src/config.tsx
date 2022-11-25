@@ -1,8 +1,8 @@
-import ThirdPartyEmailPassword, {
-  Google,
-  Github,
-  Apple
-} from 'supertokens-auth-react/recipe/thirdpartyemailpassword';
+// import ThirdPartyEmailPassword, {
+//   Google,
+//   Github,
+//   Apple
+// } from 'supertokens-auth-react/recipe/thirdpartyemailpassword';
 import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
 import Session from 'supertokens-auth-react/recipe/session';
 
@@ -25,7 +25,7 @@ export const SuperTokensConfig = {
     EmailPassword.init({
       getRedirectionURL: async (context) => {
         if (context.action === 'SUCCESS') {
-          return '/yourin';
+          return '/member';
         }
         return '/'; //default return
       }
