@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { setLogging } from './logging';
-let enabled = true;
 
 export const LogSwitch = () => {
   const [enabled, setEnabled] = useState(false);
