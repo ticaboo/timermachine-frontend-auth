@@ -28,6 +28,15 @@ export const SuperTokensConfig = {
           return '/member';
         }
         return '/'; //default return
+      },
+      palette: {
+        background: '#333',
+        error: '#ad2e2e',
+        textTitle: 'white',
+        textLabel: 'white',
+        textInput: '#a9a9a9',
+        textPrimary: 'white',
+        textLink: '#a9a9a9'
       }
     }),
     Session.init()
