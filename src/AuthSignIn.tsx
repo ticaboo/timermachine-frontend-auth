@@ -13,7 +13,7 @@ import Home from './Home';
  nb: sessionAuth triggers signin dialog if not signed in.
 */
 
-function SignIn() {
+function AuthSignIn() {
   return (
     <div className="fill">
       <SessionAuth>
@@ -46,4 +46,4 @@ function SignIn() {
   // );
 }
 
-export default SignIn;
+export default AuthSignIn;

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import AuthMenu from './Menu/AuthMenu';
-import SignIn from './Signin';
+import SignIn from './AuthSignIn';
 
 import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
 
