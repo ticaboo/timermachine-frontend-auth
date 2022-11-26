@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import AuthMenu from './Menu/AuthMenu';
-import SignIn from './AuthSignIn';
+import AuthSignIn from './AuthSignIn';
 
 import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
 
@@ -27,11 +27,13 @@ SuperTokens.init(SuperTokensConfig);
 //     </React.StrictMode>
 // );
 
+const signinEl = document.getElementById('auth-signin');
+console.log('signinEl: ', signinEl);
 if (document.getElementById('auth-signin')) {
   ReactDOM.render(
     <React.StrictMode>
       <SuperTokensWrapper>
-        <SignIn />
+        <AuthSignIn />
       </SuperTokensWrapper>
     </React.StrictMode>,
     document.getElementById('auth-signin')
