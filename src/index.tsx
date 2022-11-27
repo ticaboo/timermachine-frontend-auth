@@ -1,55 +1,88 @@
 import React from 'react';
-//import ReactDOM from 'react-dom/client';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
+import './App.css';
 //import App from './App';
-import AuthMenu from './Menu/AuthMenu';
-import AuthSignIn from './AuthSignIn';
 
 import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
+import { SessionAuth } from 'supertokens-auth-react/recipe/session';
+import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './Home';
+import { useNavigate } from 'react-router-dom';
+import Session, { signOut } from 'supertokens-auth-react/recipe/session';
 
 import { SuperTokensConfig } from './config';
-import l from './logging';
 
-l('info', 'SuperTokensConfig', SuperTokensConfig);
+//import AuthMenu from './AuthMenu';
+
 SuperTokens.init(SuperTokensConfig);
 
-/*
-    auth-signin id
-    auth-menu  class
+const authSigninEl = document.getElementById('auth-signin') as HTMLElement;
 
-*/
+console.log('authSigninEl', authSigninEl);
 
-// const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-// root.render(
-//     <React.StrictMode>
-//         <App />
-//     </React.StrictMode>
-// );
-
-const signinEl = document.getElementById('auth-signin');
-console.log('signinEl: ', signinEl);
-if (document.getElementById('auth-signin')) {
-  ReactDOM.render(
+if (authSigninEl) {
+  const authSigninRoot = ReactDOM.createRoot(authSigninEl);
+  authSigninRoot.render(
     <React.StrictMode>
       <SuperTokensWrapper>
-        <AuthSignIn />
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                /* This protects the "/" route so that it shows
+                                  <Home /> only if the user is logged in.
+                                  Else it redirects the user to "/auth" */
+                <SessionAuth>
+                  <Home />
+                </SessionAuth>
+              }
+            />
+          </Routes>
+        </Router>
       </SuperTokensWrapper>
-    </React.StrictMode>,
-    document.getElementById('auth-signin')
+    </React.StrictMode>
   );
-} else {
-  console.log('prod mount: No id: auth-signin');
 }
+
+const AuthMenu = () => {
+  let sessionContext = Session.useSessionContext();
+  const navigate = useNavigate();
+
+  const logoutClicked = () => {
+    console.log(sessionContext);
+    signOut();
+    // navigate("/auth");
+  };
+  const loginClicked = () => {
+    // navigate('/signin'); /* curious - changes the path, but does not reload! intended for react-router-dom  use. */
+    window.open('/signin', '_self');
+  };
+
+  if (sessionContext.loading) {
+    return null;
+  }
+
+  if (sessionContext.doesSessionExist) {
+    return <button onClick={logoutClicked}>Logout</button>;
+  } else {
+    return <button onClick={loginClicked}>Login</button>;
+  }
+};
 
 const listTargets = document.getElementsByClassName('auth-menu');
 for (var listTarget of Array.from(listTargets)) {
-  ReactDOM.render(
+  const rootMenu = ReactDOM.createRoot(listTarget as HTMLElement);
+  rootMenu.render(
     <React.StrictMode>
       <SuperTokensWrapper>
-        <AuthMenu />
+        <Router>
+          <Routes>
+            <Route path="/" element={<AuthMenu />} />
+          </Routes>
+        </Router>
       </SuperTokensWrapper>
-    </React.StrictMode>,
-    listTarget
+    </React.StrictMode>
   );
 }

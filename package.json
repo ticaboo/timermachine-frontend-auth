@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "localbuild": "GENERATE_SOURCEMAP=true react-scripts build",
+    "localbuild": "GENERATE_SOURCEMAP=true react-scripts build && rsync -av --exclude='build/static/js/*.map' build/static/js/*.js ../timermachine.github.io/assets/auth/timerauthapp.js  && cp build/static/js/*.map ../timermachine.github.io/assets/auth/",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "buildinfoonly": "nota bene: netlify build is set in netlify.toml not read from package.json! SSOT!",
     "test": "react-scripts test",

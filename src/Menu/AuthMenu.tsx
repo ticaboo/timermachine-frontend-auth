@@ -9,13 +9,13 @@ import Session from 'supertokens-auth-react/recipe/session';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'supertokens-auth-react/recipe/session';
 
-console.log('AuthMenu');
-
 export default function AuthMenu(props: any) {
   let sessionContext = Session.useSessionContext();
   const navigate = useNavigate();
 
+  // console.log('AuthMenu', sessionContext);
   async function logoutClicked() {
+    console.log(sessionContext);
     await signOut();
     // navigate("/auth");
   }
@@ -23,7 +23,7 @@ export default function AuthMenu(props: any) {
     navigate('/signin');
   }
 
-  console.log('sessionContext', sessionContext);
+  // console.log('sessionContext', sessionContext);
 
   if (sessionContext.loading) {
     return <span>Loading...</span>;
