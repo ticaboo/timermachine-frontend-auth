@@ -8,7 +8,7 @@ import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
 import { SessionAuth } from 'supertokens-auth-react/recipe/session';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import Session, { signOut } from 'supertokens-auth-react/recipe/session';
 
 import { SuperTokensConfig } from './config';
@@ -29,7 +29,7 @@ if (authSigninEl) {
         <Router>
           <Routes>
             <Route
-              path="/"
+              path="/signin"
               element={
                 /* This protects the "/" route so that it shows
                                   <Home /> only if the user is logged in.
@@ -48,7 +48,7 @@ if (authSigninEl) {
 
 const AuthMenu = () => {
   let sessionContext = Session.useSessionContext();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const logoutClicked = () => {
     console.log(sessionContext);
