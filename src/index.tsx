@@ -4,16 +4,19 @@ import './index.css';
 import './App.css';
 //import App from './App';
 
-import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
+import SuperTokens, {
+  SuperTokensWrapper,
+  getSuperTokensRoutesForReactRouterDom
+} from 'supertokens-auth-react';
 import { SessionAuth } from 'supertokens-auth-react/recipe/session';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 //import { useNavigate } from 'react-router-dom';
-import Session, { signOut } from 'supertokens-auth-react/recipe/session';
+//import Session, { signOut } from 'supertokens-auth-react/recipe/session';
 
 import { SuperTokensConfig } from './config';
 
-//import AuthMenu from './AuthMenu';
+import AuthMenu from './Menu/AuthMenu';
 
 SuperTokens.init(SuperTokensConfig);
 
@@ -28,6 +31,8 @@ if (authSigninEl) {
       <SuperTokensWrapper>
         <Router>
           <Routes>
+            {/* This shows the login UI on "/auth" route */}
+            {getSuperTokensRoutesForReactRouterDom(require('react-router-dom'))}
             <Route
               path="/signin"
               element={
@@ -46,31 +51,6 @@ if (authSigninEl) {
   );
 }
 
-const AuthMenu = () => {
-  let sessionContext = Session.useSessionContext();
-  //const navigate = useNavigate();
-
-  const logoutClicked = () => {
-    console.log(sessionContext);
-    signOut();
-    // navigate("/auth");
-  };
-  const loginClicked = () => {
-    // navigate('/signin'); /* curious - changes the path, but does not reload! intended for react-router-dom  use. */
-    window.open('/signin', '_self');
-  };
-
-  if (sessionContext.loading) {
-    return null;
-  }
-
-  if (sessionContext.doesSessionExist) {
-    return <button onClick={logoutClicked}>Logout</button>;
-  } else {
-    return <button onClick={loginClicked}>Login</button>;
-  }
-};
-
 const listTargets = document.getElementsByClassName('auth-menu');
 for (var listTarget of Array.from(listTargets)) {
   const rootMenu = ReactDOM.createRoot(listTarget as HTMLElement);
@@ -79,7 +59,7 @@ for (var listTarget of Array.from(listTargets)) {
       <SuperTokensWrapper>
         <Router>
           <Routes>
-            <Route path="/" element={<AuthMenu />} />
+            <Route path="*" element={<AuthMenu />} />
           </Routes>
         </Router>
       </SuperTokensWrapper>

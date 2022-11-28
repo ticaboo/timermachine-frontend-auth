@@ -9,28 +9,29 @@ import Session from 'supertokens-auth-react/recipe/session';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'supertokens-auth-react/recipe/session';
 
-export default function AuthMenu(props: any) {
+const AuthMenu = () => {
   let sessionContext = Session.useSessionContext();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
-  // console.log('AuthMenu', sessionContext);
-  async function logoutClicked() {
+  const logoutClicked = () => {
     console.log(sessionContext);
-    await signOut();
+    signOut();
     // navigate("/auth");
-  }
-  async function loginClicked() {
-    navigate('/signin');
-  }
-
-  // console.log('sessionContext', sessionContext);
+  };
+  const loginClicked = () => {
+    // navigate('/signin'); /* curious - changes the path, but does not reload! intended for react-router-dom  use. */
+    window.open('/signin', '_self');
+  };
 
   if (sessionContext.loading) {
-    return <span>Loading...</span>;
+    return null;
   }
+
   if (sessionContext.doesSessionExist) {
-    return <button onClick={logoutClicked}>Logout</button>;
+    return <button onClick={logoutClicked}>LOGOUT</button>;
   } else {
-    return <button onClick={loginClicked}>Login</button>;
+    return <button onClick={loginClicked}>LOGIN/REGISTER</button>;
   }
-}
+};
+
+export default AuthMenu;
