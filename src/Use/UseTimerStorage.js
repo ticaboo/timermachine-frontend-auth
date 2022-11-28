@@ -115,11 +115,11 @@ const useTimerStorage = (options) => {
       );
     } else {
       // adds new data to end of data array
-      console.log('mem', storeMem.current);
+      // console.log('mem', storeMem.current);
       if (storeMem.current === true) {
         const targetData = [...data];
         targetData.push(newData);
-        console.log('caradd:mem appending', data);
+        // console.log('caradd:mem appending', data);
         setData(targetData);
       } else {
         setData([...data, newData]);
@@ -138,12 +138,12 @@ const useTimerStorage = (options) => {
 
   function removeData(id) {
     const dataAfterRemoval = data.filter((data) => data.id !== id);
-    console.log(
-      'removing',
-      id,
-      'data after removal should be: ',
-      dataAfterRemoval
-    );
+    // console.log(
+    //   'removing',
+    //   id,
+    //   'data after removal should be: ',
+    //   dataAfterRemoval
+    // );
     setData(dataAfterRemoval);
     /* useEffect:data needs the >0 for + timer to work  so blatting last one if all deleted here*/
     if (dataAfterRemoval.length === 0) {
