@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
-  "homepage": ".",
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
     "@fontsource/space-grotesk": "^4.5.8",

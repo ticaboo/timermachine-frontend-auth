@@ -9,7 +9,7 @@ import HeartBeat from './pub/HeartBeat';
 import DemoStressTest from './chronic/DemoStressTest';
 import ToLibButton from './chronic/ToLibButton';
 
-import ReactDOM from 'react-dom'; /* todo - use client */
+//import ReactDOM from 'react-dom'; /* todo - use client */
 import * as ReactDOMClient from 'react-dom/client';
 // import reportWebVitals from './reportWebVitals';
 import SuperTokens, {
@@ -34,89 +34,116 @@ SuperTokens.init(SuperTokensConfig);
    one video player to id='yt-player'
    Note: required as heartbeat that drives timing goes here too.
    
+   Single per page (ID):
+
+      timer-notifications
+      timer-app
+      yt-player (note includes Heartbeat)
+      auth-signin
+      stress-demo
+
+  Multiple possible per page (CLASS)
+      tolib-button
+      single-timer-app
+      auth-Menu
+
 
  ************************************************************** */
-if (document.getElementById('timer-notifications')) {
-  ReactDOM.render(
+
+const timerNotificationEl = document.getElementById('timer-notifications');
+
+if (timerNotificationEl) {
+  const timerNotificationElRoot =
+    ReactDOMClient.createRoot(timerNotificationEl);
+  timerNotificationElRoot.render(
     <React.StrictMode>
       <ReactNotifications />
-    </React.StrictMode>,
-    document.getElementById('timer-notifications')
+    </React.StrictMode>
   );
 } else {
   console.log('prod mount: No id: timer-notifications');
 }
 
 const timerAppEls = document.getElementsByClassName('timer-app');
-for (var timerApp of timerAppEls) {
-  let timer = null;
-  if (timerApp.attributes.timer) {
-    //todo: error catching/valid object?
-    timer = timerApp.attributes.timer.value;
-    // console.log('timer attrib found');
+if (timerAppEls.length === 0) console.log('no class= timer-app found in Dom.');
+if (timerAppEls.length > 0) {
+  for (var timerAppEl of Array.from(timerAppEls)) {
+    let timer = null;
+    if (timerAppEl.attributes.timer) {
+      //todo: error catching/valid object?
+      timer = timerAppEl.attributes.timer.value;
+      // console.log('timer attrib found');
+    }
+    const root = ReactDOMClient.createRoot(timerAppEl);
+    root.render(
+      <React.StrictMode>
+        <TimerGroup timer={timer} />
+      </React.StrictMode>
+    );
   }
-  ReactDOM.render(
-    <React.StrictMode>
-      <TimerGroup timer={timer} />
-    </React.StrictMode>,
-    timerApp
-  );
 }
 
 const toLibButtons = document.getElementsByClassName('tolib-button');
-for (var toLibButton of toLibButtons) {
-  let timer = null;
-  if (toLibButton.attributes.timer) timer = toLibButton.attributes.timer.value;
-  let notificationmessage = null;
-  if (toLibButton.attributes.notificationmessage)
-    notificationmessage = toLibButton.attributes.notificationmessage.value;
-  ReactDOM.render(
-    <React.StrictMode>
-      <ToLibButton timer={timer} notificationmessage={notificationmessage} />
-    </React.StrictMode>,
-    toLibButton
-  );
+if (toLibButtons.length === 0)
+  console.log('no class=tolib-button found in Dom.');
+if (toLibButtons.length > 0) {
+  for (var toLibButton of Array.from(toLibButtons)) {
+    let timer = null;
+    let notificationmessage = null;
+    if (timerAppEl.attributes.timer) {
+      if (toLibButton.attributes.timer)
+        timer = toLibButton.attributes.timer.value;
+
+      if (toLibButton.attributes.notificationmessage)
+        notificationmessage = toLibButton.attributes.notificationmessage.value;
+    }
+    const root = ReactDOMClient.createRoot(timerAppEl);
+    root.render(
+      <React.StrictMode>
+        <ToLibButton timer={timer} notificationmessage={notificationmessage} />
+      </React.StrictMode>
+    );
+  }
 }
 
-const singleTargets = document.getElementsByClassName('single-timer-app');
-for (var singleTarget of singleTargets) {
-  let timer = null;
-  if (singleTarget.attributes.timer) {
-    //todo: error catching/valid object?
-    timer = singleTarget.attributes.timer.value;
-    // console.log('timer attrib found');
+const singleTimerTargets = document.getElementsByClassName('single-timer-app');
+if (singleTimerTargets.length > 0) {
+  const singleTimerTargetsRoot = ReactDOMClient.createRoot(singleTimerTargets);
+  for (var singleTimerTarget of singleTimerTargets) {
+    let timer = null;
+    if (singleTimerTarget.attributes.timer) {
+      timer = singleTimerTarget.attributes.timer.value;
+    }
+    singleTimerTargetsRoot.render(
+      <React.StrictMode>
+        <SingleChronos timer={timer} />
+      </React.StrictMode>
+    );
   }
-  ReactDOM.render(
-    <React.StrictMode>
-      <SingleChronos timer={timer} />
-    </React.StrictMode>,
-    singleTarget
-  );
 }
-/* YTplayer: by ID : as should only be one per page 
-   convenient as only one to put heartbeat here too.
-*/
-if (document.getElementById('yt-player')) {
-  ReactDOM.render(
+
+const ytPlayerEl = document.getElementById('yt-player');
+if (ytPlayerEl) {
+  const ytPlayerElRoot = ReactDOMClient.createRoot(ytPlayerEl);
+  ytPlayerElRoot.render(
     <React.StrictMode>
       <HeartBeat />
       <YTPlayer />
-    </React.StrictMode>,
-    document.getElementById('yt-player')
+    </React.StrictMode>
   );
 } else {
-  console.log('prod mount: No id: yt-player');
+  console.log('yt-player not found in Dom');
 }
 
-if (document.getElementById('stress-demo')) {
-  ReactDOM.render(
+const stressDemo = document.getElementById('stress-demo');
+//console.log('stressDemo', stressDemo);
+if (stressDemo) {
+  const stressDemoRoot = ReactDOMClient.createRoot(stressDemo);
+  stressDemoRoot.render(
     <React.StrictMode>
       <DemoStressTest />
-    </React.StrictMode>,
-    document.getElementById('stress-demo')
+    </React.StrictMode>
   );
-} else {
-  console.log('prod mount: No id: stress-demo');
 }
 
 const authSigninEl = document.getElementById('auth-signin');
@@ -149,21 +176,30 @@ if (authSigninEl) {
   );
 }
 
-const listAuthMenuTargets = document.getElementsByClassName('auth-menu');
-for (var listAuthMenuTarget of Array.from(listAuthMenuTargets)) {
-  const rootMenu = ReactDOMClient.createRoot(listAuthMenuTarget);
-  rootMenu.render(
-    <React.StrictMode>
-      <SuperTokensWrapper>
-        <Router>
-          <Routes>
-            <Route path="*" element={<AuthMenu />} />
-          </Routes>
-        </Router>
-      </SuperTokensWrapper>
-    </React.StrictMode>
-  );
-}
+const attachToClasses = (className, children) => {
+  const listTargets = document.getElementsByClassName(className);
+  if (listTargets.length === 0)
+    console.log('no class=' + className + ' found in Dom.');
+  if (listTargets.length > 0) {
+    for (var listTarget of Array.from(listTargets)) {
+      const root = ReactDOMClient.createRoot(listTarget);
+      root.render(children);
+    }
+  }
+};
+
+attachToClasses(
+  'auth-Menu',
+  <React.StrictMode>
+    <SuperTokensWrapper>
+      <Router>
+        <Routes>
+          <Route path="*" element={<AuthMenu />} />
+        </Routes>
+      </Router>
+    </SuperTokensWrapper>
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(// console.log))
