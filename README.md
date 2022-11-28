@@ -1,3 +1,7 @@
+# Timer Machine React app
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d9b32da4-b311-4c63-802a-17ea51e41bfc/deploy-status)](https://app.netlify.com/sites/timermachine-frontend-auth/deploys)
+
 Kaizen:
 
 chaining:

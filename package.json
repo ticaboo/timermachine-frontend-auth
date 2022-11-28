@@ -32,10 +32,10 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "cp src/indexDev.js src/index.js && ENV=DEVO react-scripts start",
-    "build": "cp src/indexProd.js src/index.js  && GENERATE_SOURCEMAP=false react-scripts build  && ./pushtosite.sh",
+    "start": "ENV=DEV react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build  && ./pushtosite.sh",
     "buildsource": "GENERATE_SOURCEMAP=true react-scripts build && ./pushtositewithsource.sh",
-    "buildlocal": "cp src/indexProd.js src/index.js && GENERATE_SOURCEMAP=true react-scripts build && serve build",
+    "buildlocal": "GENERATE_SOURCEMAP=true react-scripts build && serve build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cycucumber": "cypress run --config-file cypress/cypress-cucumber.json"
