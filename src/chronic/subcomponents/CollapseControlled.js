@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import useCollapse from 'react-collapsed';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+// import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { SettingsIcon } from '../icons';
+//import { SettingsIcon } from '../icons';
 import ScheduleDisplay from '../ScheduleDisplay';
 
 /*

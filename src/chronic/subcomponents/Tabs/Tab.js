@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  AtScheduleIcon,
+  // AtScheduleIcon,
   AtStartIcon,
   IntervalIcon,
   AtEndIcon

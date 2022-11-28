@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 import uuid from 'uuid';
 import { stressDemoTimer } from '../data/timers';

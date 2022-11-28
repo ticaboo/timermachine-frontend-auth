@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import DemoStressTest from '../chronic/DemoStressTest';
+//import DemoStressTest from '../chronic/DemoStressTest';
 import { FlexKata } from '../scratch/FlexKata';
 
 const FeaturesPage = () => {

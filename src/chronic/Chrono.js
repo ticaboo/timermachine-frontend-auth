@@ -9,7 +9,7 @@ import {
   formatSecondsShortNoLetters
 } from '../Utils';
 import CardAnimation from './subcomponents/buttons/CardAnimation';
-import SettingsBar from './SettingsBar';
+//import SettingsBar from './SettingsBar';
 
 import l from '../logging';
 

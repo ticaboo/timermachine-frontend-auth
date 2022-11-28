@@ -1,6 +1,6 @@
 import React from 'react';
 import { lpad } from '../../Utils';
-import BadgeAnimation from './buttons/BadgeAnimation';
+//import BadgeAnimation from './buttons/BadgeAnimation';
 
 const BadgeTimerCount = ({ completedCount }) => {
   //console.log('badge,completedCount', completedCount);

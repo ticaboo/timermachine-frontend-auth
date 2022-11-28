@@ -4,8 +4,8 @@ import { useForm, FormProvider } from 'react-hook-form';
 import PlayButton from '../subcomponents/buttons/PlayButton';
 import TimerRow from './TimerRow';
 
-import Collapse from '../subcomponents/Collapse';
-import CollapseControlled from '../subcomponents/CollapseControlled';
+// import Collapse from '../subcomponents/Collapse';
+// import CollapseControlled from '../subcomponents/CollapseControlled';
 import DuplicateTimerButton from '../subcomponents/buttons/DuplicateTimerButton';
 import RemoveTimerButton from '../subcomponents/buttons/RemoveTimerButton';
 import BookmarkButton from '../subcomponents/buttons/BookmarkButton';

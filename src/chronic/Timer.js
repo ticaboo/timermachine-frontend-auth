@@ -5,10 +5,10 @@ import { HEARTBEAT } from '../pub/topics';
 import {
   getAudioSrc,
   timeToSeconds,
-  secondsToTime,
   timeToHMformat,
-  formatSecondsShortNoLetters,
-  formatTime
+  formatSecondsShortNoLetters
+  // secondsToTime,
+  // formatTime
 } from '../Utils';
 import { Clock, OverClock } from './subcomponents/CounterClock';
 import ReplayButton from './subcomponents/buttons/ReplayButton';
@@ -18,9 +18,9 @@ import EditButton from './subcomponents/buttons/EditButton';
 
 import UseAlerts from '../Use/useAlerts';
 import { useAudio } from '../Use/useAudio';
-import useVideo, { getStartURL, getEndURL } from '../Use/useVideo';
+import useVideo from '../Use/useVideo';
 import useLogTimer from '../Use/UseLogTimer';
-import { AtScheduleIcon, AtStartIcon } from './icons';
+import { AtScheduleIcon } from './icons';
 
 //import notify from './notifiy';
 /*

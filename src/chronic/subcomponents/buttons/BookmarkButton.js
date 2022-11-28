@@ -2,8 +2,8 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ButtonAnimation from './ButtonAnimation';
 import {
-  ShareIcon,
-  ArrowCurveLeftIcon,
+  // ShareIcon,
+  // ArrowCurveLeftIcon,
   ArrowCurveRightIcon
 } from '../../icons';
 import { encodeObjToURI, flattenTimer } from '../../../Utils';

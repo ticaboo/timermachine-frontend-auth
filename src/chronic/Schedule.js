@@ -16,7 +16,7 @@ import useAlerts from '../Use/useAlerts';
 const Schedule = ({ timer, handleSchedule }) => {
   const [, setTimeNow] = useState();
   const [alertAt, setAlertAt] = useState();
-  const [active, setActive] = useState(); //so only fires once per day. used? or just activeLocal (ref?)
+  //const [active, activeLocal.current = ] = useState(); //so only fires once per day. used? or just activeLocal (ref?)
   const activeLocal = useRef();
   const { sayAloud } = useAlerts(timer);
 
@@ -39,7 +39,6 @@ const Schedule = ({ timer, handleSchedule }) => {
           console.log('TRIG SCHED;)');
           if (handleSchedule) handleSchedule();
           activeLocal.current = false;
-          setActive(false);
         } else if (activeLocal.current) {
           // todo: see above.
           // console.log(
@@ -101,7 +100,6 @@ const Schedule = ({ timer, handleSchedule }) => {
     //console.log('alertStamp from now:', alertStamp - Date.now());
     setAlertAt(alertStamp);
     activeLocal.current = true;
-    setActive(true);
   }, [timer]);
 
   useEffect(() => {

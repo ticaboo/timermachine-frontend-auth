@@ -12,7 +12,7 @@ Either this needs to be aware of what is currently playing,
 or video player tracks this info, and progress for each timer.
  */
 
-import { useMemo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PubSub from 'pubsub-js';
 import { VIDEO_ID, VIDEO_PLAY } from '../pub/topics';
 import { getPlaylistURL } from '../Utils';

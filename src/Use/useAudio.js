@@ -18,7 +18,7 @@
  */
 
 import { useMemo, useEffect, useState } from 'react';
-
+/*
 function amplifyMedia(mediaElem, multiplier) {
   var context = new (window.AudioContext || window.webkitAudioContext)(),
     result = {
@@ -38,7 +38,7 @@ function amplifyMedia(mediaElem, multiplier) {
   result.amplify(multiplier);
   return result;
 }
-
+*/
 /**
  * useAudio hook to play and control the audio
  *

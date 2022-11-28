@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'; //{ Link
-import React, { props } from 'react'; //? todo-do i need to import props?
+import React from 'react'; //? todo-do i need to import props?
 import InterstitialPage from './pages/InterstitialPage';
 import HomePage from './pages/HomePage';
 import FeaturesPage from './pages/FeaturesPage';

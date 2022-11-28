@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
+//import Header from './components/Header';
 import SingleChronos from '../chronic/SingleChronos';
 import YTPlayer from '../chronic/VideoPlayer/YTPlayer';
 

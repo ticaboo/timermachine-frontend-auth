@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from './Title';
-import Navigation from './Navigation';
+
 import NavExample from './NavExample';
 
 const Header = () => {

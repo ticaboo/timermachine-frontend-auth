@@ -8,14 +8,14 @@ import { LOCAL_STORAGE_TIMER_KEY } from '../Use/usEnv';
 import { defaultTimer } from '../data/timers';
 
 function TimerGroup() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed] = useState(false);
 
   const { timers, duplicateTimer, craddTimer, addNewTimer, removeTimer } =
     useStorage({ key: LOCAL_STORAGE_TIMER_KEY, defaultData: defaultTimer });
 
-  const collapseAll = () => {
-    setCollapsed(!collapsed);
-  };
+  // const collapseAll = () => {
+  //   setCollapsed(!collapsed);
+  // };
   return (
     <div className="flex flex-row flex-wrap list-timers">
       {/* <div>

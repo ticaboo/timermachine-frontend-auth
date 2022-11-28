@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from './components/Header';
-import SingleChronos from '../chronic/SingleChronos';
+//import SingleChronos from '../chronic/SingleChronos';
 import TimerGroup from '../chronic/TimerGroup';
 // import YTPlayer from '../chronic/YTPlayer';
 import VideoPlayer from '../chronic/VideoPlayer/YTPlayer';
-import DemoStressTest from '../chronic/DemoStressTest';
+//import DemoStressTest from '../chronic/DemoStressTest';
 import ToLibButton from '../chronic/ToLibButton';
 // import Members from '../Members/index';
 import AuthMenu from '../auth/AuthMenu';
