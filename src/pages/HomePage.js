@@ -5,7 +5,7 @@ import TimerGroup from '../chronic/TimerGroup';
 // import YTPlayer from '../chronic/YTPlayer';
 import VideoPlayer from '../chronic/VideoPlayer/YTPlayer';
 //import DemoStressTest from '../chronic/DemoStressTest';
-import ToLibButton from '../chronic/ToLibButton';
+//import ToLibButton from '../chronic/ToLibButton';
 // import Members from '../Members/index';
 import AuthMenu from '../auth/AuthMenu';
 const HomePage = () => {
@@ -16,10 +16,10 @@ const HomePage = () => {
       authmenu- <AuthMenu /> -authmenu
       <TimerGroup />
       {/* <SingleChronos timer='t=%7B"direction"%3A-1%2C"schedule"%3A%7B"hasScheduleAnnounce"%3Afalse%2C"scheduleAnnounce"%3A""%2C"h"%3A""%2C"m"%3A""%2C"s"%3A""%7D%2C"timer"%3A%7B"name"%3A"homesingtimerwtf"%2C"h"%3A""%2C"m"%3A"5"%2C"s"%3A"5"%2C"hasAlert"%3Atrue%2C"alert"%3A"1"%2C"hasAnnounce"%3Afalse%2C"announce"%3A"type%20your%20text%20to%20announce"%2C"startPlaylist"%3A"1"%2C"endPlaylist"%3A"2"%2C"hasStartPlaylist"%3Atrue%2C"playDuringUrl"%3A"https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DW74E0wWUcqY%26list%3DPLGFsjC9dEUw5cXCjNGAoVISO552RzPLEg"%2C"hasPlayDuringUrl"%3Afalse%2C"hasEndPlaylist"%3Afalse%2C"endPlayerUrl"%3A"https%3A%2F%2Fopen.spotify.com%2Ftrack%2F0nrRP2bk19rLc0orkWPQk2"%2C"hasEndPlayUrl"%3Afalse%2C"endPlayUrl"%3A""%2C"hasStartAlert"%3Afalse%2C"startAlert"%3A"2"%2C"hasStartAnnounce"%3Afalse%2C"startAnnounce"%3A""%2C"hasStartPlayUrl"%3Afalse%2C"startPlayUrl"%3A""%7D%2C"interval"%3A%7B"name"%3A"interval"%2C"h"%3A""%2C"m"%3A""%2C"s"%3A""%2C"hasAlert"%3Afalse%2C"alert"%3A1%2C"hasAnnounce"%3Afalse%2C"announce"%3A"speak%20at%20interval"%7D%2C"chaining"%3A%7B"onend"%3A%7B"chainEnabled"%3Afalse%2C"chainId"%3A""%7D%7D%2C"chainAction"%3A""%2C"hasInterval"%3Afalse%2C"undefinedhasStartPlaylist"%3Afalse%2C"undefinedstartPlaylist"%3A"1"%2C"undefinedhasEndPlaylist"%3Afalse%2C"undefinedendPlaylist"%3A"1"%7D' /> */}
-      <ToLibButton
+      {/* <ToLibButton
         // notificationmessage="incoming blurb"
         timer='t=%7B"direction"%3A-1%2C"schedule"%3A%7B"hasScheduleAnnounce"%3Afalse%2C"scheduleAnnounce"%3A""%2C"h"%3A""%2C"m"%3A""%2C"s"%3A""%7D%2C"timer"%3A%7B"name"%3A"homesingtimerwtf"%2C"h"%3A""%2C"m"%3A"5"%2C"s"%3A"5"%2C"hasAlert"%3Atrue%2C"alert"%3A"1"%2C"hasAnnounce"%3Afalse%2C"announce"%3A"type%20your%20text%20to%20announce"%2C"startPlaylist"%3A"1"%2C"endPlaylist"%3A"2"%2C"hasStartPlaylist"%3Atrue%2C"playDuringUrl"%3A"https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DW74E0wWUcqY%26list%3DPLGFsjC9dEUw5cXCjNGAoVISO552RzPLEg"%2C"hasPlayDuringUrl"%3Afalse%2C"hasEndPlaylist"%3Afalse%2C"endPlayerUrl"%3A"https%3A%2F%2Fopen.spotify.com%2Ftrack%2F0nrRP2bk19rLc0orkWPQk2"%2C"hasEndPlayUrl"%3Afalse%2C"endPlayUrl"%3A""%2C"hasStartAlert"%3Afalse%2C"startAlert"%3A"2"%2C"hasStartAnnounce"%3Afalse%2C"startAnnounce"%3A""%2C"hasStartPlayUrl"%3Afalse%2C"startPlayUrl"%3A""%7D%2C"interval"%3A%7B"name"%3A"interval"%2C"h"%3A""%2C"m"%3A""%2C"s"%3A""%2C"hasAlert"%3Afalse%2C"alert"%3A1%2C"hasAnnounce"%3Afalse%2C"announce"%3A"speak%20at%20interval"%7D%2C"chaining"%3A%7B"onend"%3A%7B"chainEnabled"%3Afalse%2C"chainId"%3A""%7D%7D%2C"chainAction"%3A""%2C"hasInterval"%3Afalse%2C"undefinedhasStartPlaylist"%3Afalse%2C"undefinedstartPlaylist"%3A"1"%2C"undefinedhasEndPlaylist"%3Afalse%2C"undefinedendPlaylist"%3A"1"%7D'
-      />
+      /> */}
       <div className="m-2">
         <VideoPlayer className="baseWhite baseCard" />
       </div>
