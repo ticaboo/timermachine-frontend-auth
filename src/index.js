@@ -187,18 +187,24 @@ const attachToClasses = (className, children) => {
     }
   }
 };
-const AuthMenuChildren = (
-  <React.StrictMode>
-    <SuperTokensWrapper>
-      <Router>
-        <Routes>
-          <Route path="*" element={<AuthMenu />} />
-        </Routes>
-      </Router>
-    </SuperTokensWrapper>
-  </React.StrictMode>
-);
-attachToClasses('auth-Menu', AuthMenuChildren);
+const authMenuEls = document.getElementsByClassName('auth-menu');
+if (authMenuEls.length === 0) console.log('no class=auth-menu found in Dom.');
+if (authMenuEls.length > 0) {
+  for (var authMenuEl of Array.from(authMenuEls)) {
+    const authMenuElroot = ReactDOMClient.createRoot(authMenuEl);
+    authMenuElroot.render(
+      <React.StrictMode>
+        <SuperTokensWrapper>
+          <Router>
+            <Routes>
+              <Route path="*" element={<AuthMenu />} />
+            </Routes>
+          </Router>
+        </SuperTokensWrapper>
+      </React.StrictMode>
+    );
+  }
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(// console.log))
