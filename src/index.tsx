@@ -11,14 +11,11 @@ import SuperTokens, {
 import { SessionAuth } from 'supertokens-auth-react/recipe/session';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
-//import { useNavigate } from 'react-router-dom';
-//import Session, { signOut } from 'supertokens-auth-react/recipe/session';
 
 import { SuperTokensConfig } from './config';
+SuperTokens.init(SuperTokensConfig);
 
 import AuthMenu from './Menu/AuthMenu';
-
-SuperTokens.init(SuperTokensConfig);
 
 const authSigninEl = document.getElementById('auth-signin') as HTMLElement;
 
