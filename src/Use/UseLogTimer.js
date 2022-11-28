@@ -97,7 +97,7 @@ function useLogTimer() {
 
       const i = timeLog.findIndex((log) => log.id === timer.id);
       //   const targetLogArray = Array.from(timeLog);
-      const timing = timeLog[i].timings[timeLog[i].timings.length - 1];
+      //const timing = timeLog[i].timings[timeLog[i].timings.length - 1];
       timeLog[i].timings[timeLog[i].timings.length - 1].completedAt =
         Date.now();
       // console.log(
