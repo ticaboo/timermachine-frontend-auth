@@ -71,17 +71,22 @@ if (authSigninEl) {
 }
 
 const listTargets = document.getElementsByClassName('auth-menu');
-for (var listTarget of Array.from(listTargets)) {
-  const rootMenu = ReactDOMClient.createRoot(listTarget);
-  rootMenu.render(
-    <React.StrictMode>
-      <SuperTokensWrapper>
-        <Router>
-          <Routes>
-            <Route path="*" element={<AuthMenu />} />
-          </Routes>
-        </Router>
-      </SuperTokensWrapper>
-    </React.StrictMode>
-  );
+if (listTargets.length === 0) {
+  console.log('no class="auth-menu"');
+}
+if (listTargets.length > 0) {
+  for (var listTarget of Array.from(listTargets)) {
+    const rootMenu = ReactDOMClient.createRoot(listTarget);
+    rootMenu.render(
+      <React.StrictMode>
+        <SuperTokensWrapper>
+          <Router>
+            <Routes>
+              <Route path="*" element={<AuthMenu />} />
+            </Routes>
+          </Router>
+        </SuperTokensWrapper>
+      </React.StrictMode>
+    );
+  }
 }

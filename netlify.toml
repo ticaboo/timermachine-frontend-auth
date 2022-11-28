@@ -1,9 +1,9 @@
 # example netlify.toml
 [build]
   # with sourcemap:
-  # command = "GENERATE_SOURCEMAP=true react-scripts build && rsync -av --exclude='build/static/js/*.map' build/static/js/*.js build/static/app.js  && cp build/static/js/*.map build/static/"
+   command = "GENERATE_SOURCEMAP=true react-scripts build && rsync -av --exclude='build/static/js/*.map' build/static/js/*.js build/static/app.js  && cp build/static/js/*.map build/static/"
   # without source map (same name js output: static/app.js)
-  command = "GENERATE_SOURCEMAP=false react-scripts build && cp build/static/js/*.js build/static/app.js  && cp build/static/css/*.css build/static"
+  # command = "GENERATE_SOURCEMAP=false react-scripts build && cp build/static/js/*.js build/static/app.js  && cp build/static/css/*.css build/static"
   functions = "netlify/functions"
   publish = "build"
   NETLIFY_BUILD_DEBUG = true
