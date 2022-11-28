@@ -187,9 +187,7 @@ const attachToClasses = (className, children) => {
     }
   }
 };
-
-attachToClasses(
-  'auth-Menu',
+const AuthMenuChildren = (
   <React.StrictMode>
     <SuperTokensWrapper>
       <Router>
@@ -200,6 +198,7 @@ attachToClasses(
     </SuperTokensWrapper>
   </React.StrictMode>
 );
+attachToClasses('auth-Menu', AuthMenuChildren);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(// console.log))
