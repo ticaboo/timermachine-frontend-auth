@@ -46,7 +46,7 @@ function useLogTimer() {
   //   }, []);
 
   function atCommenceLog(timer) {
-    console.log('atCommenceLog', timer.id);
+    //console.log('atCommenceLog', timer.id);
     // if (!data) init();
     //crad timing Id, with pushed Timing
     // const filteredLogs = timeLog.filter((log) => log.id === timer.id);
@@ -61,7 +61,7 @@ function useLogTimer() {
     };
     //log.timings.push(newTiming);
     const i = timeLog.findIndex((log) => log.id === timer.id);
-    console.log('i', i);
+    //console.log('i', i);
     if (i === -1) {
       //   const targetLogArray = Array.from(timeLog);
       //   targetLogArray.push(log);
@@ -100,20 +100,20 @@ function useLogTimer() {
       const timing = timeLog[i].timings[timeLog[i].timings.length - 1];
       timeLog[i].timings[timeLog[i].timings.length - 1].completedAt =
         Date.now();
-      console.log(
-        'Time Log completed - expected:',
-        timing.completedAt - timing.expectedEnd,
-        ' (duration): ',
-        timing.duration
-      );
+      // console.log(
+      //   'Time Log completed - expected:',
+      //   timing.completedAt - timing.expectedEnd,
+      //   ' (duration): ',
+      //   timing.duration
+      // );
       setTimeLog(timeLog);
     }
-    console.log('atCompleteLog', existinglog);
+    // console.log('atCompleteLog', existinglog);
   }
 
   function getCompletedCount(timerId) {
     const filteredLogs = timeLog.filter((log) => log.id === timerId);
-    console.log(timerId, filteredLogs);
+    // console.log(timerId, filteredLogs);
     if (filteredLogs.length === 1) {
       return filteredLogs[0].timings.length;
     } else return null;

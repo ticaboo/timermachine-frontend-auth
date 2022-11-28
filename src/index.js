@@ -176,17 +176,6 @@ if (authSigninEl) {
   );
 }
 
-const attachToClasses = (className, children) => {
-  const listTargets = document.getElementsByClassName(className);
-  if (listTargets.length === 0)
-    console.log('no class=' + className + ' found in Dom.');
-  if (listTargets.length > 0) {
-    for (var listTarget of Array.from(listTargets)) {
-      const root = ReactDOMClient.createRoot(listTarget);
-      root.render(children);
-    }
-  }
-};
 const authMenuEls = document.getElementsByClassName('auth-menu');
 if (authMenuEls.length === 0) console.log('no class=auth-menu found in Dom.');
 if (authMenuEls.length > 0) {
