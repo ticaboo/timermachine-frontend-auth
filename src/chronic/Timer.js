@@ -54,17 +54,15 @@ const Timer = ({
   handleNextChainAction,
   setDuration
 }) => {
-  const [heartBeatDeltaMS, setHeartBeatDeltaMS] = useState(
-    new Date().getMilliseconds() + 1
-  );
+  const [heartBeatDeltaMS] = useState(new Date().getMilliseconds() + 1);
 
   const [remaining, setRemaining] = useState(
     timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s)
   );
   //heartbeat subscriber, useEffects - fire cycle twice only on start.
-  const [overshot, setOvershot] = useState();
+  const [, setOvershot] = useState();
 
-  const [originalDuration, setOriginalDuration] = useState(
+  const [originalDuration] = useState(
     timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s)
   );
   const [expectedTime] = useState(

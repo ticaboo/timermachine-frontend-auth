@@ -7,13 +7,13 @@ class Tabs extends Component {
     children: PropTypes.instanceOf(Array)
   };
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    // this.state = {
-    //   activeTab: this.props.activeTab //null //this.props.children[3].props.label
-    // };
-  }
+  // this.state = {
+  //   activeTab: this.props.activeTab //null //this.props.children[3].props.label
+  // };
+  // }
 
   onClickTabItem = (tab) => {
     if (this.props.activeTab === tab) {
