@@ -72,7 +72,7 @@ const host = getHost;
 if (host === 'non-browser') l = lx;
 if (host === 'localhost:3000') l = lx;
 if (host === 'localhost:4000') l = l1;
-if (host === 'front.timermachine.com') l = l1;
+if (host === 'timermachine.com') l = l1;
 
 //example:
 //l('info', 'msgtest', { data: 2 });

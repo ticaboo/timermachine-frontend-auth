@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { setLogging } from './logging';
+//let enabled = true;
+let host = 'localhost:3000';
 
 export const LogSwitch = () => {
   const [enabled, setEnabled] = useState(false);
@@ -8,11 +10,14 @@ export const LogSwitch = () => {
     setLogging(enabled);
   };
   return (
-    <div>
+    <div className="baseWhite">
       <div>
-        <div>
-          log {enabled ? '√' : 'x'}-<button onClick={toggleEnabled}>o</button>
-        </div>
+        {host.match('localhost:3000') && (
+          <div>
+            logging:- {enabled ? 'on' : 'off'}-
+            <button onClick={toggleEnabled}>toggle</button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,27 +1,76 @@
-.App {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    font-family: Rubik;
+/* todo : legacy, replace with tailwind */
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: rgb(132, 172, 232);
 }
 
-.fill {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
+a:hover {
+  border-bottom: 2px solid rgb(132, 172, 232);
 }
 
-.sessionButton {
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-color: black;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    font-size: 17px;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  height: 100%;
+  color: #dddddd;
+  background-color: rgb(48, 48, 48);
+}
+#main {
+  display: flex;
+  flex: 1;
+}
+#main > .articles {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+#main > nav,
+#main > aside {
+  flex: 0 0 20vw;
+  /* background: beige; */
+}
+#main > nav {
+  order: -1;
+}
+header,
+footer {
+  /* background: yellowgreen; */
+  height: 20vh;
+  width: 100%;
+}
+header,
+footer,
+article,
+nav,
+aside {
+  padding: 1em;
+}
+
+article {
+  min-height: 160px;
+  color: #dddddd;
+}
+
+.testBlue {
+  background-color: deepskyblue;
+}
+.testPurple {
+  background-color: purple;
+}
+
+.intro-image {
+  width: 500px;
+}
+
+.addsByGoogle {
+  display: block;
 }

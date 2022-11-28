@@ -1,0 +1,364 @@
+
+<!DOCTYPE html><!--
+    scripts and programs that download content transparent to the user are not allowed without permission
+    -->
+    <html lang=en>
+        <head>
+            <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+            <title>Online Timer</title>
+            <meta 
+                name=description 
+                content="Timer online with alarm. Create one or multiple timers and start them in any order. 
+                Set a silent timer clock or choose a sound.">
+                <meta property="og:image" content="https://c.tadst.com/gfx/1200x630/cardimage-timer-05.png?1">
+                <meta property="og:description" 
+                content="Timer online with alarm. Create one or multiple timers and start them in any order.">
+                <meta property="og:type" content=website><style>
+        
+    @font-face{font-family:iconfont;src:url("/common/fonts/iconfont.woff2?v8") format("woff2"),url("/common/fonts/iconfont.woff?v8") format("woff"),url("/common/fonts/iconfont.ttf?v8") format("truetype"),url("/common/fonts/iconfont.svg?v8#iconfont") format("svg");font-weight:400;font-style:normal}
+    </style>
+    
+    <link rel=preload href="/common/fonts/iconfont.woff2?v8" as=font type="font/woff2" crossorigin>
+    <link rel=preconnect href="https://c.tadst.com" crossorigin>
+    <link rel=preload href="/common/global_13.css.br" as=style>
+    <link rel=alternate hreflang=de href="https://www.timeanddate.de/stoppuhr/eieruhr" />
+    <link rel=alternate hreflang=no href="https://www.timeanddate.no/klokka/alarm" />
+    <link rel=preload href="/common/prebidtad.top.desk.cmp_31.js.br" as=script>
+    <script src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" async></script>
+    <script>
+    
+    AdMgr=(function(){var isLog=0,isSent=0,slots=[];
+    function logAds(){if(isLog){return}
+    if(!window.jcb||!window.TADhba){setTimeout(logAds,1000);
+    return}
+    isLog=1;
+    jcb("/scripts/logads.php?d=d"+"&"+TADhba(),function(){})}
+    AD={s:[],o:0};
+    googletag=window.googletag||{};
+    googletag.cmd=googletag.cmd||[];
+    function push(f){googletag.cmd.push(f)}
+    function setTargeting(n,v){if(v){push(function(){googletag.pubads().setTargeting(n,v)})}}
+    function send(){if(isSent)return;
+    isSent=true;
+    setTargeting("pbv",window.pbv);
+    push(function(){googletag.enableServices();
+    googletag.pubads().refresh(AD.s)})}
+    function rendered(){setTimeout(logAds,1000)}
+    function bidsIn(i){delete b[i];
+    if(Object.keys(b).length==0){sendAdserverRequest()}}
+    function addSlot(o){if (o.wm&&o.wm>window.innerWidth){o.wf.i=o.i;
+    o=o.wf}
+    slots.push(o)}
+    function slot(i){return slots[i]}
+    function a9slot(i){let o=slot(i);
+    return{slotID:o.i,slotName:o.n,sizes:o.s}}
+    function gptSlot(i){let o=slot(i),u,j;
+    if(o){u=googletag.defineSlot(o.n,o.s,o.i);
+    if(o.t){for(j=0;j<o.t.length;j++){t=o.t[j];
+    u.setTargeting(t[0],t[1])}}
+    u.addService(googletag.pubads());
+    AD.s.push(u)}}
+    function dispSlot(i){let o=slot(i);
+    push(function(){googletag.display(o.i)})}
+    push(function(){googletag.pubads().disableInitialLoad();
+    googletag.pubads().addEventListener('slotRenderEnded',rendered)});
+    var b={"pb":1};
+    return {addSlot:addSlot,
+    slot:slot,
+    a9slot:a9slot,
+    gptSlot:gptSlot,
+    dispSlot:dispSlot,
+    bidsIn:bidsIn,
+    push:push,
+    setTargeting:setTargeting,
+    send:send,
+    rendered:rendered}})();
+    AdMgr.addSlot({n:'/1004254/com728',s:[[728,90]],i:'div-gpt-com-728x90'});AdMgr.addSlot({n:'/1004254/com_160',s:[[160,600]],i:'div-gpt-com-160x600'});
+    var pbjs=pbjs||{};pbjs.que=pbjs.que||[];
+    pbjs.bidderSettings={standard:{storageAllowed:true}};
+    function cmpEvent(t,s){if(s){let e=t.eventStatus;
+    if(e=='useractioncomplete'||e=='tcloaded'){if (t.purpose.consents[4]){consentDataReady()} else {sendAdserverRequest()}}}}
+    function consentDataReady(){consentDataReady=function(){};
+    pbjs.que.push(function(){pbjs.addAdUnits([{code:AdMgr.slot(0).i,mediaTypes:{banner:{sizes:AdMgr.slot(0).s}},ortb2Imp:{ext:{gpid:'/1004254/com728#a3445'}},bids:[{bidder:'aol',params:{dcn:'8a96958f01707087f9589c40e2820046',pos:'728x90_atf'}},{bidder:'appnexus',params:{placementId:11439172}},{bidder:'ix',params:{siteId:'189917',size:[728,90]}},{bidder:'medianet',params:{cid:'8CU692DPW',crid:'680365832'}},{bidder:'pubmatic',params:{adSlot:'com728@728x90',publisherId:'157610'}},{bidder:'rubicon',params:{accountId:'16448',siteId:'127484',zoneId:'601634'}},{bidder:'sharethrough',params:{pkey:'MP4upq7RPYEkCaVYtECVCddt'}},{bidder:'triplelift',params:{inventoryCode:'TimeAndDate_com_728x90'}}]},{code:AdMgr.slot(1).i,mediaTypes:{banner:{sizes:AdMgr.slot(1).s}},ortb2Imp:{ext:{gpid:'/1004254/com_160#a3445'}},bids:[{bidder:'aol',params:{dcn:'8a96958f01707087f9589c40e2820046',pos:'160x600_atf'}},{bidder:'appnexus',params:{placementId:11439179}},{bidder:'ix',params:{siteId:'281963',size:[160,600]}},{bidder:'medianet',params:{cid:'8CU692DPW',crid:'842241810'}},{bidder:'pubmatic',params:{adSlot:'com_160@160x600',publisherId:'157610'}},{bidder:'rubicon',params:{accountId:'16448',siteId:'127484',zoneId:'601642'}},{bidder:'sharethrough',params:{pkey:'yCxKKh6qttD6r2SMp6ckWWve'}},{bidder:'triplelift',params:{inventoryCode:'TimeAndDate_com_160x600'}}]}]);
+    pbjs.requestBids({bidsBackHandler:function(){var c=0,a,b,i,r=pbjs.getBidResponses();
+    pbjs.setTargetingForGPTAsync();
+    for(a in r){if(r.hasOwnProperty(a)){b=r[a].bids;for(i=0;i<b.length;i++){if(b[i].cpm){c++}}}}
+    AdMgr.setTargeting("tadbid",""+c);
+    AdMgr.bidsIn('pb')}}
+    )})}
+    pbjs.que.push(function(){pbjs.setConfig({consentManagement:{gdpr:{cmpApi:'iab',timeout:8000,defaultGdprScope:true}},
+    userSync:{userIds:[{name:"quantcastId"},{name:"pubCommonId",params:{enableSharedId:true},storage:{type:"cookie",name:"_pubcid",expires:365}},{name:"criteo"}],filterSettings:{iframe:{bidders:"*",filter:"include"}}},
+    floors:{enforcement:{enforceJS:false},data:{schema:{fields:['size']},values:{}}},
+    debug:false,
+    priceGranularity:{buckets:[{min:0,max:4,increment:0.01},{min:4,max:8,increment:0.02},{min:8,max:20,increment:0.05},{min:20,max:30,increment:0.10},{min:30,max:50,increment:0.25},{min:50,max:100,increment:1}]},
+    enableSendAllBids:true,
+    bidderTimeout:1000,
+    pageUrl:"https:\/\/www.timeanddate.com\/timer\/"});
+    pbjs.setBidderConfig({"bidders":["rubicon"],"config":{"schain":{"validation":"strict","config":{"ver":"1.0","complete":1,"nodes":[{"asi":"netricsales.com","sid":"16448","hp":1}]}}}})});
+    function sendAdserverRequest(){AdMgr.send()}
+    setTimeout(function(){function cmpWait(sec){if(typeof(window.__tcfapi)=="function"){__tcfapi('ping',2,function(d){if(d.displayStatus!="visible"){sendAdserverRequest()}})}else{if (sec>0) {setTimeout(function(){cmpWait(sec-1)},1000)} else {sendAdserverRequest()}}}
+    cmpWait(5)},500);
+    googletag.cmd.push(function(){AdMgr.gptSlot(0);AdMgr.gptSlot(1);googletag.pubads().setTargeting('ab','b').setTargeting('hr','13').setTargeting('ut','l').setTargeting('art','3445').enableSingleRequest()});
+    function injectJS(u){var d=document,s=d.createElement("script"),p=d.getElementsByTagName("script")[0];s.type="text/javascript";s.async=!0;s.src=u;p.parentNode.insertBefore(s,p)}
+    (function(){window.aax=window.aax||{};var a=window.aax;a.initTime=+new Date();a.pubId="AAX97516V";a.ver="1.2";a.hst=window.location.hostname;injectJS("https://c.aaxads.com/aax.js?pub="+a.pubId+"&hst="+a.hst+"&ver="+a.ver)})();
+    window._qevents=window._qevents||[];
+    injectJS("https://secure.quantserve.com/quant.js");
+    window._qevents.push({qacct:"p-8QLn8vj66GL9W",uid:"__INSERT_EMAIL_HERE__"});
+    (function() {var purl=window.location.href,v="";
+    if(purl.indexOf("pwtv=")>0){var r=/pwtv=(.*?)(&|$)/g;
+    var m=r.exec(purl);
+    if(m.length>=2&&m[1].length>0){v="/"+m[1]}}
+    injectJS("//ads.pubmatic.com/AdServer/js/pwt/157610/6117"+v+"/pwt.js")})();
+    </script>
+    <script src="/common/prebidtad.top.desk.cmp_31.js.br" async></script><link href="/site.webmanifest" rel=manifest><link sizes=48x48 href="/favicon-48x48.png" type="image/png" rel=icon><link rel=icon type="image/png" sizes=16x16 href="/favicon-16x16.png"><link type="image/png" rel=icon sizes=32x32 href="/favicon-32x32.png"><link rel=stylesheet type="text/css" href="/common/global_13.css.br"><script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Timers","item":"https://www.timeanddate.com/counters/"},{"@type":"ListItem","position":2,"name":"Online Timer"}]}
+    </script><style>@keyframes fadeInLeftBig{0%{opacity:0;transform:translateX(-200px)}to{opacity:1;transform:translateX(0)}}.nav-tabs{display:flex;flex-direction:row;flex-wrap:nowrap;font-size:18px;position:relative}@media only screen and (max-width:37.438em){.nav-tabs{animation-delay:.3s;animation-duration:1.5s;animation-fill-mode:both;animation-name:fadeInLeftBig;animation-timing-function:ease-out}}.nav-tabs__wrap{box-shadow:inset 0 -5px 0 #f1f1f1}@media only screen and (max-width:64em){.nav-tabs__wrap{margin:0 6px;overflow-x:auto}.nav-tabs__wrap .fixed{padding-left:0}}.nav-tabs__item{border-bottom:5px solid #f1f1f1;display:block;margin:0 24px;padding:6px 0;text-decoration:none!important;white-space:nowrap}.nav-tabs__item:first-child{margin-left:0;padding-left:0}.nav-tabs__item:hover{border-bottom:5px solid #ccc;color:#556bb5;transition:all .25s ease 0s}.nav-tabs__item.active{border-bottom:5px solid #4a90e2;color:#454545;cursor:default}@media only screen and (max-width:37.438em){.nav-tabs__item{margin:0 12px}}@keyframes fadeInDown{0%{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}.fadeInDown{animation-duration:1s;animation-fill-mode:both;animation-name:fadeInDown}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}.fadeIn{animation-duration:1s;animation-fill-mode:both;animation-name:fadeIn}@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.fadeInUp{animation-duration:1s;animation-fill-mode:both;animation-name:fadeInUp}@keyframes fadeInLeft{0%{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}.fadeInLeft{animation-duration:1s;animation-fill-mode:both;animation-name:fadeInLeft}@keyframes fadeInRight{0%{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}.fadeInRight{animation-duration:1s;animation-fill-mode:both;animation-name:fadeInRight}.promo_tool__i{background:#666;border:2px solid #fff;border-radius:50%;color:#fff!important;display:block;font-size:48px;height:80px;left:0;line-height:80px;margin:0 auto;position:absolute;right:0;top:0;width:80px}.promo_tool__i:hover{text-decoration:none}@media only screen and (max-width:37.438em){.promo_tool__i{top:-40px}}.promo_tool__inner{background:#f5f5f5;margin-top:40px;padding:30px 10px 10px;text-align:center}@media only screen and (min-width:37.5em){.promo_tool__inner{min-height:180px}}.socrow{background:#f1f1f1;height:18px;line-height:18px}.totalTimeLeft{font-size:18px;padding:10px 0;text-align:right}.c-timer,.timerContainer{margin-bottom:24px;position:relative;width:100%}.c-timer{font-size:18px}.c-timer:after{clear:both;content:"";display:table}.c-timer__config{display:block;margin-bottom:24px}.c-timer__footer,.c-timer__title{margin-bottom:12px}.c-timer__footer{font-size:18px}.c-timer__footer:after{clear:both;content:"";display:table}.c-timer__edit-wrap{font-size:14px}.c-timer__edit{color:#556bb5;margin-left:12px}.c-timer__delete{color:#d0021b;opacity:0;position:absolute;right:0}.c-timer:hover .c-timer__delete{opacity:1}.c-timer__drag{font-size:24px;left:0;margin-left:-24px;margin-top:-12px;opacity:0;position:absolute;top:0}.c-timer:hover .c-timer__drag{opacity:1}.c-timer--single .c-timer:hover .c-timer__drag{opacity:0}@media only screen and (max-width:37.438em){.c-timer{font-size:14px}}.c-editModal *{z-index:1050!important}.c-editModal .modal{background-color:transparent;background-color:rgba(0,0,0,.4);z-index:inherit}.c-editModal .modal-body,.c-editModal .modal-content,.c-editModal .modal-footer{z-index:inherit}.sound-test{font-size:18px;margin-left:24px}.progressBar{background-color:#aaa;height:32px;position:relative;width:100%}@media only screen and (max-width:37.438em){.progressBar{height:20px}}.currentProgress{background-color:#17a69d;display:inline-block;float:left;height:32px;position:relative;width:100%}.currentProgress--pause{background-color:#fb647f}.currentProgress--start{background-color:#17a69d}@media only screen and (max-width:37.438em){.currentProgress{height:20px}}.timeCount{color:#000;font-size:48px;margin-bottom:12px;overflow:visible;position:relative;transition:.4s ease-in;white-space:nowrap}.timeCount:after{clear:both;content:"";display:table}@media only screen and (max-width:37.438em){.timeCount{font-size:32px;margin-bottom:6px}}@media only screen and (min-width:64.063em){.c-timer--single .timeCount{font-size:150px}}@media only screen and (max-width:37.438em){.c-timer--single .timeCount{font-size:32px;margin-bottom:6px}}.timeLeft{cursor:pointer;line-height:64px;margin-right:24px}.timeLeft:hover{color:#556bb5}@media only screen and (max-width:37.438em){.timeLeft{line-height:44px}}.timeAfter{color:#fff;font-size:14px;font-style:italic;letter-spacing:.5px;line-height:32px;padding:0 12px}@media only screen and (max-width:37.438em){.timeAfter{font-size:10px;line-height:20px}}.c-timer--done .timeCount{color:#777}.c-timer__btn{border-radius:50%;color:#fff;font-size:14px;height:64px;outline:0;text-align:center;width:64px}.c-timer__btn:hover{background:#000;color:#fff;transition-duration:.5s}.c-timer__btn:disabled{background:#fff!important;border:1px solid #aaa;color:#aaa!important;cursor:not-allowed}.c-timer__btn--start{background-color:#17a69d}.c-timer__btn--pause{background-color:#fb647f}.c-timer__btn--reset{background-color:#4387d0;margin-left:12px}.toolbox--general .c-timer__btn{font-size:18px;height:100px;line-height:100px;width:100px}@media only screen and (min-width:64.063em){.c-timer--single .c-timer__btn{font-size:18px;height:100px;line-height:100px;width:100px}}@media only screen and (max-width:37.438em){.c-timer--single .c-timer__btn,.c-timer__btn{font-size:12px;height:44px;line-height:44px;width:44px}}.inputAdd{background-color:#a9a9a9;padding:5px}.tad-sortable-container{position:relative}.tad-sortable-anchor,.tad-sortable-item{cursor:move}.tad-sortable-anchor-only>.tad-sortable-item,.tad-sortable-fixed{cursor:auto}.tad-sortable-place-holder{visibility:hidden!important;z-index:0}.tad-sortable-item-drag{position:absolute;z-index:9999}.is-dragging .progressBar{box-shadow:0 0 4px #999;z-index:9999}.c-fullScreenButton{color:#556bb5;position:absolute;right:0;top:-16px}.c-fullScreenButton i{font-size:1.5em;line-height:.9em;vertical-align:bottom}.c-countdown.is-dragging{background:#fff;box-shadow:0 0 3px #666;z-index:500}.c-timer .c-countdown .c-timer__btn--pause,.c-timer .c-countdown .c-timer__btn--reset,.c-timer .c-countdown .c-timer__btn--start,.c-timer .c-countdown .toolbox{display:none}.toolbox{display:inline-block;font-size:16px;z-index:200}.toolbox--manual{display:none;vertical-align:middle}.c-timer--single .toolbox--manual,.toolbox--general{display:inline-block}.c-timer--single .toolbox--general{display:none}.c-timer--manualMode .toolbox--general{visibility:hidden}.c-timer--manualMode .toolbox--manual{display:inline-block;visibility:visible}.tool__main{position:relative}.c-timer--fullScreen{background-color:#fff;height:100%;left:0;overflow:auto;padding:0 24px;position:fixed;top:0;width:100%;z-index:1040}.c-timer--fullScreen .c-fullScreenButton{padding:0 24px;top:0;z-index:1041}.c-timer--fullScreen .timerContainer{margin-top:24px}.c-timer--fullScreen #ad300{display:none}.picker_time__input{
+    max-width:80px;
+    }
+    .tool__wrap{
+    border-top:0;
+    }
+    </style><link rel=stylesheet type="text/css" href="/common/tpl_banner_12.css.br"></head><body class="tpl-banner  timepage"><div id=header__wrapper class=header__wrapper>
+    <div id=header__inner class=header__inner>
+    <div id=header class=banner>
+    <div class=fixed>
+    <div id=logo>
+    <a href="/" rel=home title="Home page timeanddate.com"><div class="tad-logo" role="img" aria-label="timeanddate.com"></div></a>
+    </div>
+    </div>
+    </div>
+    <div id=ad-wrap><div id=ad-wrap2 class=fixed><div id=ad7><div id='div-gpt-com-728x90' style='min-width:728px;min-height:90px;'><script>
+    AdMgr.dispSlot(0);
+    </script>
+    </div></div></div></div>
+    <nav id=nav class=site-nav-bar>
+    <div class="site-nav-bar__inner fixed">
+    <button class="site-nav-bar__button site-nav-bar__button--menu" id=site-nav-menu title="Menu" aria-label="Menu">
+    <i class="i-font i-menu"></i>
+    </button>
+    <div class=site-nav-bar__logo>
+    <a href="/" rel=home title="Home page timeanddate.com"><img src="//c.tadst.com/gfx/n/logo/logo-2021--horizontal-inverted-darkbg.svg" loading=lazy alt="timeanddate.com" width=140 height=19/></a>
+    </div>
+    <button class=site-nav-bar__button onclick="modpop('/custom/shareframe.php', null, 'Share...')" title="Share" aria-label="Share">
+    <i class="i-font i-share"></i>
+    </button>
+    <form action="/search/results.html" class=site-nav-bar__search-form>
+    <input class=site-nav-bar__search placeholder="Search..." id=site-nav-search name=query title="Search" aria-label="Search"/>
+    <button class="site-nav-bar__button site-nav-bar__button--search" id=site-nav-search-btn aria-label="Search">
+    <div class=site-nav-bar__search-inner>
+    <i class="i-font i-search"></i>
+    </div>
+    </button>
+    </form>
+    <div class=site-nav-bar__menu-wrap>
+    <div class=site-nav__header>
+    <div class=site-nav__welcome>henry kemp</div>
+    <button class=site-nav__close id=site-nav-close>
+    <i class="i-font i-close"></i>
+    </button>
+    </div>
+    <ul id=site-nav class=site-nav>
+    <li class="site-nav__menu "><a href="/" class=site-nav__title>Home</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/">Home Page</a><li class=site-nav__item><a class=site-nav__link href="/newsletter/">Newsletter</a><li class=site-nav__item><a class=site-nav__link href="/information/">About Us</a><li class=site-nav__item><a class=site-nav__link href="/information/feedback.html">Contact Us</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/company/jobs/">Careers/Jobs</a><li class=site-nav__item><a class=site-nav__link href="/sitemap.html">Site Map</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/topics/">Our Articles</a><li class=site-nav__item><a class=site-nav__link href="/custom/">Account/Settings</a></ul></li><li class="site-nav__menu "><a href="/worldclock/" class=site-nav__title>World Clock</a><ul class=site-nav__sub-menu><li class=site-nav__item><a class=site-nav__link href="/worldclock/">Main World Clock</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/full.html">Extended World Clock</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/worldclock/personal.html">Personal World Clock</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/search.html">World Time Lookup </a><li class=site-nav__item><a class=site-nav__link href="/worldclock/timezone/utc">UTC Time</a></ul></li><li class="site-nav__menu "><a href="/time/" class=site-nav__title>Time Zones</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/time">Time Zones Home</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/converter.html">Time Zone Converter</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/meeting.html">International Meeting Planner</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/worldclock/fixedform.html">Event Time Announcer</a><li class=site-nav__item><a class=site-nav__link href="/time/map/">Time Zone Map</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/time/zones/">Time Zone Abbreviations</a><li class=site-nav__item><a class=site-nav__link href="/time/dst/">Daylight Saving Time</a><li class=site-nav__item><a class=site-nav__link href="/time/change/">Time Changes Worldwide</a><li class=site-nav__item><a class=site-nav__link href="/time/difference/">Time Difference</a><li class=site-nav__item><a class=site-nav__link href="/news/time/">Time Zone News</a></ul></li><li class="site-nav__menu "><a href="/calendar/" class=site-nav__title>Calendar</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/calendar/info.html">Calendars Home</a><li class=site-nav__item><a class=site-nav__link href="/calendar/">Calendar 2022</a><li class=site-nav__item><a class=site-nav__link href="/calendar/?year=2023">Calendar 2023</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/calendar/monthly.html">Monthly Calendar</a><li class=site-nav__item><a class=site-nav__link href="/calendar/create.html">Printable Calendar (PDF)</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/calendar/events/">Add Your Own Calendar Events</a><li class=site-nav__item><a class=site-nav__link href="/calendar/basic.html">Calendar Creator</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/calendar/custommenu.html">Advanced Calendar Creator</a><li class=site-nav__item><a class=site-nav__link href="/holidays/">Holidays Worldwide</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/on-this-day/">On This Day in History</a><li class=site-nav__item><a class=site-nav__link href="/calendar/months/">Months of the Year</a><li class=site-nav__item><a class=site-nav__link href="/calendar/days/">Days of the Week</a><li class=site-nav__item><a class=site-nav__link href="/date/leapyear.html">About Leap Years</a></ul></li><li class="site-nav__menu "><a href="/weather/" class=site-nav__title>Weather</a><ul class=site-nav__sub-menu><li class=site-nav__item><a class=site-nav__link href="/weather/">Worldwide</a><li class=site-nav__item><a class=site-nav__link href="/scripts/go.php">Local Weather</a><li class=site-nav__item><a class=site-nav__link href="/scripts/goweather.php?type=ext">2-Week Forecast</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/scripts/go.php?type=hourly">Hour-by-Hour</a><li class=site-nav__item><a class=site-nav__link href="/scripts/go.php?type=historic">Past Week</a><li class=site-nav__item><a class=site-nav__link href="/scripts/go.php?type=climate">Climate</a></ul></li><li class="site-nav__menu "><a href="/astronomy/" class=site-nav__title>Sun &amp; Moon</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/astronomy">Sun &amp; Moon Home</a><li class=site-nav__item><a class=site-nav__link href="/sun/">Sun Calculator</a><li class=site-nav__item><a class=site-nav__link href="/moon/">Moon Calculator</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/moon/phases/">Moon Phases</a><li class=site-nav__item><a class=site-nav__link href="/astronomy/night/">Night Sky</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/astronomy/meteor-shower/">Meteor Showers</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/sunearth.html">Day and Night Map</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/astronomy/moon/light.html">Moon Light World Map</a><li class=site-nav__item><a class=site-nav__link href="/eclipse/">Eclipses</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/live/">Live Streams</a><li class=site-nav__item><a class=site-nav__link href="/calendar/seasons.html">Seasons</a></ul></li><li class="site-nav__menu   active"><a href="/counters/" class=site-nav__title>Timers</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--mob"><a class=site-nav__link href="/counters">Timers Home</a><li class=site-nav__item><a class=site-nav__link href="/stopwatch/">Stopwatch</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/timer/">Timer</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/countdown/create">Countdown to Any Date</a><li class=site-nav__item><a class=site-nav__link href="/countdown/newyear">New Year Countdown</a></ul></li><li class="site-nav__menu "><a href="/date/" class=site-nav__title>Calculators</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/date/">Calculators Home</a><li class=site-nav__item><a class=site-nav__link href="/date/duration.html">Date to Date Calculator (duration)</a><li class=site-nav__item><a class=site-nav__link href="/date/workdays.html">Business Date to Date (exclude holidays)</a><li class=site-nav__item><a class=site-nav__link href="/date/dateadd.html">Date Calculator (add / subtract)</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/date/weekdayadd.html">Business Date (exclude holidays)</a><li class=site-nav__item><a class=site-nav__link href="/date/weekday.html">Weekday Calculator</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/date/weeknumber.html">Week Number Calculator</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/distance.html">Distance Calculator</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/distances.html">Distance Signpost</a></ul></li><li class="site-nav__menu "><a href="/extra/" class=site-nav__title>Apps &amp; API</a><ul class=site-nav__sub-menu><li class=site-nav__item><a class=site-nav__link href="/ios/">iOS Apps</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/android/">Android Apps</a><li class=site-nav__item><a class=site-nav__link href="/clocks/free.html">Free Clock</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/clocks/freecountdown.html">Free Countdown</a><li class=site-nav__item><a class=site-nav__link href="/services/api/">API for Developers</a></ul></li><li class="site-nav__menu "><a href="/fun/" class=site-nav__title>Free Fun</a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/fun">Free &amp; Fun Home</a><li class=site-nav__item><a class=site-nav__link href="/clocks/free.html">Free Clock for Your Site</a><li class=site-nav__item><a class=site-nav__link href="/clocks/freecountdown.html">Free Countdown for Your Site</a><li class=site-nav__item><a class=site-nav__link href="/wordclock/">Word Clock</a><li class=site-nav__item><a class=site-nav__link href="/holidays/fun/">Fun Holidays</a><li class=site-nav__item><a class=site-nav__link href="/date/birthday.html">Alternative Age Calculator</a><li class=site-nav__item><a class=site-nav__link href="/date/pattern.html">Date Pattern Calculator</a><li class=site-nav__item><a class=site-nav__link href="/topics/fun">Fun Fact Articles</a></ul></li><li class="site-nav__menu site-nav__menu--my-account"><a href="/custom/" class=site-nav__title><span class='site-nav__mob-title'>My Account</span><i class='i-font i-account_circle site-nav__desktop-title'></i></a><ul class=site-nav__sub-menu><li class="site-nav__item site-nav__item--divider site-nav__item--mob"><a class=site-nav__link href="/custom">My Account</a><li class=site-nav__item><a id=popchi class=site-nav__link href="/custom/location.html">My Location</a><li class=site-nav__item><a class=site-nav__link href="/custom/site.html">My Units</a><li class=site-nav__item><a class=site-nav__link href="/custom/modify.html">My Account</a><li class=site-nav__item><a class=site-nav__link href="/custom/subscriptions.html">My Subscriptions</a><li class=site-nav__item><a class=site-nav__link href="/calendar/events/">My Events</a><li class=site-nav__item><a class=site-nav__link href="/worldclock/personal.html">My World Clock</a><li class="site-nav__item site-nav__item--divider"><a class=site-nav__link href="/custom/privacy.html">My Privacy</a><li class=site-nav__item><a class=site-nav__link href="/services/">Paid Services</a><li class=site-nav__item><a id=popout class=site-nav__link href="/custom/logout.html">Sign out</a></ul></li>
+    </ul> 
+    </div>
+    <div class=site-nav-bar__blur id=site-nav-blur></div>
+    </div>
+    </nav>
+    </div>
+    </div><div id=po1 class=po></div><div id=mpo></div><div id=anw class=alert-notice__wrap></div><div class=main-content-div><script>
+    window.TAD=window.TAD||{};TAD.abtest='b';
+    </script><header class="bn-header bn-header--timepage"><div class="row socrow"><div id=bc class="fixed"><div id=bct><a target=_top href="/" class=fx>Home</a> &nbsp; <a target=_top href="/counters/" class=fx>Timers</a> &nbsp; Online Timer</div></div></div><div class="bn-header__wrap fixed"><div class="headline-banner "><section class=headline-banner__wrap><div class=headline-banner__content><h1 class=headline-banner__title>Online Timer with Alarm</h1><p class=headline-banner__brief>Create your timers with optional alarms and start/pause/stop them simultaneously or sequentially. They are perfect for everyday activities such as cooking meals, taking quizzes, giving speeches, playing sports, or practicing music.</p></div></section></div></div><section class=bn-header__extra><div class=nav-tabs__wrap><div class=fixed><nav class=nav-tabs><a href="#" class="nav-tabs__item active">Timer</a><a href="/stopwatch/" class=nav-tabs__item>Stopwatch</a></nav></div></div></section></header><main class="tpl-banner__main layout-grid layout-grid--sky tpl-banner__main--timepage"><article class="layout-grid__main tpl-banner__content"><p class=tpl-banner__abstract></p><div style="display: none;" data-bind="visible:true"><script type="text/template" id=tpl-timer><div class="c-timer tad-sortable-item" data-bind="css: {'c-timer--running': $parent.getCountdownState($data) === 'running','c-timer--waiting': $parent.getCountdownState($data) === 'waiting','c-timer--done': $parent.getCountdownState($data) === 'done'}"><div class="timeCount"><span class="timeLeft" data-bind="click: $parent.selectCountdown, text: $parent.formatTime(getTimeLeft(), false)" >00:00:00</span><div class="toolbox toolbox--manual fadeIn"><button type="button" class="c-timer__btn c-timer__btn--start fadeIn" title="Start timer" data-bind="{
+    click: startStop.toggle, 
+    disable: completedRatio() === 0, 
+    css: (status() === 0 ? 'c-timer__btn--pause' : 'c-timer__btn--start'),
+    text:(status() === 0 ? 'Pause' : 'Start'),
+    attr: { title: status() === 0 ? 'Stop/pause timer' : 'Start timer' }
+    }">Start
+    </button><button type="button" class="c-timer__btn c-timer__btn--reset fadeIn" title="Reset and start over" disabled data-bind="{
+    click: $parent.resetSingle, 
+    enable: (status() === 1) && completedRatio() != 1}">Reset</button></div></div><div class="c-timer__title"><span class="tad-sortable-anchor" data-bind="text: label">&nbsp;</span>
+    (<span class="tad-sortable-anchor" data-bind="text: $parent.formatTime(getDuration(), false)">&nbsp;</span>)<span data-bind="if:_alarm.getSound() !== $parent.sounds[0]" class="small soft">,
+    &nbsp; <i class="i-font i-sound"> </i><span data-bind="text: _alarm.getSound().name">&nbsp;</span>
+    &nbsp;sound
+    </span><span class="c-timer__edit-wrap"><button class="c-timer__edit" data-bind="click: $parent.selectCountdown"><i class="i-font i-create"> </i> Edit</button><button class="c-timer__delete" data-bind="{if: $parent.countdowns.list().length > 1 && $parent.getCountdownState($data) !== 'running', click: $parent.countdowns.removeItem } ">Remove <i class="i-font i-close"> </i></button><button class="c-timer__drag tad-sortable-anchor" type="button"><i class="i-font tad-sortable-anchor c-city__drag i-move"> </i></button></span></div><div class="progressBar" title="Progress bar"><div class="currentProgress" data-bind="{
+    css: (status() === 0 ? 'currentProgress--pause' : 'currentProgress--start'), 
+    style: { width: completedRatio() * 100 + '%'}
+    }"><span class="timeAfter" data-bind="text: completedRatio() === 1 ? '(not started)' : completedRatio() === 0 ? '(done)' : ''">(done)</span></div></div></div></script><section class="tool__wrap pdflexi"><div class=tool__inner><div class="tool__main pdflexi"><div class=c-timers data-bind="css: {
+    'c-timer--single': countdowns.list().length === 1,
+    'c-timer--manualMode' : currentMode() == modes.MANUAL,
+    'c-timer--fullScreen' : fullScreenMode()}"><button type=button class=c-fullScreenButton data-bind="click: fullScreenToggle"><i class=i-font data-bind="{text:(fullScreenMode() ? '&#xe20d;' : '&#xe20c;')}">&#xe20c;</i><span data-bind="{text:(fullScreenMode() ? 'Exit Fullscreen' : 'Fullscreen')}"></span></button><div class=timerContainer><div class="countdownList tad-sortable-container" data-bind="template: { name: 'tpl-timer', foreach: countdowns.list }" data-tad-options="{ byAnchorOnly:true,
+    koObservableArray:true,
+    callback:vm.moveTo,
+    dragClass:'is-dragging'}" data-tad-control=tadSortable></div></div><div class=c-timer__footer><div class="six columns"><a class=c-timer__add href="#" data-bind="click: addCountdown"><i class="i-font i-add"></i> Add another timer</a></div><div class="six columns"><div class=totalTimeLeft>Total: <span data-bind="text: formatTime(totalTime(), false)"></span></div></div></div><!--ko if:countdowns.list().length > 1 --><div class="c-timer__config "><label for=configStart class=inline data-bind="css: {'disabled' : isMainRunning}">Timer order: </label><select id=configStart name=configStart
+    class="c-timer__btn--select" 
+    data-bind="value: currentMode, disable: isMainRunning"><option value=0>Start all together</option><option value=1>End all together</option><option value=2>Start in sequence</option><option value=3>Manually</option></select></div><!--/ko --><div class="toolbox toolbox--general" ><button type=button class="c-timer__btn c-timer__btn--start fadeIn" title="Start timer" data-bind="{
+    click: startStopToggle, 
+    css: (isMainRunning() ? 'c-timer__btn--pause' : 'c-timer__btn--start'), 
+    text:(isMainRunning() ? 'Pause' : 'Start'),
+    disable: totalCompletedRatio() >= 1 || currentMode() == modes.MANUAL,
+    attr: { title: isMainRunning() ? 'Stop/pause timer' : 'Start timer', }"></button><button type=button class="c-timer__btn c-timer__btn--reset fadeIn" title="Reset and start over" data-bind="{
+    click: reset, 
+    disable: isMainRunning() || totalCompletedRatio() === 0
+    }">Reset</button></div></div></div>
+    
+    </div></section>
+    
+    <section class="promo_tools pdflexi" ><h2 class=rel-posts__title>You Might Also Like</h2><div class=layout-cards><article class="card "><a href="/stopwatch/" class=card__link aria-label="Online Stopwatch"><div class=card__img-wrap><img src="//c.tadst.com/gfx/300x168/fb-stopwatch2.png?1" width=300 height=168 alt="Illustration image" class=card__img srcset="//c.tadst.com/gfx/450x252/fb-stopwatch2.png?1 1.5x,//c.tadst.com/gfx/600x337/fb-stopwatch2.png?1 2x"></div><section class=card__content><h4 class=card__title>
+    Online Stopwatch
+    </h4><p class=card__text>
+    Online Stopwatch, with start alerts, lap times and sounds. Save details of your timings in a text file.
+    </p></section></a></article><article class="card "><a href="/countdown/create" class=card__link aria-label="Live Countdown Timer With Animations"><div class=card__img-wrap><img src="//c.tadst.com/gfx/300x168/cardimage-countdowntoanything03.png?1" width=300 height=168 alt="Illustration image" class=card__img srcset="//c.tadst.com/gfx/450x252/cardimage-countdowntoanything03.png?1 1.5x,//c.tadst.com/gfx/600x337/cardimage-countdowntoanything03.png?1 2x"></div><section class=card__content><h4 class=card__title>
+    Live Countdown Timer With Animations
+    </h4><p class=card__text>
+    Create a Countdown Timer that counts down in seconds, minutes, hours and days to any date, with time zone support. It also counts up from a past date.
+    </p></section></a></article><article class="card "><a href="/ios/countdown/" class=card__link aria-label="Countdown App for iOS"><div class=card__img-wrap><img src="//c.tadst.com/gfx/300x168/cardcountdown--ios.png?1" width=300 height=168 alt="Illustration image" class=card__img srcset="//c.tadst.com/gfx/450x252/cardcountdown--ios.png?1 1.5x,//c.tadst.com/gfx/600x337/cardcountdown--ios.png?1 2x"></div><section class=card__content><h4 class=card__title>
+    Countdown App for iOS
+    </h4><p class=card__text>
+    Count down to the New Year, birthdays, weddings, or your retirement
+    </p></section></a></article><article class="card "><a href="/worldclock/converter.html" class=card__link aria-label="Time Zone Converter – Time Difference Calculator"><div class=card__img-wrap><img src="/scripts/genericog.php?h1=Time+Zone&amp;h2=Converter&amp;h=168&amp;image=tz-converter&amp;w=300"></div><section class=card__content><h4 class=card__title>
+    Time Zone Converter – Time Difference Calculator
+    </h4><p class=card__text>
+    Find the exact time difference with the Time Zone Converter &ndash; Time Difference Calculator which converts the time difference between places and time zones all over the world. 
+    </p></section></a></article></div><p class="large-link mgt15"><a href="/counters/">All Counters &amp; Timers available on timeanddate.com</a></p></section>
+    
+    <!--ko if: selected() && selected().isEditing --><aside class=c-editModal ><div class=modal><div class=modal-dialog><div class=modal-content><div class=modal-header><button class=close data-bind="click: selected().toggleEditing()">×</button><h2 class=modal-title>Edit Timer</h2></div><div class=modal-body><div class="form-row large" id=fm-timeset><div class="two fl"><input id=hourInput class=fw type=number data-bind="textInput: selected()._alarm.hours" placeholder=00><label for=hourInput>Hrs</label></div><span class="fld-aid fl">&nbsp;:&nbsp;</span><div class="two fl"><input id=minuteInput class=fw type=number data-bind="textInput: selected()._alarm.minutes" placeholder=00><label for=minuteInput>Mins</label></div><span class="fld-aid fl">&nbsp;:&nbsp;</span><div class="two fl"><input id=secondInput class=fw type=number data-bind="textInput: selected()._alarm.seconds" placeholder=00><label for=secondInput>Secs</label></div></div><hr class=dotted><div class="form-row "><label for=labelInput>Timer Name:</label><input id=labelInput type=text data-bind="textInput: selected().label" placeholder=Timer></div><div class=form-row><label for=alarmInput>Timer End Alarm:</label><select id=alarmInput 
+    data-bind="options: sounds, 
+    selectedOptions: selected()._alarm.sound, 
+    optionsText: 'name', 
+    value: selected()._alarm.sound"></select><!--ko if:selected()._alarm.getSound() !== sounds[0] --><span><a href="#" class=sound-test data-bind="click: function(data, event){testSound(selected()._alarm.getSound())}, clickBubble: false"><i class="i-font i-sound"> </i> Soundcheck</a></span><!--/ko --></div></div><div class=modal-footer><!--ko if: countdowns.list().length > 1 --><input type=submit class="red fl" value="Delete timer" data-bind="click: function() {countdowns.removeItem(selected()); selected(null)}"><!--/ko --><input type=submit value=Done data-bind="click: selected().toggleEditing()"></div></div></div></div></aside><!--/ko --></div></article><aside class="layout-grid__sky layout-grid__sky--sticky tpl-banner__sky"><fieldset id=ad1><legend>Advertising</legend><div id='div-gpt-com-160x600' style='min-width:160px;min-height:600px;'><script>
+    AdMgr.dispSlot(1);
+    </script>
+    </div></fieldset></aside></main><script src="/common/wcommon_12.js.br"></script><script src="/common/ext/knockout-3.2.0.js"></script><script src="/common/tadsortable_8.js.br"></script><script src="/common/timer_22.js.br"></script> </div>
+    </div>
+    
+    <footer class="footer">
+     <section class="feedback-bar">
+     <div class="fixed feedback-bar__wrap">
+     <section id="instant-feedback" class="feedback-bar__instant-feedback">
+     <span class="feedback-bar__msg">How was your experience?</span>
+     <span class="feedback-bar__thankyou">Thank you for your feedback!</span>
+     <a href="#" onclick="return blif(1)" class="feedback-bar__thumb feedback-bar__thumb--up" title="Vote Good" aria-label="Vote for having a good experience"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg></a>
+     
+     <a href="#" onclick="return blif(0)" class="feedback-bar__thumb feedback-bar__thumb--down" title="Vote Bad" aria-label="Vote for having a bad experience"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/></svg>
+     </a>
+     </section>
+     
+     <section class="feedback-bar__contact"><a id=bls1 href="/information/feedback.html" onclick="return bls(this)">Contact Us 
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a></section>
+     </div>
+     </section>
+    
+     <section class="fixed footer__wrap">
+     <section class="footer__block footer__block--promo">
+     <article class="footer-card">
+     <a href="/services/supporter.html" class="footer-card__img-link">
+     <img class="footer-card__img" width="100" height="100" src="//c.tadst.com/gfx/n/i/service__supporter.svg" loading="lazy" alt="Illustration of a pink shield with a white heart." />
+     </a>
+     <section class="footer-card__content">
+     <h4 class="footer-card__title">
+     <a href="/services/supporter.html">
+      Love Our Site? Become a Supporter
+      </a>
+     </h4>
+     <ul class="footer-card__text">
+     <li>Browse our site <strong>advert free.</strong></li>
+     <li>Sun &amp; Moon times <strong>precise to the second.</strong></li>
+     <li><strong>Exclusive calendar templates</strong> for PDF Calendar.</li>
+     </ul>
+     </section>
+     </article>
+     <section class="footer__logo">
+     <a href="/" rel="home"><img src="//c.tadst.com/gfx/n/logo/logo-2021--horizontal-color-whitebg.svg" alt="The timeanddate logo" width="176" height="24"></a>
+     <p><a href="/information/copyright.html">© Time and Date AS 1995–2022</a></p>
+     </section>
+     </section>
+     <section class="footer__block footer__block--links-wrap">
+     <section class="footer__links">
+     <nav class="footer__links-block footer__links-block--company">
+     <h4>Company</h4>
+     <ul>
+     <li><a href="/company/">About us</a></li>
+     <li><a href="/company/jobs">Careers/Jobs</a></li>
+     <li><a href="/information/feedback.html" id=bls2 onclick="return bls(this)">Contact Us</a></li>
+      <li><a href="/information/contact.html">Contact Details</a></li>
+       <li><a href="/sitemap.html">Sitemap</a></li>
+      <li><a href="/newsletter/">Newsletter</a></li>
+     </ul>
+     </nav>
+     <nav class="footer__links-block footer__links-block--legal">
+     <h4>Legal</h4>
+     <ul>
+     <li><a href="/information/copyright.html">Link policy</a></li>
+     <li><a href="/information/advertising.html">Advertising</a></li>
+     <li><a href="/information/disclaimer.html">Disclaimer</a></li>
+     <li><a href="/information/terms-conditions.html">Terms &amp; Conditions</a></li>
+     <li><a href="/information/privacy.html">Privacy Policy</a></li>
+    
+    
+     <li><a href="/custom/privacy.html">My Privacy</a></li>
+     
+      
+     
+     
+     </ul>
+     </nav>
+     <nav class="footer__links-block footer__links-block--services">
+     <h4>Services</h4>
+     <ul>
+     <li><a href="/worldclock/">World Clock</a></li>
+     <li><a href="/time/">Time Zones</a></li>
+     <li><a href="/calendar/">Calendar</a></li>
+     <li><a href="/weather/">Weather</a></li>
+     <li><a href="/astronomy/">Sun &amp; Moon</a></li>
+     <li><a href="/counters/">Timers</a></li>
+     <li><a href="/date/">Calculators</a></li>
+     <li><a href="/services/api/">API</a></li>
+     </ul>
+     </nav>
+     <nav class="footer__links-block footer__links-block--sites">
+     <h4>Sites</h4>
+     <ul>
+       <li><a href="https://www.timeanddate.no">timeanddate.no</a></li>
+       <li><a href="https://www.timeanddate.de">timeanddate.de</a></li>
+      </ul>
+     </nav>
+     <section class="footer__social">
+     <h4>Follow Us</h4>
+     <div class="footer__social-icons">
+     <a href="https://www.facebook.com/timeanddate/"><i class="footer__social-icon footer__social-icon--facebook" title="timeanddate.com on Facebook"></i></a>
+     <a href="https://twitter.com/timeanddate"><i class="footer__social-icon footer__social-icon--twitter" title="timeanddate.com on Twitter"></i></a>
+     <a href="https://www.linkedin.com/company/time-and-date-as/about/"><i class="footer__social-icon footer__social-icon--linkedin" title="timeanddate.com on Linkedin"></i></a>
+     <a href="https://www.instagram.com/timeanddatecom/"><i class="footer__social-icon footer__social-icon--instagram" title="timeanddate.com on Instagram"></i></a>
+     <a href="https://www.youtube.com/c/timeanddate"><i class="footer__social-icon footer__social-icon--youtube" title="timeanddate.com on YouTube"></i></a>
+     </div>
+     </section>
+     </section>
+     
+     <p class="footer__copyright">
+     © Time and Date AS 1995–2022. 
+     <a href="/information/copyright.html">Privacy &amp; Terms</a>
+     </p>
+     </section>
+     </section>
+    </footer>
+    <!-- FOOTER END -->
+    
+    <script>
+     
+    bli();main();
+    if(!window.TAD){TAD={};};TAD.ft_logout='3776333'; 
+    </script>
+     
+    <div id=FBD style="display:none" class=wfc></div>
+    
+    <script>
+    openprivacy=function(params) {
+     if (document.privacyframe_form) {return;}
+     if (window.googlefc && googlefc.showRevocationMessage) {googlefc.showRevocationMessage();return;}
+     if (window.__tcfapi) {__tcfapi('displayConsentUi',2, function() {});return;}
+    }
+    
+    </script>
+    
+    
+    </body></html>
