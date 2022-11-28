@@ -24,8 +24,10 @@ import AuthMenu from './auth/AuthMenu';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
 
-/* Production Index.
-   attaches to targets. has no App!
+/* **************************************************************
+    PRODUCTION INDEX index.js from indexProd.js
+   
+    attaches to targets. has no App!
    one timer library (with storage) to id='timer-app'
    as many single timers as you like to class='single-timer-app'
    required:
@@ -33,7 +35,7 @@ SuperTokens.init(SuperTokensConfig);
    Note: required as heartbeat that drives timing goes here too.
    
 
-*/
+ ************************************************************** */
 if (document.getElementById('timer-notifications')) {
   ReactDOM.render(
     <React.StrictMode>
@@ -45,19 +47,19 @@ if (document.getElementById('timer-notifications')) {
   console.log('prod mount: No id: timer-notifications');
 }
 
-const listTargets = document.getElementsByClassName('timer-app');
-for (var listTarget of listTargets) {
+const timerAppEls = document.getElementsByClassName('timer-app');
+for (var timerApp of timerAppEls) {
   let timer = null;
-  if (listTarget.attributes.timer) {
+  if (timerApp.attributes.timer) {
     //todo: error catching/valid object?
-    timer = listTarget.attributes.timer.value;
+    timer = timerApp.attributes.timer.value;
     // console.log('timer attrib found');
   }
   ReactDOM.render(
     <React.StrictMode>
       <TimerGroup timer={timer} />
     </React.StrictMode>,
-    listTarget
+    timerApp
   );
 }
 
