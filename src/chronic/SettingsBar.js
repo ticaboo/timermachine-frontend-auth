@@ -96,8 +96,8 @@ const SettingsBar = ({ timer, timers, activeTab, setActiveTab }) => {
     );
   };
 
-  const dropdownClass = ' absolute top-[-0px] mt-2  w-[200px]';
-  const overlaidClass = ' mt-2 ';
+  const dropdownClass = ' absolute top-[-0px] mt-2  w-[200px]  border-solid ';
+  const overlaidClass = ' mt-2 border-none';
   // let classAddition = overlaidClass;
 
   // useEffect(() => {
@@ -109,7 +109,7 @@ const SettingsBar = ({ timer, timers, activeTab, setActiveTab }) => {
     <div
       className={` ${
         activeTab === null ? overlaidClass : dropdownClass
-      } -left-[1px] right-[1px]   rounded-b-3xl border-amber-600 border-solid settingsCard settingsCard `}>
+      } -left-[1px] right-[1px]  rounded-b-3xl settingsCard furniture-border `}>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab}>
         <div
           className=""
