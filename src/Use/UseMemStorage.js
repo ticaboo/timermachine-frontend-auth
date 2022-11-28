@@ -18,16 +18,16 @@ local storage for arrays of objects.
 ok, still tied to timers - with default data, fuzzy naming.
 */
 
-function useTimerStorage(options) {
+function useMemStorage(options) {
   const [data, setData] = useState([]); //list of all data -syncd to local storage.
   let storeMem = useRef();
   let key = useRef();
   useEffect(() => {
     let storageData;
-    if (!options) console.error('useStorage requires @param options');
+    if (!options) console.error('useMemStorage. requires @param options');
     if (!options.key && !options.storeMem)
       console.error(
-        'useStorage requires either @param options.key or options.storeMem. got :',
+        'useMemStorage. requires either @param options.key or options.storeMem. got :',
         options
       );
     if (options.storeMem === true) {
@@ -74,7 +74,7 @@ function useTimerStorage(options) {
   */
   function craddData(newData) {
     if (newData.id === '') newData.id = uuid.v4();
-    //console.log('UseTimerStorage cradd');
+    //console.log('UseMemStorage cradd');
     if (data.filter((data) => data.id === newData.id).length !== 0) {
       setData(
         data.map((data) => {
@@ -131,7 +131,7 @@ function useTimerStorage(options) {
   };
 }
 
-export default useTimerStorage;
+export default useMemStorage;
 
 // function getNewNumberedName(newData) {
 //   const existingNames = data.map((data) => {

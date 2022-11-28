@@ -49,7 +49,8 @@ class Tabs extends Component {
             );
           })}
         </div>
-        <div xclassName="settingsCard absolute z-1 top-[305px] furniture-border border-t-0 w-[200px]">
+        <div>
+          {/* xclassName="settingsCard absolute z-1 top-[305px] furniture-border border-t-0 w-[200px]" */}
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;

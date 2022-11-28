@@ -43,7 +43,7 @@ SuperTokens.init(SuperTokensConfig);
       stress-demo
 
   Multiple possible per page (CLASS)
-      tolib-button
+      tolib-button : requires timer-notifications
       single-timer-app
       auth-Menu
 
@@ -97,12 +97,17 @@ if (toLibButtons.length > 0) {
       if (toLibButton.attributes.notificationmessage)
         notificationmessage = toLibButton.attributes.notificationmessage.value;
     }
-    const root = ReactDOMClient.createRoot(timerAppEl);
-    root.render(
-      <React.StrictMode>
-        <ToLibButton timer={timer} notificationmessage={notificationmessage} />
-      </React.StrictMode>
-    );
+    if (timer) {
+      const root = ReactDOMClient.createRoot(timerAppEl);
+      root.render(
+        <React.StrictMode>
+          <ToLibButton
+            timer={timer}
+            notificationmessage={notificationmessage}
+          />
+        </React.StrictMode>
+      );
+    }
   }
 }
 

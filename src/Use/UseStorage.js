@@ -23,7 +23,7 @@ function useStorage(options) {
     if (!options) console.error('useStorage requires @param options');
     if (!options.key && !options.useMem)
       console.error(
-        'useStorage requires either @param options.key or options.useMem. got :',
+        'useStorage. requires either @param options.key or options.useMem. got :',
         options
       );
 

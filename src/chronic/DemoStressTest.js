@@ -5,7 +5,7 @@ import { stressDemoTimer } from '../data/timers';
 
 import Chrono from './Chrono';
 import { dateTohms } from '../Utils';
-import useStorage from '../Use/UseMemStorage';
+import useMemStorage from '../Use/UseMemStorage';
 /*
  Demonstrate creating lots (and i mean lots of timers)
 */
@@ -18,7 +18,7 @@ function DemoStressTest() {
     addNewTimer,
     removeTimer,
     batchAdd
-  } = useStorage({ useMem: true, defaultData: stressDemoTimer }); //({ key: 'timersv1stresstesttemp', defaulttimers: timerInject }); //({ useMem: true });
+  } = useMemStorage({ storeMem: true, defaultData: stressDemoTimer }); //({ key: 'timersv1stresstesttemp', defaulttimers: timerInject }); //({ useMem: true });
 
   const changeGenerateCount = (event) => {
     console.log(event);
