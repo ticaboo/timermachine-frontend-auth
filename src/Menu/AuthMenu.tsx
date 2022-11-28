@@ -1,12 +1,4 @@
-//done in parent (init, wrap):
-//import SuperTokens, { SuperTokensWrapper } from 'supertokens-auth-react';
-//SuperTokens.init(SuperTokensConfig);
-//import { SuperTokensConfig } from './config';
-//import { BrowserRouter, Routes, Route } from 'react-router-dom';
-//import { SessionAuth } from 'supertokens-auth-react/recipe/session';
-
 import Session from 'supertokens-auth-react/recipe/session';
-import { useNavigate } from 'react-router-dom';
 import { signOut } from 'supertokens-auth-react/recipe/session';
 
 const AuthMenu = () => {
