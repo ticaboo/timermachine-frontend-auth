@@ -19,14 +19,19 @@ export default () => {
       var delta = Date.now() - expected;
       // console.log('.', delta);
       // log.push(delta);
-      // if (delta > interval) {
-      //   // something really bad happened. Maybe the browser (tab) was inactive? possibly special handling to avoid futile "catch up" run
-      // let consumers handle it. they can inspect delta and decide.
-      // eg might want different actions for timer/schedule etc.
-      // }
+      if (delta > interval) {
+        //   // something really bad happened. Maybe the browser (tab) was inactive? possibly special handling to avoid futile "catch up" run
+        // let consumers handle it. they can inspect delta and decide.
+        // eg might want different actions for timer/schedule etc.
+        console.log('heartbeat delta > interval. delta: ', delta);
+      }
 
       expected += interval;
-      postMessage({ now: expected, at: new Date() }); //no known use for expected being sent, just ensures it is different every time.
+      postMessage({
+        expectedTime: expected,
+        actualTime: Date.now(),
+        at: new Date()
+      }); //no known use for expected being sent, just ensures it is different every time.
       //postMessage(s--);
       //tobifrost: if (s >= 0) {
       setTimeout(step, Math.max(0, interval - delta)); // take into account drift

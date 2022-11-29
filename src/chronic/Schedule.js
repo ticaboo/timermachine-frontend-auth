@@ -22,7 +22,7 @@ const Schedule = ({ timer, handleSchedule }) => {
 
   var HeartBeatSubscriber = function (msg, data) {
     //console.log(msg, data);
-    const now = data.data.now;
+    const now = data.data.expectedTime;
     //stub hard coding initially. configurable later. multiple notifications. or just keep 5 min one for a long time.
     //it should just call tts. eg: 'meditation in five minutes'
     //if timer is running schedule wont be active (not loaded in chronos)

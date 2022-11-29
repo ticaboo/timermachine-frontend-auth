@@ -54,7 +54,7 @@ const Timer = ({
   handleNextChainAction,
   setDuration
 }) => {
-  const [heartBeatDeltaMS] = useState(new Date().getMilliseconds() + 1);
+  const [heartBeatDeltaMS] = useState(0); // (new Date().getMilliseconds() + 1);
 
   const [remaining, setRemaining] = useState(
     timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s)
@@ -90,6 +90,9 @@ const Timer = ({
 
   var HeartBeatSubscriber = function (msg, data) {
     if (!pause) {
+      if (data.data.actualTime - data.data.expectedTime > 1000) {
+        console.error('jump more than a second, adjust remaining perhaps?');
+      }
       setTimeout(() => {
         cycle();
         // setRemaining(() => remaining - 1);
