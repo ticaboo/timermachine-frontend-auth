@@ -1,4 +1,5 @@
 import React from 'react';
+import cronval from 'cron-validate';
 import Tabs from './subcomponents/Tabs';
 import OnSchedleForm from './TimerForm/OnSchedleForm';
 import OnStartForm from './TimerForm/OnStartForm';
@@ -29,7 +30,18 @@ const SettingsBar = ({ timer, timers, activeTab, setActiveTab }) => {
     const hasDAdjust =
       timer.schedule.hasDurationAdjustment &&
       timer.schedule.durationAdjustment.length !== 0;
-    return !!(hasDAdjust || (timer.schedule.h && timer.schedule.m));
+    console.log('hasDadj', hasDAdjust);
+    console.log(
+      'cronpat:',
+      timer.schedule,
+      'valid'
+      // cronval(timer.schedule.cronPattern).isValid()
+    );
+    return !!(
+      hasDAdjust ||
+      (timer.schedule.hasCronPattern &&
+        cronval(timer.schedule.cronPattern).isValid())
+    );
   };
 
   const hasOnStartSettings = () => {

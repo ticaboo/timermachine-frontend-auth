@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import cronstrue from 'cronstrue';
 import cronval from 'cron-validate';
 import CheckBox from './CheckBox';
-
+import CopyToClipboardButton from './buttons/CopyToClipboardButton';
 /*
 
 */
@@ -68,10 +68,21 @@ const CronText = ({ name }) => {
 
   return (
     <div className="ml-2 mt-2">
-      <div className=" pr-2 h-8 w-[175px] h-[80px] rounded-md baseCell text-xs">
-        <CheckBox check={'schedule.hasCronPattern'} /> {cronHumanised}{' '}
-        {'   :   '}
-        {cronPattern}
+      <div className=" flex pr-2 h-8 w-[175px] h-auto rounded-md baseCell text-xs overflow-scroll ">
+        <CheckBox check={'schedule.hasCronPattern'} />
+        <div className="pl-1 ">{cronHumanised}</div>
+
+        <div className="mt-auto mr-auto">
+          <CopyToClipboardButton
+            textToCopy={
+              'CronTab: "' +
+              cronPattern +
+              '". copied to clipboard. (' +
+              cronHumanised +
+              ').'
+            }
+          />
+        </div>
       </div>
     </div>
   );

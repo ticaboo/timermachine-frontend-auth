@@ -7,14 +7,7 @@ import CronFieldInput from '../subcomponents/CronFieldInput';
 const OnSchedleForm = ({ name }) => {
   return (
     <div className=" ">
-      {/* <HMinput name={name} /> */}
       <CronText />
-      {/* <CheckedText
-        name={name + 'cronPattern'}
-        check={name + 'hasCronPattern'}
-        label="cron" //"Duration adjustment"
-        placeholder="* * * * * *"
-      /> */}
 
       <CronFieldInput name={name + 'h'} label="Hours" width="60" />
       <CronFieldInput name={name + 'm'} label="Minutes" width="60" />

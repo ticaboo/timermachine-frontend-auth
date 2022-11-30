@@ -15,9 +15,7 @@ const ScheduleGroup = ({ timers }) => {
           hasHM(timer.schedule) ||
           (timer.schedule.hasCronPattern && timer.schedule.cronPattern)
       );
-      console.log(timers);
-      const t1 = timers[0];
-      console.log('t1', t1.schedule.hasCronPattern && t1.schedule.cronPattern);
+      // console.log(timers);
       setSchedules(() => filtered);
       //console.log('scheduled', filtered);
     }

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  // AtScheduleIcon,
+  AtScheduleIcon,
   AtStartIcon,
   IntervalIcon,
-  AtEndIcon,
-  CronCogs
+  AtEndIcon
 } from '../../icons';
-import ScheduleDisplay from '../../ScheduleDisplay';
+//import ScheduleDisplay from '../../ScheduleDisplay';
 
 class Tab extends Component {
   static propTypes = {
@@ -47,11 +46,12 @@ class Tab extends Component {
         }
         onClick={onClick}
         title={title}>
-        {label === 'schedule' && (
+        {/* {label === 'schedule' && (
           <span className="mt-1">
             <ScheduleDisplay />
           </span>
-        )}
+        )} */}
+        {label === 'schedule' && <AtScheduleIcon />}
         {label === 'at start' && <AtStartIcon />}
         {label === 'interval' && <IntervalIcon />}
         {label === 'at finish' && <AtEndIcon />}

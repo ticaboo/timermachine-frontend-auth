@@ -135,10 +135,10 @@ const Chrono = ({
       document.title = timer.timer.name;
       console.log('focus, title set', document.title);
     }
-    console.log('focused');
+    //console.log('focused');
   };
   const handleBlur = (e) => {
-    console.log('blur');
+    //console.log('blur');
   };
 
   return (
