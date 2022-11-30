@@ -2,6 +2,9 @@ export const latestStructure = {
   id: '',
   schedule: {
     scheduleAnnounce: '',
+    month: '',
+    dayOfMonth: '',
+    dayOfWeek: '',
     h: '',
     m: '',
     s: '',

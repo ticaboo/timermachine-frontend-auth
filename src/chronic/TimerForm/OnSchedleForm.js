@@ -1,11 +1,13 @@
 import React from 'react';
 import CheckedText from '../subcomponents/CheckedText';
-import HMinput from '../subcomponents/HMInput';
+//import HMinput from '../subcomponents/HMInput';
+import CronText from '../subcomponents/CronText';
+import CronFieldInput from '../subcomponents/CronFieldInput';
 
 const OnSchedleForm = ({ name }) => {
   return (
     <div className=" ">
-      <HMinput name={name} />
+      {/* <HMinput name={name} /> */}
       <CheckedText
         name={name + 'durationAdjustment'}
         check={name + 'hasDurationAdjustment'}
@@ -18,6 +20,24 @@ const OnSchedleForm = ({ name }) => {
         label="cron" //"Duration adjustment"
         placeholder="* * * * * *"
       />
+
+      <CronFieldInput name={name + 'h'} label="Hours" width="60" />
+      <CronFieldInput name={name + 'm'} label="Minutes" width="60" />
+
+      <CronFieldInput
+        name={name + 'dayOfWeek'}
+        label="Days of week"
+        width="60"
+      />
+      <CronFieldInput name={name + 'month'} label="Months" width="60" />
+      <CronFieldInput
+        name={name + 'dayOfMonth'}
+        label="Days in Months"
+        width="60"
+      />
+
+      <CronText />
+
       <span className="ml-2 text-sm furniture">schedule-</span>
     </div>
   );

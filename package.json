@@ -9,6 +9,8 @@
     "@logtail/browser": "^0.1.12",
     "animate.css": "^4.1.1",
     "cron": "^2.1.0",
+    "cron-validate": "^1.4.5",
+    "cronstrue": "^2.20.0",
     "date.js": "^0.3.3",
     "framer-motion": "^7.2.0",
     "npm": "^9.1.2",

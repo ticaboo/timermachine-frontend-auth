@@ -97,17 +97,20 @@ const Schedule = ({ timer, handleSchedule }) => {
 
     //give cron precedence:
     if (timer.schedule.hasCronPattern && timer.schedule.cronPattern) {
-      if (handleSchedule) {
-        try {
-          const newJob = new cron.CronJob(
-            timer.schedule.cronPattern,
-            handleSchedule,
-            null,
-            true
-          );
-          job.current = newJob;
-        } catch {
-          l('info', 'invalid cron - live edit can cause');
+      if (timer.schedule.cronPattern === 'x * * * * *') {
+        /* prevent running every second */
+        if (handleSchedule) {
+          try {
+            const newJob = new cron.CronJob(
+              timer.schedule.cronPattern,
+              handleSchedule,
+              null,
+              true
+            );
+            job.current = newJob;
+          } catch {
+            l('info', 'invalid cron - live edit can cause');
+          }
         }
       }
     } else {

@@ -18,7 +18,7 @@ const TimerRow = ({ name, completedCount }) => {
   return (
     <div className="flex flex-row flex-wrap ">
       <div className="flex flex-col flex-wrap">
-        <TextInput name={name + 'name'}>
+        <TextInput name={name + 'name'} width="100">
           <BadgeTimerCount completedCount={completedCount} />
         </TextInput>
         <div className="flex flex-row flex-wrap  pt-2">
