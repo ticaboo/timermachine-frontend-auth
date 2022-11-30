@@ -1,6 +1,7 @@
 import React from 'react';
 import CheckedText from '../../chronic/subcomponents/CheckedText';
 import CheckedSelect from '../../chronic/subcomponents/CheckedSelect';
+import CheckBox from '../subcomponents/CheckBox';
 import audioData from '../../data/audio.json';
 import ChainingRow from '../TimerForm/ChainingRow';
 
@@ -37,6 +38,9 @@ const OnEndForm = ({ name, timer, timers }) => {
         type="url"
         label="link"
       />
+
+      {/* todo: on change - from false to true - check notification.in window, .permission */}
+      <CheckBox check={'timer.hasEndNotification'} label="Notification" />
 
       {timer.chaining && (
         <ChainingRow name="chaining.onend." timers={timers} timer={timer} />

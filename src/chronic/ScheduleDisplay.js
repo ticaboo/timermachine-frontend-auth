@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { AtScheduleIcon } from './icons';
+import { AtScheduleIcon, CronCogsIcon } from './icons';
 import { lpad } from '../Utils';
 
 const ScheduleDisplay = ({ timer }) => {
@@ -29,7 +29,8 @@ const ScheduleDisplay = ({ timer }) => {
             lpad(schedule.h) + ':' + lpad(schedule.m)
           ) : (
             <span className="pl-1">
-              <AtScheduleIcon xy="4" />
+              {!!schedule.hasCronPattern && <CronCogsIcon xy="5" />}
+              {!schedule.hasCronPattern && <AtScheduleIcon xy="5" />}
             </span>
           )}
         </div>

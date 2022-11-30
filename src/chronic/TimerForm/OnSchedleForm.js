@@ -12,6 +12,12 @@ const OnSchedleForm = ({ name }) => {
         label="Kaizen duration adj (+/-)" //"Duration adjustment"
         placeholder="00:00:00"
       />
+      <CheckedText
+        name={name + 'cronPattern'}
+        check={name + 'hasCronPattern'}
+        label="cron" //"Duration adjustment"
+        placeholder="* * * * * *"
+      />
       <span className="ml-2 text-sm furniture">schedule-</span>
     </div>
   );

@@ -21,6 +21,7 @@ import { useAudio } from '../Use/useAudio';
 import useVideo from '../Use/useVideo';
 import useLogTimer from '../Use/UseLogTimer';
 import { AtScheduleIcon } from './icons';
+import { notifyBrowser } from './notifiy';
 
 //import notify from './notifiy';
 /*
@@ -178,6 +179,13 @@ const Timer = ({
         /* play alert sound */
         endAudio.toggle();
         endAudio.reset();
+        if (timer.timer.hasEndNotification) {
+          notifyBrowser(
+            'Timer ' + timer.timer.name + ' done. click to stop.',
+            'TimeRmachine',
+            pauser
+          );
+        }
       }
 
       const atEndStartURL = getStartURL(timer);
@@ -251,8 +259,9 @@ const Timer = ({
   const pauser = () => {
     setPause(true);
     console.log('pauser()');
-    if (startAudio.isPlaying) startAudio.toggle();
-    if (endAudio.isPlaying) endAudio.toggle();
+    if (startAudio.isPlaying) startAudio.pause();
+    //if (endAudio.isPlaying)
+    endAudio.pause();
     if (remaining > 3) {
       const startURL = getStartURL(timer);
       if (startURL) pauseVideo();

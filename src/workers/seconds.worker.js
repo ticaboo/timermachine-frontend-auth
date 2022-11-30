@@ -23,7 +23,7 @@ export default () => {
         //   // something really bad happened. Maybe the browser (tab) was inactive? possibly special handling to avoid futile "catch up" run
         // let consumers handle it. they can inspect delta and decide.
         // eg might want different actions for timer/schedule etc.
-        console.log('heartbeat delta > interval. delta: ', delta);
+        // console.log('heartbeat delta > interval. delta: ', delta);
       }
 
       expected += interval;

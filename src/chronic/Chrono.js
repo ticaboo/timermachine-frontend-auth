@@ -93,22 +93,40 @@ const Chrono = ({
           timer.schedule.s !== '')
     });
     const hasSched =
-      timer.schedule &&
-      (timer.schedule.h !== '' ||
-        timer.schedule.m !== '' ||
-        timer.schedule.s !== '');
+      (timer.schedule &&
+        (timer.schedule.h !== '' ||
+          timer.schedule.m !== '' ||
+          timer.schedule.s !== '')) ||
+      (timer.schedule.hasCronPattern && timer.schedule.cronPattern);
     l('info', 'hasSchedule', hasSched);
     return hasSched;
   };
 
   const handleSchedule = () => {
-    // l('info','schedule triggered');
+    console.log('info', 'schedule triggered');
     setTimeWatch(timer);
     setTimeout(() => {
       setPlayerVisible(true);
     }, 100);
   };
 
+  // useEffect(() => {
+  //   let job;
+
+  //   job = new cron.CronJob('* * * * *', handleSchedule);
+  //   console.log(job);
+  //   // if (timer.schedule.cronJob) {
+  //   //   job = new cron.CronJob(timer.schedule.cronJob, handleSchedule);
+  //   //   if (!job) {
+  //   //     console.log('cron job assigned but not returned');
+  //   //   }
+  //   // }
+
+  //   return () => {
+  //     job = null;
+  //   };
+  // }, [timer]);
+  //todo: useCron (cronPattern, handleScheule)
   // UseScheduler(timer, handleSchedule);
 
   const handleFocus = (e) => {

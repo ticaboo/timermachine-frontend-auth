@@ -4,7 +4,8 @@ import {
   // AtScheduleIcon,
   AtStartIcon,
   IntervalIcon,
-  AtEndIcon
+  AtEndIcon,
+  CronCogs
 } from '../../icons';
 import ScheduleDisplay from '../../ScheduleDisplay';
 

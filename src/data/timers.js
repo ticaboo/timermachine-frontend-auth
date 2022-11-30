@@ -6,7 +6,9 @@ export const latestStructure = {
     m: '',
     s: '',
     hasDurationAdjustment: false,
-    durationAdjustment: ''
+    durationAdjustment: '',
+    hasCronPattern: false,
+    cronPattern: ''
   },
   timer: {
     name: '',
@@ -31,7 +33,8 @@ export const latestStructure = {
     hasPlayDuringUrl: false,
     playDuringUrl: '',
     hasEndPlayUrl: false,
-    endPlayUrl: ''
+    endPlayUrl: '',
+    hasEndNotification: true
   },
 
   interval: {

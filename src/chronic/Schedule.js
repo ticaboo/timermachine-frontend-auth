@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import cron from 'cron';
 import PubSub from 'pubsub-js';
 import { HEARTBEAT } from '../pub/topics';
 import { hmtoTimeToday } from '../Utils';
 import useAlerts from '../Use/useAlerts';
+import l from '../logging';
 
 /*
   Note: at present empty div rendering component.
@@ -18,6 +20,7 @@ const Schedule = ({ timer, handleSchedule }) => {
   const [alertAt, setAlertAt] = useState();
   //const [active, activeLocal.current = ] = useState(); //so only fires once per day. used? or just activeLocal (ref?)
   const activeLocal = useRef();
+  const job = useRef();
   const { sayAloud } = useAlerts(timer);
 
   var HeartBeatSubscriber = function (msg, data) {
@@ -91,16 +94,34 @@ const Schedule = ({ timer, handleSchedule }) => {
     //convenient for testing, fires in N ms from now:
     //setAlertAt(Date.now() + 10000);
     //new Date (today), set Hrs, mins, secs:0, ms: 0
-    const alertStamp = hmtoTimeToday(
-      timer.schedule.h,
-      timer.schedule.m,
-      timer.schedule.s,
-      timer.schedule.ms
-    );
-    //console.log('alertStamp from now:', alertStamp - Date.now());
-    setAlertAt(alertStamp);
-    activeLocal.current = true;
-  }, [timer]);
+
+    //give cron precedence:
+    if (timer.schedule.hasCronPattern && timer.schedule.cronPattern) {
+      if (handleSchedule) {
+        try {
+          const newJob = new cron.CronJob(
+            timer.schedule.cronPattern,
+            handleSchedule,
+            null,
+            true
+          );
+          job.current = newJob;
+        } catch {
+          l('info', 'invalid cron - live edit can cause');
+        }
+      }
+    } else {
+      const alertStamp = hmtoTimeToday(
+        timer.schedule.h,
+        timer.schedule.m,
+        timer.schedule.s,
+        timer.schedule.ms
+      );
+      //console.log('alertStamp from now:', alertStamp - Date.now());
+      setAlertAt(alertStamp);
+      activeLocal.current = true;
+    }
+  }, [timer, handleSchedule]);
 
   useEffect(() => {
     var token = PubSub.subscribe(HEARTBEAT, HeartBeatSubscriber); //cleanup on component destroy
