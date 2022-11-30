@@ -401,6 +401,7 @@ export const flattenTimer = (timerOjb, latestStructure) => {
 
 */
 export const adjustDuration = (adjustmentStr) => {
+  if (adjustmentStr === '') return 0;
   let seconds = 0;
   let sign = 1;
   if (adjustmentStr[0] === '-') {

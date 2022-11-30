@@ -24,15 +24,13 @@ const ScheduleDisplay = ({ timer }) => {
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.9 }}>
         <div className=" flex justify-start align-middle text-xs">
-          {!!schedule.h && !!schedule.m}
-          {!!schedule.h && !!schedule.m ? (
+          {/* {!!schedule.h && !!schedule.m ? (
             lpad(schedule.h) + ':' + lpad(schedule.m)
-          ) : (
-            <span className="pl-1">
-              {!!schedule.hasCronPattern && <CronCogsIcon xy="5" />}
-              {!schedule.hasCronPattern && <AtScheduleIcon xy="5" />}
-            </span>
-          )}
+          ) : ( */}
+          <span className="pl-1">
+            {!!schedule.hasCronPattern && <CronCogsIcon xy="5" />}
+            {!schedule.hasCronPattern && <AtScheduleIcon xy="5" />}
+          </span>
         </div>
       </motion.div>
     </div>

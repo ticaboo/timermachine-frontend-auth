@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import cron from 'cron';
-import PubSub from 'pubsub-js';
-import { HEARTBEAT } from '../pub/topics';
+import cronval from 'cron-validate';
+// import PubSub from 'pubsub-js';
+// import { HEARTBEAT } from '../pub/topics';
 import { hmtoTimeToday } from '../Utils';
 import useAlerts from '../Use/useAlerts';
 import l from '../logging';
@@ -23,6 +24,7 @@ const Schedule = ({ timer, handleSchedule }) => {
   const job = useRef();
   const { sayAloud } = useAlerts(timer);
 
+  //disabled - using cron
   var HeartBeatSubscriber = function (msg, data) {
     //console.log(msg, data);
     const now = data.data.expectedTime;
@@ -97,7 +99,11 @@ const Schedule = ({ timer, handleSchedule }) => {
 
     //give cron precedence:
     if (timer.schedule.hasCronPattern && timer.schedule.cronPattern) {
-      if (timer.schedule.cronPattern === 'x * * * * *') {
+      //final check cron is valid, and not every single second!
+      if (
+        cronval(timer.schedule.cronPattern).isValid() &&
+        timer.schedule.cronPattern !== 'x * * * * *'
+      ) {
         /* prevent running every second */
         if (handleSchedule) {
           try {
@@ -126,14 +132,14 @@ const Schedule = ({ timer, handleSchedule }) => {
     }
   }, [timer, handleSchedule]);
 
-  useEffect(() => {
-    var token = PubSub.subscribe(HEARTBEAT, HeartBeatSubscriber); //cleanup on component destroy
+  // useEffect(() => {
+  //   var token = PubSub.subscribe(HEARTBEAT, HeartBeatSubscriber); //cleanup on component destroy
 
-    //on unmount:
-    return () => {
-      PubSub.unsubscribe(token);
-    };
-  }); //todo: check works as component mount, dismount without , []
+  //   //on unmount:
+  //   return () => {
+  //     PubSub.unsubscribe(token);
+  //   };
+  // });
 
   return (
     <div data-t-schedule className="schedule" data-schedule>

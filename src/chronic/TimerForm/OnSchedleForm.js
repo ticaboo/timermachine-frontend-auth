@@ -8,18 +8,13 @@ const OnSchedleForm = ({ name }) => {
   return (
     <div className=" ">
       {/* <HMinput name={name} /> */}
-      <CheckedText
-        name={name + 'durationAdjustment'}
-        check={name + 'hasDurationAdjustment'}
-        label="Kaizen duration adj (+/-)" //"Duration adjustment"
-        placeholder="00:00:00"
-      />
-      <CheckedText
+      <CronText />
+      {/* <CheckedText
         name={name + 'cronPattern'}
         check={name + 'hasCronPattern'}
         label="cron" //"Duration adjustment"
         placeholder="* * * * * *"
-      />
+      /> */}
 
       <CronFieldInput name={name + 'h'} label="Hours" width="60" />
       <CronFieldInput name={name + 'm'} label="Minutes" width="60" />
@@ -35,9 +30,12 @@ const OnSchedleForm = ({ name }) => {
         label="Days in Months"
         width="60"
       />
-
-      <CronText />
-
+      <CheckedText
+        name={name + 'durationAdjustment'}
+        check={name + 'hasDurationAdjustment'}
+        label="Kaizen duration adj (+/-)" //"Duration adjustment"
+        placeholder="00:00:00"
+      />
       <span className="ml-2 text-sm furniture">schedule-</span>
     </div>
   );

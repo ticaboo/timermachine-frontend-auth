@@ -10,12 +10,22 @@ const CheckBox = ({ name, check, label }) => {
   //const watchChecked = watch(check);
 
   return (
-    <div className="ml-2 mt-2">
-      <div className=" pr-2 h-8 w-[175px] rounded-md baseCell">
-        <input type="checkbox" {...register(check)} className="ml-2" />{' '}
-        <span className="ml-1 text-sm furniture">{label}</span>{' '}
-      </div>
-    </div>
+    <>
+      {label && (
+        <div className="ml-2 mt-2">
+          <div className=" pr-2 h-8 w-[175px] rounded-md baseCell">
+            <input type="checkbox" {...register(check)} className="ml-2" />{' '}
+            <span className="ml-1 text-sm furniture">{label}</span>{' '}
+          </div>
+        </div>
+      )}
+      {!label && (
+        <span>
+          {' '}
+          <input type="checkbox" {...register(check)} className="ml-2" />
+        </span>
+      )}
+    </>
   );
 };
 
