@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 //import Schedule from './Schedule';
@@ -36,7 +36,6 @@ const Chrono = ({
   //state between Form and Player
   const [timeWatch, setTimeWatch] = useState(); // saved current timer state. set by Form-submiter, passed to Player.
   const [playerVisible, setPlayerVisible] = useState(false);
-  const job = useRef;
 
   const setDuration = (adjustmentStr) => {
     const newSeconds = adjustDuration(adjustmentStr);
