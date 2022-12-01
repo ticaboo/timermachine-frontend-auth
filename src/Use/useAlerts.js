@@ -20,7 +20,7 @@ const useAlerts = (timerData) => {
     if (h >= 17 && h < 23) greeting = 'Good evening. ';
     if (h >= 23 && h < 34) greeting = 'Good night. ';
 
-    console.log('sayAloud.');
+    //console.log('sayAloud.');
     const annouceWithVars = announce
       .replace('$t', hoursMinutes)
       .replace('$g', greeting)

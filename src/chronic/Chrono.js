@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
-import Schedule from './Schedule';
+//import Schedule from './Schedule';
+
 import {
   adjustDuration,
   timeToSeconds,
   secondsToTime,
   formatSecondsShortNoLetters
 } from '../Utils';
+
 import CardAnimation from './subcomponents/buttons/CardAnimation';
 //import SettingsBar from './SettingsBar';
 
@@ -15,11 +17,11 @@ import l from '../logging';
 
 /*
   Chrono: Sole Responsibility: coordinates state between:
-   Editing: Form /Scheduled and
-  Player.
- TODO:
-  listen for schedule fires. 
-  upon which start the timer.
+  FormChronos: for live Editing, in edit state changes
+  Player: active timer/paused state.
+
+
+  TODO: rename watchtimer - its a state not a hookform watch! very misleading.
 */
 
 const Chrono = ({
@@ -34,6 +36,7 @@ const Chrono = ({
   //state between Form and Player
   const [timeWatch, setTimeWatch] = useState(); // saved current timer state. set by Form-submiter, passed to Player.
   const [playerVisible, setPlayerVisible] = useState(false);
+  const job = useRef;
 
   const setDuration = (adjustmentStr) => {
     const newSeconds = adjustDuration(adjustmentStr);
@@ -69,7 +72,9 @@ const Chrono = ({
     // setPlayerVisible(() => true);
     //l('info','end of sumbintter, playerVisible', playerVisible);
   };
-  const play = () => {
+  const play = (options) => {
+    console.log('cronfired play', timer.schedule);
+
     setTimeWatch(timer);
     setPlayerVisible(() => true);
   };
@@ -82,52 +87,6 @@ const Chrono = ({
     setTimeWatch(nextTimer);
     setPlayerVisible(() => true);
   };
-
-  const hasSchedule = () => {
-    l('info', 'chrono.hasSchedule()', {
-      schedule: timer.schedule,
-      logictest:
-        timer.schedule &&
-        (timer.schedule.h !== '' ||
-          timer.schedule.m !== '' ||
-          timer.schedule.s !== '')
-    });
-    const hasSched =
-      (timer.schedule &&
-        (timer.schedule.h !== '' ||
-          timer.schedule.m !== '' ||
-          timer.schedule.s !== '')) ||
-      (timer.schedule.hasCronPattern && timer.schedule.cronPattern);
-    l('info', 'hasSchedule', hasSched);
-    return hasSched;
-  };
-
-  const handleSchedule = () => {
-    console.log('info', 'schedule triggered');
-    setTimeWatch(timer);
-    setTimeout(() => {
-      setPlayerVisible(true);
-    }, 100);
-  };
-
-  // useEffect(() => {
-  //   let job;
-
-  //   job = new cron.CronJob('* * * * *', handleSchedule);
-  //   console.log(job);
-  //   // if (timer.schedule.cronJob) {
-  //   //   job = new cron.CronJob(timer.schedule.cronJob, handleSchedule);
-  //   //   if (!job) {
-  //   //     console.log('cron job assigned but not returned');
-  //   //   }
-  //   // }
-
-  //   return () => {
-  //     job = null;
-  //   };
-  // }, [timer]);
-  //todo: useCron (cronPattern, handleScheule)
-  // UseScheduler(timer, handleSchedule);
 
   const handleFocus = (e) => {
     //console.log('focus', timer.timer.name);
@@ -150,7 +109,6 @@ const Chrono = ({
             {formatSecondsShortNoLetters(
               timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s)
             )}
-            {/* <SettingsBar timer={timer} timers={timers} /> */}
           </div>
         )}
         {!collapsed && (
@@ -160,9 +118,7 @@ const Chrono = ({
             className={`baseBlack baseWhite baseCard z-0 w-[200px] rounded-3xl furniture-border  `}>
             {!playerVisible && (
               <div>
-                {hasSchedule() && (
-                  <Schedule timer={timer} handleSchedule={handleSchedule} />
-                )}
+                {/* <Schedule timer={timer} handleSchedule={handleSchedule} /> */}
                 <FormChronos
                   timer={timer}
                   singleTimerFlag={singleTimerFlag}

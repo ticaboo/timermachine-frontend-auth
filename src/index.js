@@ -1,7 +1,8 @@
 import React from 'react';
 
 import './index.css';
-import { ReactNotifications } from 'react-notifications-component';
+//import { ReactNotifications } from 'react-notifications-component';
+import { ToastContainer } from 'react-toastify';
 import TimerGroup from './chronic/TimerGroup';
 import SingleChronos from './chronic/SingleChronos';
 import YTPlayer from './chronic/VideoPlayer/YTPlayer';
@@ -57,7 +58,8 @@ if (timerNotificationEl) {
     ReactDOMClient.createRoot(timerNotificationEl);
   timerNotificationElRoot.render(
     <React.StrictMode>
-      <ReactNotifications />
+      {/* <ReactNotifications /> */}
+      <ToastContainer />
     </React.StrictMode>
   );
 } else {

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import cron from 'cron';
 import cronval from 'cron-validate';
 // import PubSub from 'pubsub-js';
 // import { HEARTBEAT } from '../pub/topics';
-import { hmtoTimeToday } from '../Utils';
-import useAlerts from '../Use/useAlerts';
+//import { hmtoTimeToday } from '../Utils';
+//import useAlerts from '../Use/useAlerts';
 import l from '../logging';
 
 /*
@@ -17,75 +17,89 @@ import l from '../logging';
 */
 
 const Schedule = ({ timer, handleSchedule }) => {
-  const [, setTimeNow] = useState();
-  const [alertAt, setAlertAt] = useState();
+  //const [, setTimeNow] = useState();
+  //const [alertAt] = useState();
   //const [active, activeLocal.current = ] = useState(); //so only fires once per day. used? or just activeLocal (ref?)
-  const activeLocal = useRef();
+  //const activeLocal = useRef();
+  //const { sayAloud } = useAlerts(timer);
   const job = useRef();
-  const { sayAloud } = useAlerts(timer);
-
-  //disabled - using cron
-  var HeartBeatSubscriber = function (msg, data) {
-    //console.log(msg, data);
-    const now = data.data.expectedTime;
-    //stub hard coding initially. configurable later. multiple notifications. or just keep 5 min one for a long time.
-    //it should just call tts. eg: 'meditation in five minutes'
-    //if timer is running schedule wont be active (not loaded in chronos)
-    //- free desired logic behaviour from UI, but scary as this gets more complex.
-    // for example if meditating - dont want other notifications - like brushing your teeth in 5 minutes!
-    const ttslag = 6000;
-    const preNotifications = 20 * 1000 + ttslag; //5 * 60; //10 [5,10] [{h,m,s},...]
-
-    if (activeLocal.current) {
-      setTimeNow(now);
-
-      if (now >= alertAt) {
-        if (now - alertAt <= 1000) {
-          console.log('TRIG SCHED;)');
-          if (handleSchedule) handleSchedule();
-          activeLocal.current = false;
-        } else if (activeLocal.current) {
-          // todo: see above.
-          // console.log(
-          //   'scheduled triggered',
-          //   (now - alertAt) / 1000,
-          //   'seconds late.'
-          // );
-        }
-      }
-
-      //prenotification:
-      //TODO: wierd: triggered every second when timer is manually acitvated.
-      if (
-        alertAt - preNotifications >= now &&
-        alertAt - preNotifications >= now - 900 &&
-        false === true /* f===t DISABLED due to above wierd issue for now.*/
-      ) {
-        // let notificationDuration = '';
-        // if (timer.timer.h !== '')
-        //   notificationDuration += ` ${timer.timer.h} hours. `;
-        // if (timer.timer.m !== '')
-        //   notificationDuration += ` ${timer.timer.m} minutes. `;
-        // if (timer.timer.s !== '')
-        //   notificationDuration += ` ${timer.timer.s} seconds. `;
-        // if (
-        //   timer.timer.h !== '' ||
-        //   timer.timer.m !== '' ||
-        //   timer.timer.s !== ''
-        // ) {
-        //   notificationDuration = 'Today it is for ' + notificationDuration;
-        // } else {
-        //   notificationDuration = ' with no time limit.';
-        // }
-
-        sayAloud(
-          `Heres a heads up, ${timer.timer.name} is scheduled to start in. ${
-            (preNotifications - ttslag) / 1000
-          } seconds.`
-        );
-      }
+  /*
+  job.current.stop() dont seem to do the trick,
+  so on cron firing cb, make sure enabled to avoid the walking dead crons!
+  */
+  const cronFired = () => {
+    console.log('cronfired: zombies!', timer.schedule.hasCronPattern);
+    if (
+      timer.schedule.hasCronPattern &&
+      handleSchedule &&
+      cronval(timer.schedule.cronPattern).isValid()
+    ) {
+      handleSchedule();
     }
   };
+
+  //disabled - using cron
+  // var HeartBeatSubscriber = function (msg, data) {
+  //   //console.log(msg, data);
+  //   const now = data.data.expectedTime;
+  //   //stub hard coding initially. configurable later. multiple notifications. or just keep 5 min one for a long time.
+  //   //it should just call tts. eg: 'meditation in five minutes'
+  //   //if timer is running schedule wont be active (not loaded in chronos)
+  //   //- free desired logic behaviour from UI, but scary as this gets more complex.
+  //   // for example if meditating - dont want other notifications - like brushing your teeth in 5 minutes!
+  //   const ttslag = 6000;
+  //   const preNotifications = 20 * 1000 + ttslag; //5 * 60; //10 [5,10] [{h,m,s},...]
+
+  //   if (activeLocal.current) {
+  //     setTimeNow(now);
+
+  //     if (now >= alertAt) {
+  //       if (now - alertAt <= 1000) {
+  //         console.log('TRIG SCHED;)');
+  //         if (handleSchedule) handleSchedule();
+  //         activeLocal.current = false;
+  //       } else if (activeLocal.current) {
+  //         // todo: see above.
+  //         // console.log(
+  //         //   'scheduled triggered',
+  //         //   (now - alertAt) / 1000,
+  //         //   'seconds late.'
+  //         // );
+  //       }
+  //     }
+
+  //     //prenotification:
+  //     //TODO: wierd: triggered every second when timer is manually acitvated.
+  //     if (
+  //       alertAt - preNotifications >= now &&
+  //       alertAt - preNotifications >= now - 900 &&
+  //       false === true /* f===t DISABLED due to above wierd issue for now.*/
+  //     ) {
+  //       // let notificationDuration = '';
+  //       // if (timer.timer.h !== '')
+  //       //   notificationDuration += ` ${timer.timer.h} hours. `;
+  //       // if (timer.timer.m !== '')
+  //       //   notificationDuration += ` ${timer.timer.m} minutes. `;
+  //       // if (timer.timer.s !== '')
+  //       //   notificationDuration += ` ${timer.timer.s} seconds. `;
+  //       // if (
+  //       //   timer.timer.h !== '' ||
+  //       //   timer.timer.m !== '' ||
+  //       //   timer.timer.s !== ''
+  //       // ) {
+  //       //   notificationDuration = 'Today it is for ' + notificationDuration;
+  //       // } else {
+  //       //   notificationDuration = ' with no time limit.';
+  //       // }
+
+  //       sayAloud(
+  //         `Heres a heads up, ${timer.timer.name} is scheduled to start in. ${
+  //           (preNotifications - ttslag) / 1000
+  //         } seconds.`
+  //       );
+  //     }
+  //   }
+  // };
 
   /*
     TODO: 
@@ -98,6 +112,10 @@ const Schedule = ({ timer, handleSchedule }) => {
     //new Date (today), set Hrs, mins, secs:0, ms: 0
 
     //give cron precedence:
+    console.log(
+      'schedule. timer changed. timer.schedule.hasCronPattern',
+      timer.schedule.hasCronPattern
+    );
     if (timer.schedule.hasCronPattern && timer.schedule.cronPattern) {
       //final check cron is valid, and not every single second!
       if (
@@ -107,30 +125,26 @@ const Schedule = ({ timer, handleSchedule }) => {
         /* prevent running every second */
         if (handleSchedule) {
           try {
-            const newJob = new cron.CronJob(
+            job.current = new cron.CronJob(
               timer.schedule.cronPattern,
-              handleSchedule,
+              cronFired,
               null,
               true
             );
-            job.current = newJob;
           } catch {
             l('info', 'invalid cron - live edit can cause');
           }
         }
       }
     } else {
-      const alertStamp = hmtoTimeToday(
-        timer.schedule.h,
-        timer.schedule.m,
-        timer.schedule.s,
-        timer.schedule.ms
-      );
-      //console.log('alertStamp from now:', alertStamp - Date.now());
-      setAlertAt(alertStamp);
-      activeLocal.current = true;
+      if (job.current) {
+        console.log('KILL CRON');
+        job.current.stop();
+        console.log(job.current);
+        //job.current = null;
+      }
     }
-  }, [timer, handleSchedule]);
+  }, [timer]);
 
   // useEffect(() => {
   //   var token = PubSub.subscribe(HEARTBEAT, HeartBeatSubscriber); //cleanup on component destroy

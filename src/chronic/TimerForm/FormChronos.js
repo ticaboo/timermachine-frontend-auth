@@ -12,8 +12,9 @@ import BookmarkButton from '../subcomponents/buttons/BookmarkButton';
 import BookToLibraryButton from '../subcomponents/buttons/BookToLibrary';
 
 import SettingsBar from '../SettingsBar';
-import AutoSaver from '../subcomponents/AutoSaver';
+import AutoSaver from './AutoSaver';
 import useLogTimer from '../../Use/UseLogTimer';
+import Scheduler from './Scheduler';
 /*
 all Form stuff contained herein.
 submit triggers state on parent Component: timeWatch, autoplay, playerVisible.
@@ -27,7 +28,6 @@ const FormChronos = ({
   duplicateTimer,
   removeTimer,
   timers,
-  scheduleNub,
   play
 }) => {
   const methods = useForm({
@@ -106,6 +106,7 @@ const FormChronos = ({
             </CollapseControlled> */}
           </div>
         </form>
+        <Scheduler play={play} />
       </FormProvider>
     </div>
   );

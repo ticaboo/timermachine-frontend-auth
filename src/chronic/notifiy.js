@@ -2,10 +2,23 @@ import { Store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
-/*
-    apparently only works with https
-    deply and test 
-*/
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+//todo: think about not candywrapping, call direct.
+const Msg = ({ closeToast, toastProps, children, autoClose }) => (
+  <div>{children}</div>
+);
+
+export const notifyInPage = (message, title, children) => {
+  if (children) {
+    toast(<Msg children={children} />, { autoClose: 15000 });
+  } else if (message) {
+    toast(message);
+  }
+};
+
 export const notifyBrowser = (message, title, clickhandler) => {
   title = title || 'TimeRmachine';
 
@@ -46,7 +59,7 @@ export const notifyBrowser = (message, title, clickhandler) => {
   // or use browser notification, but fallback to in page notification.
 };
 
-export const notifyInPage = (message, title) => {
+export const XnotifyInPage = (message, title) => {
   console.log('notifyInPage', message);
   Store.addNotification({
     title: title || 'Info',

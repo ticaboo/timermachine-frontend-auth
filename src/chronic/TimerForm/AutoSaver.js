@@ -8,7 +8,7 @@ const AutoSaver = ({ save, timer }) => {
 
   useEffect(() => {
     if (JSON.stringify(timer) !== JSON.stringify(watchTimer)) {
-      console.log('changed');
+      // console.log('AutoSaver: wathcTimer changed');
       save();
     }
   }, [watchTimer]);

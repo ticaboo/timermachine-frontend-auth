@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { AtScheduleIcon, CronCogsIcon } from './icons';
-import { lpad } from '../Utils';
+//import { lpad } from '../Utils';
 
 const ScheduleDisplay = ({ timer }) => {
   const { watch } = useFormContext();

@@ -5,7 +5,7 @@ const ArtistsPage = () => {
   return (
     <div>
       <Header />
-      <p>Artists</p>
+      <div>Artists</div>
     </div>
   );
 };

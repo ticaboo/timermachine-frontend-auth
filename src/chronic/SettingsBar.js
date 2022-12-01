@@ -1,10 +1,15 @@
 import React from 'react';
-import cronval from 'cron-validate';
 import Tabs from './subcomponents/Tabs';
 import OnSchedleForm from './TimerForm/OnSchedleForm';
 import OnStartForm from './TimerForm/OnStartForm';
 import OnDuringForm from './TimerForm/OnDuringForm';
 import OnEndForm from './TimerForm/OnEndForm';
+import {
+  hasScheduleSettings,
+  hasOnStartSettings,
+  hasIntervalSettings,
+  hasOnEndSettings
+} from '../logic';
 //import ScheduleDisplay from './ScheduleDisplay';
 
 /*
@@ -21,101 +26,8 @@ doing: hasSettings per tab - to style green.
 */
 
 const SettingsBar = ({ timer, timers, activeTab, setActiveTab }) => {
-  const hasScheduleSettings = () => {
-    // console.log(
-    //   'hasSched',
-    //   timer.schedule.h,
-    //   timer.schedule.h || timer.schedule.m
-    // );
-    const hasDAdjust =
-      timer.schedule.hasDurationAdjustment &&
-      timer.schedule.durationAdjustment.length !== 0;
-    console.log('hasDadj', hasDAdjust);
-    console.log(
-      'cronpat:',
-      timer.schedule,
-      'valid'
-      // cronval(timer.schedule.cronPattern).isValid()
-    );
-    return !!(
-      hasDAdjust ||
-      (timer.schedule.hasCronPattern &&
-        cronval(timer.schedule.cronPattern).isValid())
-    );
-  };
-
-  const hasOnStartSettings = () => {
-    // hasStartAlert: false,
-    // startAlert: '',
-    // hasStartAnnounce: false,
-    // startAnnounce: '',
-    // hasStartPlaylist: false,
-    // startPlaylist: '',
-    // hasPlayDuringUrl: X -unused in default struct: using hasStartPlayUrl in form.
-    // playDuringUrl: '',X - same as above: startPlayUrl
-
-    const t = timer.timer;
-    const hasAlert = t.hasStartAlert && t.startAlert;
-    const hasAnnounce = t.hasStartAnnounce && t.startAnnounce;
-
-    const hasPlaylist = t.hasStartPlaylist && t.startPlaylist;
-    const hasURL = t.hasStartPlayUrl && t.startPlayUrl;
-
-    // console.log({
-    //   hasAlert,
-    //   hasAnnounce,
-    //   hasPlaylist,
-    //   hasURL
-    // });
-    return !!(hasAlert || hasAnnounce || hasPlaylist || hasURL);
-  };
-  const hasIntervalSettings = () => {
-    const hasIntervalTime =
-      timer.interval.h || timer.interval.m || timer.interval.s;
-    const hasEnabledAlert =
-      timer.interval.hasAlert || timer.interval.hasAnnounce;
-    //console.log('hasInterval', hasIntervalTime && hasEnabledAlert);
-    return !!(hasIntervalTime && hasEnabledAlert);
-  };
-  const hasOnEndSettings = () => {
-    const t = timer.timer;
-    const hasAlert = t.hasAlert && t.alert;
-    const hasAnnounce = t.hasAnnounce && t.announce;
-    //todo: rename with end
-    // hasAlert: false,
-    // alert: '',
-    // hasAnnounce: false,
-    // announce: '',
-    const hasPlaylist = t.hasEndPlaylist && t.endPlaylist;
-    const hasEndURL = t.hasEndPlayUrl && t.endPlayUrl;
-
-    const c = timer.chaining.onend;
-    const hasChaining = c.chainEnabled && c.chainId;
-    // console.log({
-    //   hasAlert,
-    //   hasAnnounce,
-    //   hasPlaylist,
-    //   hasEndURL,
-    //   hasChaining,
-    //   c
-
-    return !!(
-      hasAlert ||
-      hasAnnounce ||
-      hasPlaylist ||
-      hasEndURL ||
-      hasChaining
-    );
-  };
-
   const dropdownClass = ' absolute top-[-0px] mt-2  w-[200px]  border-solid ';
   const overlaidClass = ' mt-2 border-none';
-  // let classAddition = overlaidClass;
-
-  // useEffect(() => {
-  //   console.log('activeTab', activeTab);
-  //   // classAddition = activeTab === null ? overlaidClass : dropdownClass;
-  // }, [activeTab]);
 
   return (
     <div
@@ -127,28 +39,28 @@ const SettingsBar = ({ timer, timers, activeTab, setActiveTab }) => {
           className=""
           label="schedule"
           title="schedule"
-          contentful={hasScheduleSettings()}>
+          contentful={hasScheduleSettings(timer)}>
           <OnSchedleForm name="schedule." timer={timer} timers={timers} />
         </div>
         <div
           className=""
           label="at start"
           title="at start"
-          contentful={hasOnStartSettings()}>
+          contentful={hasOnStartSettings(timer)}>
           <OnStartForm name="timer." timer={timer} timers={timers} />
         </div>
         <div
           className=""
           label="interval"
           title="interval"
-          contentful={hasIntervalSettings()}>
+          contentful={hasIntervalSettings(timer)}>
           <OnDuringForm name="interval." />
         </div>
         <div
           className=""
           label="at finish"
           title="at finish"
-          contentful={hasOnEndSettings()}>
+          contentful={hasOnEndSettings(timer)}>
           {' '}
           <OnEndForm name="timer." timer={timer} timers={timers} />
         </div>

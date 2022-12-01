@@ -11,7 +11,7 @@ export const latestStructure = {
     hasDurationAdjustment: false,
     durationAdjustment: '',
     hasCronPattern: false,
-    cronPattern: ''
+    cronPattern: 'x'
   },
   timer: {
     name: '',

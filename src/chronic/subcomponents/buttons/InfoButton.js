@@ -2,9 +2,9 @@ import React from 'react';
 import { notifyInPage } from '../../notifiy';
 import ButtonAnimation from './ButtonAnimation';
 
-const InfoButton = ({ infoText }) => {
+const InfoButton = ({ messageText, title, children }) => {
   const clickHandler = () => {
-    notifyInPage(infoText);
+    notifyInPage(messageText, title, children);
   };
   return (
     <ButtonAnimation clickHandler={clickHandler}>

@@ -48,7 +48,7 @@ const CronText = ({ name }) => {
     */
 
     let cronString =
-      cronFmt(cronM, '0') +
+      cronFmt(cronM) +
       ' ' +
       cronFmt(cronH) +
       ' ' +
@@ -72,8 +72,8 @@ const CronText = ({ name }) => {
         <CheckBox check={'schedule.hasCronPattern'} />
         <div className="pl-1 ">{cronHumanised}</div>
 
-        <div className="mt-auto mr-auto">
-          <CopyToClipboardButton
+        <div className="mt-auto ml-auto">
+          {/* <CopyToClipboardButton
             textToCopy={
               'CronTab: "' +
               cronPattern +
@@ -81,9 +81,25 @@ const CronText = ({ name }) => {
               cronHumanised +
               ').'
             }
-          />
+          /> */}
         </div>
       </div>
+      <p className="text-xs w-[180px]">
+        <div className="ml-2 mt-1">
+          {cronPattern}
+          <span className="ml-1">
+            <CopyToClipboardButton
+              textToCopy={
+                'CronTab: "' +
+                cronPattern +
+                '". copied to clipboard. (' +
+                cronHumanised +
+                ').'
+              }
+            />
+          </span>
+        </div>
+      </p>
     </div>
   );
 };

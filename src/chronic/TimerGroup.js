@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import AddNewTimer from './subcomponents/buttons/AddNewTimer';
 import Chrono from './Chrono';
-import ScheduleGroup from './ScheduleGroup';
+//import ScheduleGroup from './ScheduleGroup';
 import useStorage from '../Use/UseTimerStorage';
 import { LOCAL_STORAGE_TIMER_KEY } from '../Use/usEnv';
 import { defaultTimer } from '../data/timers';
@@ -21,7 +21,7 @@ function TimerGroup() {
       {/* <div>
         <button onClick={collapseAll}>{collapsed ? '+' : '-'}</button>
       </div> */}
-      <ScheduleGroup timers={timers} />
+      {/* <ScheduleGroup timers={timers} /> */}
       {timers.map((timer, index) => (
         <div key={timer.id} className={` flex flex-col m-2 z-${100 - index}`}>
           <Chrono
