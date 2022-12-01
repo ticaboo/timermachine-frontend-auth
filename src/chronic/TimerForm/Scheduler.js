@@ -77,38 +77,3 @@ const Scheduler = ({ play }) => {
 };
 
 export default Scheduler;
-
-// //   useEffect(() => {
-//     console.log(
-//       'Chrono. timer changed. timer.schedule.hasCronPattern:',
-//       timer.schedule.hasCronPattern
-//     );
-//     if (timer.schedule.hasCronPattern && timer.schedule.cronPattern) {
-//       //final check cron is valid, and not every single second!
-//       if (
-//         cronval(timer.schedule.cronPattern).isValid() &&
-//         timer.schedule.cronPattern !== 'x * * * * *'
-//       ) {
-//         /* prevent running every second */
-//         if (handleSchedule) {
-//           try {
-//             job.current = new cron.CronJob(
-//               timer.schedule.cronPattern,
-//               handleSchedule,
-//               null,
-//               true
-//             );
-//           } catch {
-//             l('info', 'invalid cron - live edit can cause');
-//           }
-//         }
-//       }
-//     } else {
-//       if (job.current) {
-//         console.log('KILL CRON');
-//         job.current.stop();
-//         console.log(job.current);
-//         job.current = null;
-//       }
-//     }
-//   }, timer);

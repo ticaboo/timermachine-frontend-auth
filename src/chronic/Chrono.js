@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 //import Schedule from './Schedule';
