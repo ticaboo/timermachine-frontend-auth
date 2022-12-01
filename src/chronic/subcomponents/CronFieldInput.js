@@ -34,16 +34,14 @@ const CronFieldInput = ({ name, label, children, width }) => {
   );
 
   return (
-    <div className="pt-1">
+    <div className="pt-1 w-[192px]">
       <input
         type="text"
         {...register(name)}
         autoCorrect="off"
         spellCheck="false"
         autoComplete="off"
-        className={`ml-2 pl-2 h-8 rounded-md baseCell  w-[${width}px] max-w-[${
-          width + 10
-        }px]`}
+        className={`ml-2 pl-2 h-8 rounded-md baseCell  w-[50px] max-w-[54px]`}
       />
       <span className="ml-3 -mt-3 text-sm furniture ">
         {label} <InfoButton children={InfoMessage} />
