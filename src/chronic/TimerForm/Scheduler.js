@@ -13,42 +13,50 @@ hence needs to be in FormChronos <FormProvider> context wrapper.
 
 */
 
-let outcastEnabled = false;
-const setOutcastEnabled = (val) => {
-  outcastEnabled = val;
-  console.log('setOutcastEnabled(', val, '). now is:', outcastEnabled);
-};
+const enabledCrons = {};
+/*
+ Looks like this solves the cron zombie problem.
+ need external var, and a setter.
+ appears any state/ref when new cron.CronJob called is bound up.
+
+
+ argh - not quite, code here seems to work as a singleton - which i didnt expect.
+ i thought es6 modules were objects!!!? 
+*/
 
 const Scheduler = ({ play }) => {
   // console.log('FormChronos-timers', timers)
   const { watch } = useFormContext();
   const watchHasCronPattern = watch('schedule.hasCronPattern');
   const watchCronPattern = watch('schedule.cronPattern');
-
+  const watchId = watch('id');
   const job = useRef();
-  const enabled = useRef();
 
   /*
         even though watchHasCronPattern changes in useEffect,
         it remains true here. I believe it is todo with the callback context.
         even assigning to enabled.current! looks like i need better hook grok / other hooks to deal with this.
+
+        Finally - a work around. managing state with {timerid: hascron}
+        is this beyond dirty, or actually should be managing state outside of front end?
+        see enabledCrons = {}
+
     */
   function cronFired() {
-    console.log('cronFired enabled?', outcastEnabled);
-    if (outcastEnabled) {
-      play({ cronFired: true });
+    console.log('cronFired enabled?', enabledCrons[watchId], watchId);
+    if (enabledCrons[watchId]) {
+      play({ timerId: watchId });
     }
   }
 
   useEffect(() => {
-    setOutcastEnabled(watchHasCronPattern);
+    enabledCrons[watchId] = watchHasCronPattern;
 
     console.log('Scheduler: wathcTimer changed', watchHasCronPattern);
     if (watchHasCronPattern) {
       try {
         if (job.current) {
           job.current.stop();
-          //job.current = null;
         }
         job.current = new cron.CronJob(watchCronPattern, cronFired, null, true);
       } catch {
@@ -62,10 +70,8 @@ const Scheduler = ({ play }) => {
         console.log('KILL CRON');
         job.current.stop();
         console.log(job.current);
-        // job.current = null;
       }
     }
-    enabled.current = watchHasCronPattern;
   }, [watchHasCronPattern]);
 
   return <></>;

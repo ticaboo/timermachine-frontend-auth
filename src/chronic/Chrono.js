@@ -73,10 +73,21 @@ const Chrono = ({
     //l('info','end of sumbintter, playerVisible', playerVisible);
   };
   const play = (options) => {
-    console.log('cronfired play', timer.schedule);
-
-    setTimeWatch(timer);
-    setPlayerVisible(() => true);
+    if (options.timerId) {
+      console.log(
+        'play cronfired opts id: ',
+        options.timerId,
+        ' tid :',
+        timer.timerId
+      );
+      if (options.timerId === timer.id) {
+        setTimeWatch(timer);
+        setPlayerVisible(() => true);
+      }
+    } else {
+      setTimeWatch(timer);
+      setPlayerVisible(() => true);
+    }
   };
 
   const handleNextChainAction = (chainNextTimerId) => {
