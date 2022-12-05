@@ -88,15 +88,7 @@ const CronText = ({ name }) => {
         <div className="ml-2 mt-1">
           {cronPattern}
           <span className="ml-1">
-            <CopyToClipboardButton
-              textToCopy={
-                'CronTab: "' +
-                cronPattern +
-                '". copied to clipboard. (' +
-                cronHumanised +
-                ').'
-              }
-            />
+            <CopyToClipboardButton textToCopy={cronPattern} />
           </span>
         </div>
       </p>

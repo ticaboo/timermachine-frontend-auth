@@ -26,13 +26,14 @@ const enabledCrons = {};
 const Scheduler = ({ play }) => {
   // console.log('FormChronos-timers', timers)
   const { watch } = useFormContext();
-  const watchHasCronPattern = watch('schedule.hasCronPattern');
-  const watchCronPattern = watch('schedule.cronPattern');
+  // const watchSchedule.hasCronPattern = watch('schedule.hasCronPattern');
+  // const watchSchedule.cronPattern = watch('schedule.cronPattern');
+  const watchSchedule = watch('schedule');
   const watchId = watch('id');
   const job = useRef();
 
   /*
-        even though watchHasCronPattern changes in useEffect,
+        even though watchSchedule.hasCronPattern changes in useEffect,
         it remains true here. I believe it is todo with the callback context.
         even assigning to enabled.current! looks like i need better hook grok / other hooks to deal with this.
 
@@ -42,22 +43,27 @@ const Scheduler = ({ play }) => {
 
     */
   function cronFired() {
-    console.log('cronFired enabled?', enabledCrons[watchId], watchId);
+    // console.log('cronFired enabled?', enabledCrons[watchId], watchId);
     if (enabledCrons[watchId]) {
       play({ timerId: watchId });
     }
   }
 
   useEffect(() => {
-    enabledCrons[watchId] = watchHasCronPattern;
+    enabledCrons[watchId] = watchSchedule.hasCronPattern;
 
-    console.log('Scheduler: wathcTimer changed', watchHasCronPattern);
-    if (watchHasCronPattern) {
+    console.log('Scheduler: wathcTimer changed', watchSchedule.hasCronPattern);
+    if (watchSchedule.hasCronPattern) {
       try {
         if (job.current) {
           job.current.stop();
         }
-        job.current = new cron.CronJob(watchCronPattern, cronFired, null, true);
+        job.current = new cron.CronJob(
+          watchSchedule.cronPattern,
+          cronFired,
+          null,
+          true
+        );
       } catch {
         console.log(
           'info',
@@ -66,12 +72,12 @@ const Scheduler = ({ play }) => {
       }
     } else {
       if (job.current) {
-        console.log('KILL CRON');
+        // console.log('KILL CRON');
         job.current.stop();
-        console.log(job.current);
+        // console.log(job.current);
       }
     }
-  }, [watchHasCronPattern]);
+  }, [watchSchedule]);
 
   return <></>;
 };

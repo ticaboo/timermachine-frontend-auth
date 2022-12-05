@@ -11,7 +11,7 @@ export const latestStructure = {
     hasDurationAdjustment: false,
     durationAdjustment: '',
     hasCronPattern: false,
-    cronPattern: 'x'
+    cronPattern: '* * * * *'
   },
   timer: {
     name: '',
@@ -118,12 +118,18 @@ export const defaultTimer = {
   //chainAction: '',
   //hasInterval: false,
   schedule: {
-    hasScheduleAnnounce: false,
     scheduleAnnounce: '',
+    month: '',
+    dayOfMonth: '',
+    dayOfWeek: '',
     h: '',
     m: '',
     s: '',
-    ms: ''
+    ms: '',
+    hasDurationAdjustment: false,
+    durationAdjustment: '',
+    hasCronPattern: false,
+    cronPattern: '* * * * *'
   },
   timer: {
     name: 'Timer 1',
@@ -147,7 +153,8 @@ export const defaultTimer = {
     hasPlayDuringUrl: false,
     playDuringUrl: '',
     hasEndPlayUrl: false,
-    endPlayUrl: 'https://www.youtube.com/watch?v=fjM1-kzMs8A'
+    endPlayUrl: 'https://www.youtube.com/watch?v=fjM1-kzMs8A',
+    hasEndNotification: true
   },
 
   interval: {
