@@ -1,4 +1,4 @@
-//setup
+import d from '../../support/utils';
 
 describe('basic timer plays', () => {
   beforeEach(() => {
@@ -7,10 +7,12 @@ describe('basic timer plays', () => {
   it('passes', () => {
     //get play button within first , click it
 
-    cy.get('[data-test-chronos-container]').first().as('chronos');
+    cy.get(d.t`chronos-container`)
+      .first()
+      .as('chronos');
 
     cy.get('@chronos')
-      .get('[data-test-playbutton]')
+      .get(d.t`playbutton`)
       .first()
       .click()
       .then(() => {
