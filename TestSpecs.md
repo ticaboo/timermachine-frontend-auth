@@ -12,7 +12,8 @@ hasTTS + tts text
 hasStartPlayList + startPlaylist
 = ytplayer playing
 
-data-test
+data-test-timer
+-id
 -start
 -interval
 -end

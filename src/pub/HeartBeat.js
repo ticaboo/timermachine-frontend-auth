@@ -34,6 +34,6 @@ const HeartBeat = () => {
     //console.log(message);
     PubSub.publish(HEARTBEAT, message);
   };
-  return <div data-t-heartbeat className="heart-beat "></div>;
+  return <div data-test-heartbeat className="heart-beat "></div>;
 };
 export default HeartBeat;

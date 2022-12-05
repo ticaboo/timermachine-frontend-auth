@@ -111,7 +111,10 @@ const Chrono = ({
   };
 
   return (
-    <>
+    <div
+      data-test-chronos-container
+      data-test-timer-id={timer.id}
+      data-test-playervisible={playerVisible}>
       <CardAnimation>
         {collapsed && (
           <div className=" baseBlack baseWhite baseCard  w-[200px] rounded-3xl furniture-border ">
@@ -161,7 +164,7 @@ const Chrono = ({
           </div>
         )}
       </CardAnimation>
-    </>
+    </div>
   );
 };
 
