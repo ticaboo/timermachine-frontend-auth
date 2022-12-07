@@ -1,13 +1,54 @@
-export const d = {
-  //syntactic sugaring for convenience & readability ie can: d.t`foo` instead of '[data-test-foo]'
-  t: (dataTestIdentifier) => {
-    return `[data-test-${dataTestIdentifier}]`;
-  },
-  //inspiration, unused, working? template literal magic
-  x: (strings, ...values) => {
-    const id = strings
-      .map((str, index) => str + (values[index] || ''))
-      .join('');
-    return `[data-testid="${id}"]`;
+import { LOCAL_STORAGE_TIMER_KEY } from '../../src/Use/usEnv';
+import { latestStructure, defaultTimer } from '../../src/data/timers';
+
+/*
+for now anything that references application code goes here.
+could be better, but working out the trade offs of other ways first.
+i.e. config, dotenv, json generation.etc
+*/
+
+const withDefault = {
+  ...defaultTimer,
+  ...{
+    timer: { ...defaultTimer.timer, name: 'default', s: '2', alert: '7' }
   }
+};
+const withOnEndAlert = {
+  ...defaultTimer,
+  ...{
+    timer: {
+      ...defaultTimer.timer,
+      name: 'onend alert',
+      s: '1',
+      hasAlert: true,
+      alert: '7'
+    }
+  }
+};
+const withOnStartAlert = {
+  ...defaultTimer,
+  ...{
+    timer: {
+      ...defaultTimer.timer,
+      name: 'onstart alert',
+      s: '1',
+      hasStartAlert: true,
+      startAlert: '7'
+    }
+  }
+};
+
+export const testTimers = {
+  raw: [defaultTimer],
+  basics: [withDefault, withOnEndAlert, withOnStartAlert]
+};
+
+// setLocalStorageTimers(null) wipes db,which is handy :) and dangerous
+// takes array of timer objects [{id:...},]
+export const setLocalStorageTimers = (timers) => {
+  window.localStorage.setItem(LOCAL_STORAGE_TIMER_KEY, JSON.stringify(timers));
+};
+
+export const getLocalStorageTimers = () => {
+  return JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_TIMER_KEY));
 };

@@ -74,6 +74,7 @@ const Timer = ({
 
   const [pause, setPause] = useState(false);
   const [pausedSeconds, setPausedSeconds] = useState(0);
+  //console.log('timer predirection', timer);
   const direction =
     timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s) === 0 ? 1 : -1;
 
@@ -156,6 +157,7 @@ const Timer = ({
     };
 
     //stopwatch
+    console.log('direction', direction);
     if (direction === 1 && remaining === originalDuration) {
       atStart();
     }

@@ -1,5 +1,6 @@
 export const latestStructure = {
   id: '',
+  direction: -1, //deprecate?
   schedule: {
     scheduleAnnounce: '',
     month: '',
@@ -13,6 +14,7 @@ export const latestStructure = {
     hasCronPattern: false,
     cronPattern: '* * * * *'
   },
+
   timer: {
     name: '',
     h: '',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
+import { dataTestAttr, dataTestTagIds } from '../common/tags';
 //import Schedule from './Schedule';
 
 import {
@@ -114,7 +115,7 @@ const Chrono = ({
     <div
       data-test-chronos-container
       data-test-timer-id={timer.id}
-      data-test-playervisible={playerVisible}>
+      {...dataTestAttr(dataTestTagIds.playervisible, playerVisible)}>
       <CardAnimation>
         {collapsed && (
           <div className=" baseBlack baseWhite baseCard  w-[200px] rounded-3xl furniture-border ">
@@ -152,6 +153,7 @@ const Chrono = ({
                   handleNextChainAction={handleNextChainAction}
                   setDuration={setDuration}
                 />
+
                 {/* <Timer
                 key={timeWatch.id}
                 timerData={timeWatch}

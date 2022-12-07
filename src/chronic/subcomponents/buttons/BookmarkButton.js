@@ -8,6 +8,7 @@ import {
 } from '../../icons';
 import { encodeObjToURI, flattenTimer } from '../../../Utils';
 import { latestStructure } from '../../../data/timers';
+import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 
 /*
 
@@ -54,6 +55,7 @@ const BookmarkButton = ({ clickHandler }) => {
       <ButtonAnimation clickHandler={bookmarker}>
         <div
           title="Pop out"
+          {...dataTestAttr(dataTestTagIds.bookMarkButton)}
           className="border-neutral-300 border-2 rounded-full mx-1 p-1 ">
           <ArrowCurveRightIcon />
           {/* <ShareIcon /> */}

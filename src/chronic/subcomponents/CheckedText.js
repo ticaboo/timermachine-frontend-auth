@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { dataTestAttr, dataTestTagIds } from '../../common/tags';
 
 /*
 
@@ -19,11 +20,17 @@ const CheckedText = ({ name, check, label, type = 'text', placeholder }) => {
     <div className="ml-2">
       <span className="ml-1 text-sm furniture">{label}</span>
       <div className=" pr-2 h-8 w-[175px] rounded-md baseCell">
-        <input type="checkbox" {...register(check)} className="ml-2" />
+        <input
+          type="checkbox"
+          {...register(check)}
+          {...dataTestAttr(dataTestTagIds[name + '.checkbox'])}
+          className="ml-2"
+        />
 
         <input
           type={type}
           {...register(name)}
+          {...dataTestAttr(dataTestTagIds[name + '.checkedinputtext'])}
           placeholder={placeholder}
           className={
             'ml-1 pl-2 mt-1 w-[138px] h-6 rounded-md  baseCell ' +

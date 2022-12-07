@@ -31,7 +31,10 @@ const RemoveTimerButton = ({ removeTimer, disabledFlag }) => {
     removeTimer(watchID);
   };
   return (
-    <div className="flex justify-end m-1" title="DANGER! Delete timer">
+    <div
+      data-test-removebutton
+      className="flex justify-end m-1"
+      title="DANGER! Delete timer">
       {disabledFlag}
       {!disabledFlag && (
         <ButtonAnimation clickHandler={deleteTimer}>

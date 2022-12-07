@@ -2,6 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { DuplicateIcon } from '../../icons';
 import ButtonAnimation from './ButtonAnimation';
+import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 
 /*
 
@@ -21,6 +22,7 @@ const DuplicateTimerButton = ({ clickHandler }) => {
       clickHandler={duplicateTimerHandler}>
       <div
         title="New timer from this template"
+        {...dataTestAttr(dataTestTagIds.duplicateTimerButton)}
         className="border-neutral-300 border-2 rounded-full mx-1 p-1 ">
         <DuplicateIcon />
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { dataTestAttr, dataTestTagIds } from '../../common/tags';
 //import { ListenIcon } from '../icons';
 
 /*
@@ -22,10 +23,16 @@ const CheckedSelect = ({ check, selector, selectOptions, label }) => {
       <div className="pr-2 h-8 w-[175px] rounded-md baseCell ">
         {/* cs: */}
         {/* <SwitchToggle /> */}
-        <input className="ml-2" type="checkbox" {...register(check)} />
+        <input
+          className="ml-2"
+          type="checkbox"
+          {...register(check)}
+          {...dataTestAttr(dataTestTagIds[check + '.checkbox'])}
+        />
 
         <select
           {...register(selector)}
+          {...dataTestAttr(dataTestTagIds[selector + '.select'])}
           value={watchsSelector}
           className={
             'ml-2  baseCell rounded-md w-[138px] ' +

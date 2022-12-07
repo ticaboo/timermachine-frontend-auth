@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { dataTestAttr, dataTestTagIds } from '../../common/tags';
 
 const TextInput = ({ name, label, children }) => {
   const { register } = useFormContext();
@@ -7,9 +8,11 @@ const TextInput = ({ name, label, children }) => {
   return (
     <div className="pt-1">
       <div className="ml-3 -mt-3 text-sm furniture">{label}</div>
+      {name}
       <input
         type="text"
         {...register(name)}
+        {...dataTestAttr(dataTestTagIds[name + '.inputtext'])}
         autoCorrect="off"
         spellCheck="false"
         autoComplete="off"

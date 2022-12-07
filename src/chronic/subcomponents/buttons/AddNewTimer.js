@@ -3,6 +3,7 @@ import ButtonAnimation from './ButtonAnimation';
 import Quote from '../../../Quote';
 import Clock from '../Clock';
 import CardAnimation from './CardAnimation';
+import { dataTest } from '../../../common/tags';
 
 const AddNewTimer = ({ addNewTimer }) => {
   return (
@@ -17,6 +18,7 @@ const AddNewTimer = ({ addNewTimer }) => {
             title="Add new timer">
             <ButtonAnimation clickHandler={addNewTimer}>
               <svg
+                {...dataTest.addnewtimerbutton}
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-10 w-10"
                 viewBox="0 0 20 20"

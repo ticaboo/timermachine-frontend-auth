@@ -8,6 +8,7 @@ import { ArrowCurveLeftIcon } from '../../icons';
 //import l from '../../../logging';
 import useStorage from '../../../Use/UseTimerStorage';
 import { LOCAL_STORAGE_TIMER_KEY } from '../../../Use/usEnv';
+import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 /*
 
 */
@@ -75,6 +76,7 @@ const BookToLibraryButton = ({ timer }) => {
     <div
       className="flex justify-end m-1"
       title="pop to one timer"
+      {...dataTestAttr(dataTestTagIds.bookToLibraryButton)}
       onClick={toLibSaver}>
       <ButtonAnimation>
         <div

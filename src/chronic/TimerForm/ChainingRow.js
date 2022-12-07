@@ -1,6 +1,6 @@
 import React from 'react';
-//import CheckedSelect from '../subcomponents/CheckedSelect';
 import { useFormContext } from 'react-hook-form';
+import { dataTestAttr, dataTestTagIds } from '../../common/tags';
 
 const CheckedSelect = ({ check, selector, selectOptions, label }) => {
   const { register, watch } = useFormContext();
@@ -12,10 +12,16 @@ const CheckedSelect = ({ check, selector, selectOptions, label }) => {
     <div className="ml-2">
       <span className="ml-1 text-sm furniture">{label}</span>
       <div className="pr-2 pt-1 h-8 w-[175px] rounded-md baseCell ">
-        <input className="ml-2" type="checkbox" {...register(check)} />
+        <input
+          className="ml-2"
+          type="checkbox"
+          {...register(selector)}
+          {...dataTestAttr(dataTestTagIds[check + '.checkbox'])}
+        />
 
         <select
           {...register(selector)}
+          {...dataTestAttr(dataTestTagIds[selector + '.select'])}
           value={watchsSelector}
           className={
             'ml-2  baseCell absblx  border-2  rounded-md w-[138px] ' +

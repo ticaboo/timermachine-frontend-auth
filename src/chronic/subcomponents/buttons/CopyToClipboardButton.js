@@ -2,6 +2,7 @@ import React from 'react';
 import { notifyInPage } from '../../notifiy';
 import ButtonAnimation from './ButtonAnimation';
 import { CopyIcon } from '../../icons';
+import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 
 const CopyToClipboardButton = ({ textToCopy }) => {
   const clickHandler = () => {
@@ -17,7 +18,10 @@ const CopyToClipboardButton = ({ textToCopy }) => {
   };
   return (
     <ButtonAnimation clickHandler={clickHandler}>
-      <div title="Copy To Clipboard" className=" ">
+      <div
+        title="Copy To Clipboard"
+        {...dataTestAttr(dataTestTagIds.copyToLibraryButton)}
+        className=" ">
         <CopyIcon />
       </div>
     </ButtonAnimation>
