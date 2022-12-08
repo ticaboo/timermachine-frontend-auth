@@ -22,6 +22,9 @@ import useVideo from '../Use/useVideo';
 import useLogTimer from '../Use/UseLogTimer';
 import { AtScheduleIcon } from './icons';
 import { notifyBrowser } from './notifiy';
+import { dataTestAttr, dataTestTagIds } from '../common/tags';
+
+//import { dataTestAttr, dataTestTagIds } from '../common/tags';
 
 //import notify from './notifiy';
 /*
@@ -78,8 +81,13 @@ const Timer = ({
   const direction =
     timeToSeconds(timer.timer.h, timer.timer.m, timer.timer.s) === 0 ? 1 : -1;
 
-  const { sayAloud, hasChainedAction, intervalActive, intervalDuration } =
-    UseAlerts(timer);
+  const {
+    isAnnouncing,
+    sayAloud,
+    hasChainedAction,
+    intervalActive,
+    intervalDuration
+  } = UseAlerts(timer);
 
   const { playVideo, pauseVideo, getStartURL, getEndURL } = useVideo();
 
@@ -322,7 +330,13 @@ const Timer = ({
   const { atCommenceLog, atCompleteLog } = useLogTimer(timer.id);
 
   return (
-    <div className="">
+    <div
+      className=""
+      {...(startAudio.isPlaying &&
+        dataTestAttr(dataTestTagIds.startAudioIsPlaying))}
+      {...(endAudio.isPlaying &&
+        dataTestAttr(dataTestTagIds.endAudioIsPlaying))}
+      {...(isAnnouncing && dataTestAttr(dataTestTagIds.isAnnouncing))}>
       <div className="ml-2 mt-2 pl-3 h-10 ">
         <div className="trimmed">
           <span className="text-2xl max-w-fit">{timer.timer.name}</span>

@@ -92,7 +92,7 @@ if (toLibButtons.length > 0) {
   for (var toLibButton of Array.from(toLibButtons)) {
     let timer = null;
     let notificationmessage = null;
-    if (timerAppEl.attributes.timer) {
+    if (toLibButton.attributes.timer) {
       if (toLibButton.attributes.timer)
         timer = toLibButton.attributes.timer.value;
 
@@ -100,7 +100,7 @@ if (toLibButtons.length > 0) {
         notificationmessage = toLibButton.attributes.notificationmessage.value;
     }
     if (timer) {
-      const root = ReactDOMClient.createRoot(timerAppEl);
+      const root = ReactDOMClient.createRoot(toLibButton);
       root.render(
         <React.StrictMode>
           <ToLibButton
@@ -115,13 +115,13 @@ if (toLibButtons.length > 0) {
 
 const singleTimerTargets = document.getElementsByClassName('single-timer-app');
 if (singleTimerTargets.length > 0) {
-  const singleTimerTargetsRoot = ReactDOMClient.createRoot(singleTimerTargets);
   for (var singleTimerTarget of singleTimerTargets) {
+    const singleTimerTargetRoot = ReactDOMClient.createRoot(singleTimerTarget);
     let timer = null;
     if (singleTimerTarget.attributes.timer) {
       timer = singleTimerTarget.attributes.timer.value;
     }
-    singleTimerTargetsRoot.render(
+    singleTimerTargetRoot.render(
       <React.StrictMode>
         <SingleChronos timer={timer} />
       </React.StrictMode>

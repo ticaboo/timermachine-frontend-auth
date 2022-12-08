@@ -8,7 +8,7 @@ const TextInput = ({ name, label, children }) => {
   return (
     <div className="pt-1">
       <div className="ml-3 -mt-3 text-sm furniture">{label}</div>
-      {name}
+      {label}
       <input
         type="text"
         {...register(name)}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { secondsToTime } from '../../Utils';
+import { dataTestAttr, dataTestTagIds } from '../../common/tags';
 /*
 note:
 issue - dynamically change style. 
@@ -13,9 +14,8 @@ export const Clock = ({ seconds }) => {
     setHms(secondsToTime(Math.abs(seconds)));
   }, [setHms, seconds]);
   return (
-    <div className="mb-[10px]">
+    <div className="mb-[10px] " {...dataTestAttr(dataTestTagIds.counterclock)}>
       <span className="text-5xl">
-        {' '}
         {hms.h}:{hms.m}
       </span>
       {/* todo - superscript it up 50% cant fucking do it!!!! i hate css */}
@@ -30,7 +30,7 @@ export const OverClock = ({ seconds }) => {
     setHms(secondsToTime(Math.abs(seconds)));
   }, [setHms, seconds]);
   return (
-    <div className="mb-1">
+    <div className="mb-1" {...dataTestAttr(dataTestTagIds.counteroverclock)}>
       <span className="text-3xl">
         {' '}
         + {hms.h}:{hms.m}

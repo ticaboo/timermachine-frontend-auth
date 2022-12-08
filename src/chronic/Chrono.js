@@ -115,7 +115,8 @@ const Chrono = ({
     <div
       data-test-chronos-container
       data-test-timer-id={timer.id}
-      {...dataTestAttr(dataTestTagIds.playervisible, playerVisible)}>
+      // {...dataTestAttr(dataTestTagIds.playervisible, playerVisible)}
+      {...(playerVisible && dataTestAttr(dataTestTagIds.playervisible))}>
       <CardAnimation>
         {collapsed && (
           <div className=" baseBlack baseWhite baseCard  w-[200px] rounded-3xl furniture-border ">

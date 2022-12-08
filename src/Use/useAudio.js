@@ -60,7 +60,7 @@ export const useAudio = (options) => {
 
   // play function to play the audio
   const play = (amplificationMultiplier) => {
-    console.log('audio.play');
+    //console.log('audio.play');
     audio
       .play()
       .then(() => setIsplaying(true))

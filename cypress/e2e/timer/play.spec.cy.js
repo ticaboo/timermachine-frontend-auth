@@ -4,6 +4,7 @@ import {
   getLocalStorageTimers
 } from '../../support/utils';
 import { tagids } from '../../../src/common/tags';
+console.log('tagids', tagids);
 
 /*
 setup:

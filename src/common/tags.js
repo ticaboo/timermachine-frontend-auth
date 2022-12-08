@@ -20,9 +20,8 @@ useage: <div {dataTest.addNewTimerButton} > resolves to <div data-test-addnewtim
 (need data-test-addnewtimerbutton='') to get attr without value templated in. retch.
 */
 
-/** tags that dont need square bracket wrapping */
-
 const dataTestTagIds = {
+  //buttons
   addnewtimerbutton: 'addnewtimerbutton',
   removebutton: 'removebutton',
   badgeCount: 'badgecount',
@@ -30,13 +29,24 @@ const dataTestTagIds = {
   bookToLibraryButton: 'booktolibrarybutton',
   copyToLibraryButton: 'copytolibrarybutton',
   duplicateTimerButton: 'duplicatetimerbutton',
-  editTimerButton: 'edittimerbutton',
+  editButton: 'editbutton',
   infoButton: 'infobutton',
   pauseButton: 'pausebutton',
   playButton: 'playbutton',
   replayButton: 'replaybutton',
-  playervisible: 'playervisible', //actioned state
+
+  //actioned states
+  playervisible: 'playervisible',
+  startAudioIsPlaying: 'startaudioisplaying',
+  endAudioIsPlaying: 'endaudioisplaying',
+  isAnnouncing: 'isannouncing',
+  //clocks
+  counterclock: 'counterclock',
+  counteroverclock: 'counteroverclock',
+  clock: 'clock',
+  //simple textinput
   'timer.name.inputtext': 'timer-input-name',
+
   //HMS component:
   'timer.inputh': 'timer-input-h',
   'timer.inputm': 'timer-input-m',
@@ -93,8 +103,16 @@ const dataTestTagIds = {
     'chaining-chainenabled-checked-input-checkbox',
   'chaining.onend.chainId.select': 'chaining-chainid-checked-input-select'
 
-  //tabs -TODO
-  //cron - TODO
+  //TODO:
+  //ToLibButton
+  //singleTimer
+  //guide example timers (reference /e2e)
+  //alert sounding
+  //announce announcing
+  //media playing
+  //tabs
+  //cron
+  //yt player
 };
 const dtag = (id) => {
   return `data-test-${id}`;
@@ -111,6 +129,7 @@ for (let [, value] of Object.entries(dataTestTagIds)) {
   dataTest[value] = { [dtag(value)]: '' };
 }
 
+/* cypress selection tags */
 const tagids = {};
 for (let [, value] of Object.entries(dataTestTagIds)) {
   tagids[value] = dselect(value);
@@ -130,16 +149,17 @@ console.log('DATATEST', dataTest, 'tagids', tagids);
  and encapsulates 
  {...(playerVisible ? { 'data-test-playervisible': '' } : '')}
  */
-const dataTestAttr = (ident, isOn) => {
-  isOn = isOn || true;
-  if (!isOn) return '';
+const dataTestAttr = (ident) => {
   return dataTest[ident];
 };
 
 /*
 example usage:
 import { dataTestAttr, dataTestTagIds } from '../../common/tags';
+ vanilla:
  {...dataTestAttr(dataTestTagIds.badgeCount)}
+ conditional:
+ {...(playerVisible && dataTestAttr(dataTestTagIds.playervisible))}
 */
 
 export { dataTest, dataTestTagIds, tagids, dataTestAttr };

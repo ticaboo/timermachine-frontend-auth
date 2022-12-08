@@ -8,7 +8,7 @@ const EditButton = ({ clickHandler }) => {
     <ButtonAnimation clickHandler={clickHandler}>
       <div
         title="Edit"
-        {...dataTestAttr(dataTestTagIds.editTimerButton)}
+        {...dataTestAttr(dataTestTagIds.editButton)}
         className="border-neutral-300 border-2 rounded-full mx-1 p-1 ">
         <EditIcon />
       </div>

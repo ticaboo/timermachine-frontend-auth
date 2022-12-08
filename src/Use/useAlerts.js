@@ -1,10 +1,12 @@
 import { timeToSeconds } from '../Utils';
+import { useState } from 'react';
 
 /* 
   
   dont like this local global- timerData, need like this for now for UseAudio
 */
 const useAlerts = (timerData) => {
+  const [isAnnouncing, setIsAnnounching] = useState(false);
   const sayAloud = (announce, name) => {
     const now = new Date();
     let h = now.getHours();
@@ -32,6 +34,12 @@ const useAlerts = (timerData) => {
     if (speechSynthesis.pending === false) {
       var msg = new SpeechSynthesisUtterance(annouceWithVars);
       speechSynthesis.speak(msg);
+      //cant check from api is it speaking. so have to assume got to this point that it is.
+      const announcmenteDurationEstimate = 3000; //could calc this a bit from the length (not really needed now)
+      setIsAnnounching(true);
+      setTimeout(() => {
+        setIsAnnounching(false);
+      }, announcmenteDurationEstimate);
     }
   };
   /*
@@ -67,6 +75,7 @@ const useAlerts = (timerData) => {
   const pauseAlerts = () => {};
 
   return {
+    isAnnouncing,
     sayAloud,
     intervalActive,
     hasChainedAction,

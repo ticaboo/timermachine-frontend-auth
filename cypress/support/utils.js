@@ -10,7 +10,15 @@ i.e. config, dotenv, json generation.etc
 const withDefault = {
   ...defaultTimer,
   ...{
-    timer: { ...defaultTimer.timer, name: 'default', s: '2', alert: '7' }
+    timer: {
+      ...defaultTimer.timer,
+      name: 'default',
+      s: '1',
+      alert: '7',
+      hasAnnounce: true,
+      announce:
+        'test test test your code, though it seems a chore, youll get into the flow of it, and it really makes coding less of a bore!'
+    }
   }
 };
 const withOnEndAlert = {
