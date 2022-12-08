@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_TIMER_KEY } from '../../src/Use/usEnv';
-import { latestStructure, defaultTimer } from '../../src/data/timers';
+import { defaultTimer } from '../../src/data/timers';
 
 /*
 for now anything that references application code goes here.
