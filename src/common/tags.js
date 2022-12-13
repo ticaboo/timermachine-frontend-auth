@@ -20,6 +20,19 @@ useage: <div {dataTest.addNewTimerButton} > resolves to <div data-test-addnewtim
 (need data-test-addnewtimerbutton='') to get attr without value templated in. retch.
 */
 
+/*
+  TESTS TO BE DONE:
+  on edit, reload, changes are saved and retrieved. !
+  single timers
+  concurrent timers
+  cron timeres (with clock timer travel!)
+  do above with form edits (checks state changing working right)
+  form editing.
+  default timer (when db empty)
+  cucmber BDD for new functionality.
+
+*/
+
 const dataTestTagIds = {
   //buttons
   addnewtimerbutton: 'addnewtimerbutton',
@@ -101,10 +114,13 @@ const dataTestTagIds = {
 
   'chaining.onend.chainEnabled.checkbox':
     'chaining-chainenabled-checked-input-checkbox',
-  'chaining.onend.chainId.select': 'chaining-chainid-checked-input-select'
+  'chaining.onend.chainId.select': 'chaining-chainid-checked-input-select',
+
+  //ToLibButton
+  toLibButton: 'tolibbutton'
 
   //TODO:
-  //ToLibButton
+
   //singleTimer
   //guide example timers (reference /e2e)
   //alert sounding

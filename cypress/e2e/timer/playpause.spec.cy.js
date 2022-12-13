@@ -45,7 +45,7 @@ describe('timer playing', () => {
                   cy.get(tagids.counteroverclock).should('not.exist');
                 })
                 .then(() => {
-                  // cy.wait(3000).then(() => {
+                  cy.wait(2000);
                   cy.get(tagids.counteroverclock, { timeout: 2500 }).should(
                     'exist'
                   );

@@ -6,7 +6,10 @@ import { ToastContainer } from 'react-toastify';
 import TimerGroup from './chronic/TimerGroup';
 import SingleChronos from './chronic/SingleChronos';
 import YTPlayer from './chronic/VideoPlayer/YTPlayer';
+
 import HeartBeat from './pub/HeartBeat';
+//import HeartBeat from './pub/HeartBeatNonWebWorker';
+
 import DemoStressTest from './chronic/DemoStressTest';
 import ToLibButton from './chronic/ToLibButton';
 

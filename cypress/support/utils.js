@@ -33,6 +33,24 @@ const withOnEndAlert = {
     }
   }
 };
+
+const withSchedule = {
+  ...defaultTimer,
+  ...{
+    timer: {
+      ...defaultTimer.timer,
+      name: 'scheduled every 1 min',
+      s: '1',
+      hasAlert: true,
+      alert: '7'
+    },
+    schedule: {
+      ...defaultTimer.schedule,
+      hasCronPattern: true,
+      cronPattern: '* * * * *'
+    }
+  }
+};
 const withOnStartAlert = {
   ...defaultTimer,
   ...{
@@ -48,7 +66,9 @@ const withOnStartAlert = {
 
 export const testTimers = {
   raw: [defaultTimer],
-  basics: [withDefault, withOnEndAlert, withOnStartAlert]
+  basics: [withDefault, withOnEndAlert, withOnStartAlert],
+  empty: [],
+  schedules: [withSchedule]
 };
 
 // setLocalStorageTimers(null) wipes db,which is handy :) and dangerous

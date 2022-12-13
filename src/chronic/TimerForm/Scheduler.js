@@ -64,6 +64,7 @@ const Scheduler = ({ play }) => {
           null,
           true
         );
+        console.log('nextdates', job.current.nextDates(20));
       } catch {
         console.log(
           'info',

@@ -131,6 +131,7 @@ const Schedule = ({ timer, handleSchedule }) => {
               null,
               true
             );
+            console.log('nextdates', job.current.nextDates());
           } catch {
             l('info', 'invalid cron - live edit can cause');
           }

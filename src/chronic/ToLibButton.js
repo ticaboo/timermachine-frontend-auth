@@ -6,6 +6,7 @@ import { LOCAL_STORAGE_UPDATED_EVENT } from '../pub/topics';
 import { notifyInPage } from './notifiy';
 
 import { ingestTimer } from './helpers';
+import { dataTestAttr, dataTestTagIds } from '../common/tags';
 // import Chrono from './Chrono';
 /*
   provide buttons to add timer to library.
@@ -37,6 +38,7 @@ function ToLibButton({ timer, notificationmessage }) {
   return (
     <div>
       <button
+        {...dataTestAttr(dataTestTagIds.toLibButton)}
         className="flex align-middle justify-center btn btn-blue btn-outline-primary btn-sm btn-border-radius-lg mt-1 ml-2" /*bootstrap style: btn-outline-success btn-sm */
         onClick={timerToLib}>
         {'+ ' + label}

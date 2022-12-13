@@ -17,7 +17,7 @@ export default () => {
     function step() {
       // console.log('.');
       var delta = Date.now() - expected;
-      // console.log('.', delta);
+      // console.log('heartbeat.', delta);
       // log.push(delta);
       if (delta > interval) {
         //   // something really bad happened. Maybe the browser (tab) was inactive? possibly special handling to avoid futile "catch up" run
@@ -25,7 +25,7 @@ export default () => {
         // eg might want different actions for timer/schedule etc.
         // console.log('heartbeat delta > interval. delta: ', delta);
       }
-
+      console.log(new Date());
       expected += interval;
       postMessage({
         expectedTime: expected,
