@@ -1,6 +1,6 @@
 import { LOCAL_STORAGE_TIMER_LOGS_KEY } from './usEnv';
 //import useStorage from './UseStorage';
-import useLocalStorage from '../Use/useLocalStorage';
+import useLocalStorage from './XuseLocalStorage';
 import { timeToSeconds } from '../Utils';
 
 /*

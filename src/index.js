@@ -3,7 +3,7 @@ import React from 'react';
 import './index.css';
 //import { ReactNotifications } from 'react-notifications-component';
 import { ToastContainer } from 'react-toastify';
-import TimerGroup from './chronic/TimerGroup';
+//import TimerGroup from './chronic/TimerGroup';
 import SingleChronos from './chronic/SingleChronos';
 import YTPlayer from './chronic/VideoPlayer/YTPlayer';
 
@@ -24,7 +24,7 @@ import { SessionAuth } from 'supertokens-auth-react/recipe/session';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './auth/Home';
 import AuthMenu from './auth/AuthMenu';
-
+import DataBrokerage from './pub/DataBrokerage';
 import PubGroup from './chronic/PubGroup';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
@@ -77,6 +77,7 @@ if (ytPlayerEl) {
     <React.StrictMode>
       <HeartBeat />
       <YTPlayer />
+      <DataBrokerage />
     </React.StrictMode>
   );
 } else {
@@ -87,17 +88,17 @@ const timerAppEls = document.getElementsByClassName('timer-app');
 if (timerAppEls.length === 0) console.log('no class= timer-app found in Dom.');
 if (timerAppEls.length > 0) {
   for (var timerAppEl of Array.from(timerAppEls)) {
-    let timer = null;
+    //let timer = null;
     if (timerAppEl.attributes.timer) {
       //todo: error catching/valid object?
-      timer = timerAppEl.attributes.timer.value;
+      // timer = timerAppEl.attributes.timer.value;
       // console.log('timer attrib found');
     }
     const root = ReactDOMClient.createRoot(timerAppEl);
     root.render(
       <React.StrictMode>
+        s <PubGroup />
         <PubGroup />
-        {/* <PubGroup /> */}
         {/* <TimerGroup timer={timer} /> */}
       </React.StrictMode>
     );

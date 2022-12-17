@@ -3,6 +3,8 @@ import { useFormContext } from 'react-hook-form';
 import { DuplicateIcon } from '../../icons';
 import ButtonAnimation from './ButtonAnimation';
 import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
+import PubSub from 'pubsub-js';
+import { TIMERCRU } from '../../../pub/topics';
 
 /*
 
@@ -13,7 +15,8 @@ const DuplicateTimerButton = ({ clickHandler }) => {
   //const watchID = watch('id');
 
   const duplicateTimerHandler = () => {
-    clickHandler(watch());
+    //TODO: pass position cloned timer appears to right of its template parent
+    PubSub.publish(TIMERCRU, watch());
   };
   return (
     <ButtonAnimation

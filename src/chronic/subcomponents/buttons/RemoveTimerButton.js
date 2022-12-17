@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ButtonAnimation from './ButtonAnimation';
+import PubSub from 'pubsub-js';
+import { TIMERDELETE } from '../../../pub/topics';
 
 /*
 
@@ -22,13 +24,13 @@ const DeleteSVG = () => {
   );
 };
 
-const RemoveTimerButton = ({ removeTimer, disabledFlag }) => {
+const RemoveTimerButton = ({ disabledFlag }) => {
   const { watch } = useFormContext();
   const watchID = watch('id');
 
   const deleteTimer = () => {
     // console.log('del time');
-    removeTimer(watchID);
+    PubSub.publish(TIMERDELETE, watchID);
   };
   return (
     <div

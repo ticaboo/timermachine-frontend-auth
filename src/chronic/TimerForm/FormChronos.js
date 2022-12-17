@@ -25,8 +25,7 @@ const FormChronos = ({
   timer,
   singleTimerFlag,
   submitter,
-  duplicateTimer,
-  removeTimer,
+  // duplicateTimer,
   timers,
   play
 }) => {
@@ -56,7 +55,6 @@ const FormChronos = ({
           <div className="flex justify-end">
             <RemoveTimerButton
               title="Delete"
-              removeTimer={removeTimer}
               // disabledFlag={singleTimerFlag}
             />
           </div>
@@ -79,7 +77,6 @@ const FormChronos = ({
               <DuplicateTimerButton
                 title="Duplicate to Time Collective"
                 className=" mr-3"
-                clickHandler={duplicateTimer}
               />
             </div>
           </div>

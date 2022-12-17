@@ -5,34 +5,36 @@ import { stressDemoTimer } from '../data/timers';
 
 import Chrono from './Chrono';
 import { dateTohms } from '../Utils';
-import useMemStorage from '../Use/UseMemStorage';
+//import useMemStorage from '../Use/UseMemStorage';
 /*
  Demonstrate creating lots (and i mean lots of timers)
 */
 function DemoStressTest() {
   const [generateCount, setGenerateCount] = useState(100);
-  const {
-    timers,
-    duplicateTimer,
-    craddTimer,
-    addNewTimer,
-    removeTimer,
-    batchAdd
-  } = useMemStorage({ storeMem: true, defaultData: stressDemoTimer }); //({ key: 'timersv1stresstesttemp', defaulttimers: timerInject }); //({ useMem: true });
+
+  //temp:
+  const timers = [];
+  const batchAdd = () => {
+    console.log('batchAdd, todo pub');
+  };
+  const duplicateTimer = () => {};
+  const craddTimer = () => {};
+  const addNewTimer = () => {};
+  const removeTimer = () => {};
+  //TODO pub: replace useMemStorage
+  // const {
+  //   timers,
+  //   duplicateTimer,
+  //   craddTimer,
+  //   addNewTimer,
+  //   removeTimer,
+  //   batchAdd
+  // } = useMemStorage({ storeMem: true, defaultData: stressDemoTimer }); //({ key: 'timersv1stresstesttemp', defaulttimers: timerInject }); //({ useMem: true });
 
   const changeGenerateCount = (event) => {
     console.log(event);
     setGenerateCount(event.target.value);
   };
-  // useEffect(() => {
-  //   console.log('DemoStressTest mounted:');
-
-  //   return () => {};
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log('timers', timers.length, timers);
-  // }, [timers]);
 
   const generateTimers = () => {
     const targetTimers = [];

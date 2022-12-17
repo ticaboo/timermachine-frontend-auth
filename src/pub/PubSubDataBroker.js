@@ -1,3 +1,4 @@
+/* PubSubDataBroker.js  */
 import PubSub from 'pubsub-js';
 import uuid from 'uuid';
 
@@ -109,6 +110,7 @@ class PubSubDataBroker {
     });
 
     const deleteData = (id) => {
+      console.log('PubSubDataBroker.deleteData', id);
       const dataAfterRemoval = this.data.filter((data) => data.id !== id);
       this.setterData(dataAfterRemoval);
     };
@@ -119,12 +121,12 @@ class PubSubDataBroker {
     //TODO: find better way of deference until subscribers ready.
     setTimeout(() => {
       PubSub.publish(this.topics.pubUpdatedAll, this.data);
-    }, 150);
+    }, 250);
   }
 
   craddData = (newData) => {
+    console.log('PubSubDataBroker.craddData', newData);
     if (newData.id === '') newData.id = uuid.v4();
-    //console.log('UseTimerStorage cradd');
     if (this.data.filter((data) => data.id === newData.id).length !== 0) {
       this.setterData(
         this.data.map((data) => {
@@ -142,6 +144,7 @@ class PubSubDataBroker {
   };
 
   addNew = () => {
+    console.log('PubSubDataBroker.addNew');
     this.craddData({
       ...this.defaultNewItem,
       id: uuid.v4()

@@ -6,8 +6,10 @@ import { ArrowCurveLeftIcon } from '../../icons';
 //import uuid from 'uuid';
 //import { fuzzyNamingWithCount } from '../../../Utils';
 //import l from '../../../logging';
-import useStorage from '../../../Use/UseTimerStorage';
-import { LOCAL_STORAGE_TIMER_KEY } from '../../../Use/usEnv';
+//import useStorage from '../../../Use/UseTimerStorage';
+//import { LOCAL_STORAGE_TIMER_KEY } from '../../../Use/usEnv';
+import PubSub from 'pubsub-js';
+import { TIMERCRU } from '../../../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 /*
 
@@ -16,7 +18,7 @@ import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 const BookToLibraryButton = ({ timer }) => {
   //const { watch } = useFormContext();
   // const timer = watch();
-  const { craddTimer } = useStorage({ key: LOCAL_STORAGE_TIMER_KEY });
+  //const { craddTimer } = useStorage({ key: LOCAL_STORAGE_TIMER_KEY });
 
   /* 
   Fixing:
@@ -33,7 +35,7 @@ const BookToLibraryButton = ({ timer }) => {
     console.log('toLibSaver grrrrrrrrrr');
     const toSaveTimer = { ...timer };
     toSaveTimer.id = '';
-    craddTimer(toSaveTimer);
+    PubSub.publish(TIMERCRU, toSaveTimer);
     setTimeout(() => {
       window.open('/', '_self');
     }, 500);

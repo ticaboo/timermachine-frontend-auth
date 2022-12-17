@@ -15,10 +15,10 @@ function PubGroup() {
 
   useEffect(() => {
     PubSub.subscribe(TIMERS, (msg, data) => {
-      // console.log('list subscriber', data);
+      console.log('PubGroup TIMERS:', data);
       setTimers(data);
     });
-  }, []);
+  });
 
   return (
     <div className="flex flex-row flex-wrap list-timers">

@@ -1,29 +1,31 @@
 
 import { LOCAL_STORAGE_TIMER_KEY } from '../Use/usEnv';
 import PubSubDataBroker from './PubSubDataBroker'
+import { TIMERS, TIMERCRU, TIMERADDNEW, TIMERDELETE } from './topics';
+import { TIMERLOGS, TIMERLOGCRU } from './topics';
 import { defaultTimer } from '../data/timers';
 
 import React from 'react';
 /*
 just a place for all dataBrokerage setup. (beats index for organisation)
 */
-const timersData = new DataBroker({
+const timersData = new PubSubDataBroker({
   localStorageKey: LOCAL_STORAGE_TIMER_KEY,
   defaultNewItem: defaultTimer,
   topics: {
     pubUpdatedAll: TIMERS,
-    subCrudItem: TIMERCRUD,
+    subCrudItem: TIMERCRU,
     subNewDefaultItem: TIMERADDNEW,
     subDeleteItem: TIMERDELETE
   }
 });
 
-const timerLogsData = new DataBroker({
+const timerLogsData = new PubSubDataBroker({
   localStorageKey: 'Lab-timers-log-test',
   defaultNewItem: null,
   topics: {
     pubUpdatedAll: TIMERLOGS,
-    subCrudItem: TIMERLOGCRUD
+    subCrudItem: TIMERLOGCRU
   }
 });
 
@@ -31,7 +33,7 @@ const timerLogsData = new DataBroker({
 try out on a page with multiple single timers.
 should behave as app currently does. may need more isolation.
 */
-const singleTimerData = new DataBroker({
+const singleTimerData = new PubSubDataBroker({
   //localStorageKey: 'Lab-timers-log-test',
   useMem: true,
   defaultNewItem: null,
@@ -47,10 +49,9 @@ console.log(singleTimerData);
 
 
 const DataBrokerage = () => {
-  const { timers, duplicateTimer, craddTimer, addNewTimer, removeTimer } =
-    useStorage({ key: LOCAL_STORAGE_TIMER_KEY, defaultData: defaultTimer });
-
-  return <div></div>;
+  return <div>
+    {/* TODO: possible off page render for info purposes */}
+  </div>;
 };
 
 export default DataBrokerage;

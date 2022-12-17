@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 import PubSub from 'pubsub-js';
-import { TIMERCRADD } from '../pub/topics';
+import { TIMERCRADD, TIMERDELETE } from '../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../common/tags';
 //import Schedule from './Schedule';
 
@@ -30,9 +30,9 @@ import l from '../logging';
 const Chrono = ({
   timer,
   singleTimerFlag,
-  duplicateTimer,
-  craddTimer,
-  removeTimer,
+ // duplicateTimer,
+ // craddTimer,
+ // removeTimer,
   timers,
   collapsed
 }) => {
@@ -40,6 +40,9 @@ const Chrono = ({
   const [timeWatch, setTimeWatch] = useState(); // saved current timer state. set by Form-submiter, passed to Player.
   const [playerVisible, setPlayerVisible] = useState(false);
 
+  /*
+   TODO: setDuration: is this fn necessary?
+  */
   const setDuration = (adjustmentStr) => {
     const newSeconds = adjustDuration(adjustmentStr);
     const prevSeconds = timeToSeconds(
@@ -50,7 +53,7 @@ const Chrono = ({
     const newDurationhms = secondsToTime(prevSeconds + newSeconds);
 
     timer.timer = { ...timer.timer, ...newDurationhms };
-    craddTimer(timer);
+    PubSub.publish(TIMERCRADD, timer);
     setTimeWatch(timer);
   };
 
@@ -74,6 +77,14 @@ const Chrono = ({
     // setPlayerVisible(() => true);
     //l('info','end of sumbintter, playerVisible', playerVisible);
   };
+const duplicateTimer = () => {
+  console.warn('duplicateTimer, topic, pubsub TODO')
+}
+
+const removeTimer = () => {
+  PubSub.publish(TIMERDELETE, timer);
+}
+
   const play = (options) => {
     if (options.timerId) {
       console.log(
