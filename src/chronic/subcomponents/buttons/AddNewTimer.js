@@ -3,9 +3,14 @@ import ButtonAnimation from './ButtonAnimation';
 import Quote from '../../../Quote';
 import Clock from '../Clock';
 import CardAnimation from './CardAnimation';
+import PubSub from 'pubsub-js';
+import { TIMERADDNEW } from '../../../pub/topics';
 import { dataTest } from '../../../common/tags';
 
-const AddNewTimer = ({ addNewTimer }) => {
+const AddNewTimer = () => {
+  const addNewTimer = () => {
+    PubSub.publish(TIMERADDNEW, null);
+  };
   return (
     <>
       <CardAnimation>

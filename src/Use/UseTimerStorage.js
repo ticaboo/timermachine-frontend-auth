@@ -3,7 +3,12 @@ import uuid from 'uuid';
 
 import { fuzzyNamingWithCount } from '../Utils';
 import PubSub from 'pubsub-js';
-import { LOCAL_STORAGE_UPDATED_EVENT } from '../pub/topics';
+import {
+  LOCAL_STORAGE_UPDATED_EVENT,
+  TIMERS,
+  TIMERCRADD,
+  TIMERADDNEW
+} from '../pub/topics';
 
 //import qs from 'qs';
 // import Storage from './Storage';
@@ -81,6 +86,7 @@ const useTimerStorage = (options) => {
       if (!storeMem.current) {
         localStorage.setItem(key.current, JSON.stringify(data));
       }
+      PubSub.publish(TIMERS, data);
       // console.log('data now:', data.length);
     }
   }, [data]);
@@ -127,13 +133,18 @@ const useTimerStorage = (options) => {
     }
   }
   function addNewData() {
-    const dataNumber = data.length + 1;
-    let newData = options.defaultData;
-    newData.timer.name = 'Timer ' + dataNumber;
-    craddData({
-      ...newData,
-      id: uuid.v4()
-    });
+    //something badly wrong - called 24 times instead of 1, sometimes doenst have options.
+    if (options && options.defaultData) {
+      const dataNumber = data.length + 1;
+      let newData = options.defaultData;
+      newData.timer.name = 'Timer ' + dataNumber;
+      craddData({
+        ...newData,
+        id: uuid.v4()
+      });
+    } else {
+      console.log('addNewData - no options found! serious fix.');
+    }
   }
 
   function removeData(id) {
@@ -155,6 +166,16 @@ const useTimerStorage = (options) => {
     //should check each has an Id.
     setData([...data, ...dataArray]);
   }
+
+  PubSub.subscribe(TIMERCRADD, (msg, data) => {
+    console.log('TimeBroker, cradd', data);
+    craddData(data);
+  });
+
+  PubSub.subscribe(TIMERADDNEW, (msg, data) => {
+    console.log('addnew');
+    addNewData();
+  });
 
   return {
     data,

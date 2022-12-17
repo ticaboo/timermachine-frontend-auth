@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
+import PubSub from 'pubsub-js';
+import { TIMERCRADD } from '../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../common/tags';
 //import Schedule from './Schedule';
 
@@ -64,8 +66,8 @@ const Chrono = ({
     //   timer
     // );
     // if (!singleTimerFlag) {
-
-    craddTimer(timer);
+    PubSub.publish(TIMERCRADD, timer);
+    // craddTimer(timer);
 
     //fires up player:
     // setTimeWatch(timer);

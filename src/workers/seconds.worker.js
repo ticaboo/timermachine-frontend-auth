@@ -25,7 +25,7 @@ export default () => {
         // eg might want different actions for timer/schedule etc.
         // console.log('heartbeat delta > interval. delta: ', delta);
       }
-      console.log(new Date());
+      //console.log('seconds.worker',new Date());
       expected += interval;
       postMessage({
         expectedTime: expected,

@@ -1,3 +1,4 @@
+/* e2e/schedules.spec */
 import { testTimers, setLocalStorageTimers } from '../../support/utils';
 import { tagids } from '../../../src/common/tags';
 import { waitFor } from '@testing-library/react';

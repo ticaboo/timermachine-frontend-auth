@@ -27,7 +27,7 @@ const beat = () => {
     const now = new Date();
     const msOffset = now.getMilliseconds();
     const syncUpMs = 1000 - msOffset;
-    console.log('heartbeat init', { msOffset, syncUpMs });
+    //console.log('heartbeat init', { msOffset, syncUpMs });
     expected = now + msOffset;
     setTimeout(() => {
       step(); //get it pumping. matches data shape {now, at}
@@ -37,7 +37,7 @@ const beat = () => {
   const step = () => {
     // console.log('.');
     var delta = Date.now() - expected;
-    console.log('heartbeat.', delta);
+    //console.log('heartbeat.', delta);
     if (delta > interval) {
       //   // something really bad happened. Maybe the browser (tab) was inactive? possibly special handling to avoid futile "catch up" run
     }

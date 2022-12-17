@@ -1,5 +1,5 @@
+/* index.js */
 import React from 'react';
-
 import './index.css';
 //import { ReactNotifications } from 'react-notifications-component';
 import { ToastContainer } from 'react-toastify';
@@ -25,6 +25,7 @@ import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './auth/Home';
 import AuthMenu from './auth/AuthMenu';
 
+import PubGroup from './chronic/PubGroup';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
 
@@ -69,6 +70,19 @@ if (timerNotificationEl) {
   console.log('prod mount: No id: timer-notifications');
 }
 
+const ytPlayerEl = document.getElementById('yt-player');
+if (ytPlayerEl) {
+  const ytPlayerElRoot = ReactDOMClient.createRoot(ytPlayerEl);
+  ytPlayerElRoot.render(
+    <React.StrictMode>
+      <HeartBeat />
+      <YTPlayer />
+    </React.StrictMode>
+  );
+} else {
+  console.log('yt-player not found in Dom');
+}
+
 const timerAppEls = document.getElementsByClassName('timer-app');
 if (timerAppEls.length === 0) console.log('no class= timer-app found in Dom.');
 if (timerAppEls.length > 0) {
@@ -82,7 +96,9 @@ if (timerAppEls.length > 0) {
     const root = ReactDOMClient.createRoot(timerAppEl);
     root.render(
       <React.StrictMode>
-        <TimerGroup timer={timer} />
+        <PubGroup />
+        {/* <PubGroup /> */}
+        {/* <TimerGroup timer={timer} /> */}
       </React.StrictMode>
     );
   }
@@ -130,19 +146,6 @@ if (singleTimerTargets.length > 0) {
       </React.StrictMode>
     );
   }
-}
-
-const ytPlayerEl = document.getElementById('yt-player');
-if (ytPlayerEl) {
-  const ytPlayerElRoot = ReactDOMClient.createRoot(ytPlayerEl);
-  ytPlayerElRoot.render(
-    <React.StrictMode>
-      <HeartBeat />
-      <YTPlayer />
-    </React.StrictMode>
-  );
-} else {
-  console.log('yt-player not found in Dom');
 }
 
 const stressDemo = document.getElementById('stress-demo');
