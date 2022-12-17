@@ -84,6 +84,7 @@ if (ytPlayerEl) {
   console.log('yt-player not found in Dom');
 }
 
+// TODO: change back to by ID. should only be one per page (live edit loops otherwise)
 const timerAppEls = document.getElementsByClassName('timer-app');
 if (timerAppEls.length === 0) console.log('no class= timer-app found in Dom.');
 if (timerAppEls.length > 0) {
@@ -97,7 +98,6 @@ if (timerAppEls.length > 0) {
     const root = ReactDOMClient.createRoot(timerAppEl);
     root.render(
       <React.StrictMode>
-        s <PubGroup />
         <PubGroup />
         {/* <TimerGroup timer={timer} /> */}
       </React.StrictMode>

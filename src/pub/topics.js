@@ -40,7 +40,7 @@ export const TIMERLOGCRU = Symbol('TIMERLOGCRUD');
 //BACKTOLIBRARY
 
 //TODO: not used, remove:
-export const TIMERCRADD = Symbol('TIMERCRADD');
+//export const TIMERCRADD = Symbol('TIMERCRADD');
 export const LOCAL_STORAGE_UPDATED_EVENT = Symbol(
   'LOCAL_STORAGE_UPDATED_EVENT'
 );

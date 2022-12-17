@@ -6,7 +6,7 @@ import PubSub from 'pubsub-js';
 import {
   LOCAL_STORAGE_UPDATED_EVENT,
   TIMERS,
-  TIMERCRADD,
+  TIMERCRU,
   TIMERADDNEW
 } from '../pub/topics';
 
@@ -167,7 +167,7 @@ const useTimerStorage = (options) => {
     setData([...data, ...dataArray]);
   }
 
-  PubSub.subscribe(TIMERCRADD, (msg, data) => {
+  PubSub.subscribe(TIMERCRU, (msg, data) => {
     console.log('TimeBroker, cradd', data);
     craddData(data);
   });
