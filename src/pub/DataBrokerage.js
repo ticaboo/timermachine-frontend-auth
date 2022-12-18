@@ -1,4 +1,7 @@
-import { LOCAL_STORAGE_TIMER_KEY } from '../Use/usEnv';
+import {
+  LOCAL_STORAGE_TIMER_KEY,
+  LOCAL_STORAGE_TIMER_LOGS_KEY
+} from '../Use/usEnv';
 import PubSubDataBroker from './PubSubDataBroker';
 
 import {
@@ -39,32 +42,32 @@ const timersData = new PubSubDataBroker({
 /*
 try out on a page with multiple single timers.
 should behave as app currently does. may need more isolation.
-// */
-// const singleTimerData = new PubSubDataBroker({
-//   //localStorageKey: 'Lab-timers-log-test',
-//   useMem: true,
-//   defaultNewItem: null,
-//   topics: {
-//     pubUpdatedAll: SINGLE_TIMERS,
-//     subCrudItem: SINGLE_TIMERCRU,
-//     subNewDefaultItem: SINGLE_TIMERADDNEW,
-//     subDeleteItem: SINGLE_TIMERDELETE,
-//     subTimerCloneInPlace: SINGLE_TIMERCLONEINPLACE
-//   }
-// });
+*/
+const singleTimerData = new PubSubDataBroker({
+  //localStorageKey: 'Lab-timers-log-test',
+  useMem: true,
+  defaultNewItem: null,
+  topics: {
+    pubUpdatedAll: SINGLE_TIMERS,
+    subCrudItem: SINGLE_TIMERCRU,
+    subNewDefaultItem: SINGLE_TIMERADDNEW,
+    subDeleteItem: SINGLE_TIMERDELETE,
+    subTimerCloneInPlace: SINGLE_TIMERCLONEINPLACE
+  }
+});
 
-// const timerLogsData = new PubSubDataBroker({
-//   localStorageKey: 'Lab-timers-log-test',
-//   defaultNewItem: null,
-//   topics: {
-//     pubUpdatedAll: TIMERLOGS,
-//     subCrudItem: TIMERLOGCRU
-//   }
-// });
+const timerLogsData = new PubSubDataBroker({
+  localStorageKey: LOCAL_STORAGE_TIMER_LOGS_KEY,
+  defaultNewItem: null,
+  topics: {
+    pubUpdatedAll: TIMERLOGS,
+    subCrudItem: TIMERLOGCRU
+  }
+});
 
-console.log(timersData);
-// console.log(timerLogsData);
-// console.log(singleTimerData);
+console.log('timersData', timersData);
+console.log('timerLogsData', timerLogsData);
+console.log('singleTimerData', singleTimerData);
 
 const DataBrokerage = () => {
   return <div>{/* TODO: possible off page render for info purposes */}</div>;

@@ -142,9 +142,9 @@ if (singleTimerTargets.length > 0) {
       timer = singleTimerTarget.attributes.timer.value;
     }
     singleTimerTargetRoot.render(
-      <React.StrictMode>
-        <SingleChronos timer={timer} />
-      </React.StrictMode>
+      // <React.StrictMode>
+      <SingleChronos timer={timer} />
+      // </React.StrictMode>
     );
   }
 }

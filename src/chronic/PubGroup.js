@@ -20,7 +20,6 @@ function PubGroup() {
 
   useEffect(() => {
     PubSub.subscribe(TIMERS, (msg, data) => {
-      console.log('PubGroup subscribed: TIMERS:', data);
       setTimers(data);
     });
     return () => {
@@ -36,7 +35,7 @@ function PubGroup() {
       {/* <ScheduleGroup timers={timers} /> */}
       {timers.map((timer, index) => (
         <div key={timer.id} className={` flex flex-col m-2 z-${100 - index}`}>
-          <div className="baseWhite">PubGroup</div>
+          {/* <div className="baseWhite">PubGroup</div> */}
           <Chrono
             className=""
             key={timer.id}

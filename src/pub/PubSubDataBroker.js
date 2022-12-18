@@ -96,6 +96,7 @@ class PubSubDataBroker {
         'dataBroker - options.topics.subCrudItem property required'
       );
     this.localStorageKey = options.localStorageKey;
+    this.useMem = options.useMem;
     this.defaultNewItem = options.defaultNewItem;
     this.topics = options.topics;
     this.initLocalStorage();
@@ -118,7 +119,7 @@ class PubSubDataBroker {
     }
 
     PubSub.subscribe(this.topics.subCrudItem, (msg, _data) => {
-      //console.log('recieved for update: _data', _data);
+      console.log('recieved for update: _data', _data);
       this.craddData(_data);
     });
 
@@ -135,10 +136,13 @@ class PubSubDataBroker {
     PubSub.subscribe(this.topics.subDeleteItem, (msg, _data) => {
       deleteData(_data);
     });
+    //on launch publish.
     //TODO: find better way of deference until subscribers ready.
     setTimeout(() => {
-      console.log('pub UpdateAll', this.data);
-      PubSub.getSubscriptions();
+      console.log('pub UpdateAll:', this.topics.pubUpdatedAll, this.data);
+      //dont pub if no subscribers listening/retry
+      //PubSub.countSubscriptions(this.topics.pubUpdatedAll);
+
       PubSub.publish(this.topics.pubUpdatedAll, this.data);
     }, 250);
   }
@@ -169,7 +173,12 @@ class PubSubDataBroker {
         newDataToInsert.splice(position, 0, newItem); // ! splice is mutative.
         this.setterData(newDataToInsert);
       } else {
-        //append new:
+        console.log(
+          'craddData append new',
+          newItem,
+          ' existing data:',
+          this.data
+        );
         this.setterData([...this.data, newItem]);
       }
     }

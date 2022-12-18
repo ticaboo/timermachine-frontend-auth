@@ -1,52 +1,7 @@
-import { useState } from 'react';
-import { LOCAL_STORAGE_TIMER_LOGS_KEY } from './usEnv';
+import { useEffect, useState } from 'react';
+import PubSub from 'pubsub-js';
+import { TIMERLOGS, TIMERLOGCRU } from './topics';
 import { timeToSeconds } from '../Utils';
-
-/*
-For now hooks into localStorage directly.
-TODO: replace with pubSub. 
-not completely trivial - see first refactor started in usePubUseLogTimer.js
-*/
-
-// Hook
-function useLocalStorage(key, initialValue) {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState(() => {
-    if (typeof window === 'undefined') {
-      return initialValue;
-    }
-    try {
-      // Get from local storage by key
-      const item = window.localStorage.getItem(key);
-      // Parse stored json or if none return initialValue
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      // If error also return initialValue
-      console.log(error);
-      return initialValue;
-    }
-  });
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
-  const setValue = (value) => {
-    try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-      // Save state
-      setStoredValue(() => valueToStore);
-      // Save to local storage
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      }
-    } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error);
-    }
-  };
-  return [storedValue, setValue];
-}
 
 /*
     useLogTimer:
@@ -75,20 +30,22 @@ so should keep critical info - on each timing
 */
 
 function useLogTimer() {
-  //   const { data, craddData, removeData } = useStorage({
-  //     key: LOCAL_STORAGE_TIMER_LOGS_KEY
-  //   });
-
-  const [timeLog, setTimeLog] = useLocalStorage(
-    LOCAL_STORAGE_TIMER_LOGS_KEY,
-    []
-  );
+  const [timeLog, setTimeLog] = useState([]);
   //const [id, setId] = useState();
 
   //   useEffect(() => {
   //     console.log('useLogTimer mount. data', timeLog, timer.id);
   //     setId(timer.id);
   //   }, []);
+
+  useEffect(() => {
+    PubSub.subscribe(TIMERLOGS, (msg, data) => {
+      setTimeLog(data);
+    });
+    return () => {
+      PubSub.unsubscribe(TIMERLOGS);
+    };
+  });
 
   function atCommenceLog(timer) {
     //console.log('atCommenceLog', timer.id);
@@ -111,13 +68,13 @@ function useLogTimer() {
       //   const targetLogArray = Array.from(timeLog);
       //   targetLogArray.push(log);
       const newLog = { id: timer.id, timings: [newTiming] };
-      timeLog.push(newLog);
-      setTimeLog(timeLog);
+      // timeLog.push(newLog);
+      PubSub.publish(TIMERLOGCRU, newLog);
     } else if (i >= 0) {
       //replace in timeLog, set.
       // const targetLogArray = Array.from(timeLog);
-      timeLog[i].timings.push(newTiming);
-      setTimeLog(timeLog);
+      // timeLog[i].timings.push(newTiming);
+      PubSub.publish(TIMERLOGCRU, timeLog);
     }
   }
 
@@ -151,7 +108,7 @@ function useLogTimer() {
       //   ' (duration): ',
       //   timing.duration
       // );
-      setTimeLog(timeLog);
+      PubSub.publish(TIMERLOGCRU, timeLog);
     }
     // console.log('atCompleteLog', existinglog);
   }

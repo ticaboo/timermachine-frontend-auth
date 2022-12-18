@@ -33,29 +33,23 @@ function SingleChronos({ timer }) {
 */
 
   useEffect(() => {
-    const ingestedTimer = ingestTimer(timer);
-    PubSub.publish(SINGLE_TIMERCRU, ingestedTimer);
-    setTimers([ingestedTimer]);
-
-    setTimeout(() => {
-      PubSub.subscribe(
-        SINGLE_TIMERS,
-        (msg, data) => {
-          console.log('PubGroup TIMERS:', data);
-          if (timers.length > 0) {
-            setTimers(data);
-          }
-        },
-        100
-      );
+    PubSub.subscribe(SINGLE_TIMERS, (msg, data) => {
+      console.log('singleChronos recieved TIMERS:', data.id, data);
+      setTimers(data);
     });
     return () => {
       PubSub.unsubscribe(SINGLE_TIMERS);
     };
   });
 
+  useEffect(() => {
+    const ingestedTimer = ingestTimer(timer);
+    PubSub.publish(SINGLE_TIMERCRU, ingestedTimer);
+    //setTimers([ingestedTimer]);
+  }, [timer]);
+
   return (
-    <div className="flex flex-row flex-wrap list-timers single-timer">
+    <div className="flex flex-row flex-wrap list-timers single-timer baseWhite">
       {timers.map((timer) => (
         <div key={timer.id} className=" flex flex-col m-2 ">
           <Chrono
