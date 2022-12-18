@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 import PubSub from 'pubsub-js';
+import { SCHEDULE_FIRED } from '../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../common/tags';
-//import Schedule from './Schedule';
 
 import {
   adjustDuration,
@@ -82,22 +82,41 @@ const Chrono = ({
   };
 
   const play = (options) => {
-    if (options.timerId) {
-      console.log(
-        'play cronfired opts id: ',
-        options.timerId,
-        ' tid :',
-        timer.timerId
-      );
-      if (options.timerId === timer.id) {
-        setTimeWatch(timer);
-        setPlayerVisible(() => true);
-      }
-    } else {
-      setTimeWatch(timer);
-      setPlayerVisible(() => true);
-    }
+    // if (options.timerId) {
+    //   console.log(
+    //     'play cronfired opts id: ',
+    //     options.timerId,
+    //     ' tid :',
+    //     timer.timerId
+    //   );
+    //   if (options.timerId === timer.id) {
+    //     setTimeWatch(timer);
+    //     setPlayerVisible(() => true);
+    //   }
+    // } else {
+    setTimeWatch(timer);
+    setPlayerVisible(() => true);
   };
+
+  // const scheduledPlay = () => {
+  //   console.log(
+  //     'schedulePlay ',
+  //     timeWatch.schedule.hasCronPattern,
+  //     timer.schedule.hasCronPattern
+  //   );
+  //   if (timeWatch.schedule.hasCronPattern) {
+  //     setTimeWatch(timer);
+  //     setPlayerVisible(() => true);
+  //   }
+  // };
+
+  useEffect(() => {
+    PubSub.subscribe(SCHEDULE_FIRED, (msg, data) => {
+      if (data === timer.id) {
+        play();
+      }
+    });
+  });
 
   const handleNextChainAction = (chainNextTimerId) => {
     // l('info','handleNextChainAction', chainNextTimerId);
@@ -142,7 +161,15 @@ const Chrono = ({
             className={`baseBlack baseWhite baseCard z-0 w-[200px] rounded-3xl furniture-border  `}>
             {!playerVisible && (
               <div>
-                {/* <Schedule timer={timer} handleSchedule={handleSchedule} /> */}
+                {/* {timeWatch &&
+                  timeWatch.schedule &&
+                  timeWatch.schedule.hasCronPattern &&
+                  'TW has cron'}
+                {timer &&
+                  timer.schedule &&
+                  timer.schedule.hasCronPattern &&
+                  'T. has cron'}
+                <Schedule timer={timer} handleSchedule={scheduledPlay} /> */}
                 <FormChronos
                   timer={timer}
                   singleTimerFlag={singleTimerFlag}

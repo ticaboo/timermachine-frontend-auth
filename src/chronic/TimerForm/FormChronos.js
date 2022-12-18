@@ -14,7 +14,7 @@ import BookToLibraryButton from '../subcomponents/buttons/BookToLibrary';
 import SettingsBar from '../SettingsBar';
 import AutoSaver from './AutoSaver';
 import useLogTimer from '../../Use/UseLogTimer';
-import Scheduler from './Scheduler';
+//import Scheduler from '../../schedule/ZScheduler';
 /*
 all Form stuff contained herein.
 submit triggers state on parent Component: timeWatch, autoplay, playerVisible.
@@ -106,7 +106,7 @@ const FormChronos = ({
             </CollapseControlled> */}
           </div>
         </form>
-        <Scheduler play={play} />
+        {/* <Scheduler play={play} /> */}
       </FormProvider>
     </div>
   );

@@ -26,6 +26,7 @@ import Home from './auth/Home';
 import AuthMenu from './auth/AuthMenu';
 import DataBrokerage from './pub/DataBrokerage';
 import PubGroup from './chronic/PubGroup';
+import ScheduleGroup from './schedule/ScheduleGroup';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
 
@@ -99,6 +100,7 @@ if (timerAppEls.length > 0) {
     root.render(
       <React.StrictMode>
         <PubGroup />
+        <ScheduleGroup />
         {/* <TimerGroup timer={timer} /> */}
       </React.StrictMode>
     );

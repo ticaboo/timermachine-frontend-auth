@@ -43,6 +43,8 @@ export const SINGLE_TIMERCLONEINPLACE = 'SINGLE_TIMERCLONEINPLACE';
 export const TIMERLOGS = 'TIMERLOGS';
 export const TIMERLOGCRU = 'TIMERLOGCRUD';
 
+export const SCHEDULE_FIRED = Symbol('SCHEDULE_FIRED');
+
 //BACKTOLIBRARY
 
 //TODO: not used, remove:

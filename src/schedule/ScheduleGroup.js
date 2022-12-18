@@ -2,31 +2,37 @@
 import React, { useEffect, useState } from 'react';
 //import UseScheduler from '../Use/useScheduler';
 import { hasHM } from '../Utils';
+//import Schedule from './ZZSchedule';
+import PubSub from 'pubsub-js';
+import { TIMERS } from '../pub/topics';
 import Schedule from './Schedule';
 
-const ScheduleGroup = ({ timers }) => {
-  //const { timers } = UseStorage();
+const ScheduleGroup = () => {
   const [schedules, setSchedules] = useState([]);
-  //get timer that has changed.
+
   useEffect(() => {
-    // console.log('timers changed detected in schedule group');
-    if (timers && timers.length > 0) {
-      const filtered = timers.filter(
+    PubSub.subscribe(TIMERS, (msg, data) => {
+      const filtered = data.filter(
         (timer) =>
           hasHM(timer.schedule) ||
           (timer.schedule.hasCronPattern && timer.schedule.cronPattern)
       );
-      // console.log(timers);
-      setSchedules(() => filtered);
-      //console.log('scheduled', filtered);
-    }
-  }, [timers]);
+      console.log('ScheduleGroup', data, filtered);
+      setSchedules(filtered);
+    });
+    return () => {
+      PubSub.unsubscribe(TIMERS);
+    };
+  });
 
   return (
-    <div>
+    <div className="baseWhite">
+      <div>Schedule Group</div>
       {schedules.map((timer) => (
         <div key={timer.id}>
+          name: {timer.timer.name}
           <Schedule timer={timer} />
+          {/* <Schedule timer={timer} /> */}
         </div>
       ))}
     </div>

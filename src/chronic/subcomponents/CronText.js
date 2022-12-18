@@ -84,14 +84,14 @@ const CronText = ({ name }) => {
           /> */}
         </div>
       </div>
-      <p className="text-xs w-[180px]">
+      <div className="text-xs w-[180px]">
         <div className="ml-2 mt-1">
           {cronPattern}
           <span className="ml-1">
             <CopyToClipboardButton textToCopy={cronPattern} />
           </span>
         </div>
-      </p>
+      </div>
     </div>
   );
 };
