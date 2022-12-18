@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 import PubSub from 'pubsub-js';
-import { TIMERCRU, TIMERDELETE } from '../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../common/tags';
 //import Schedule from './Schedule';
 
@@ -30,9 +29,9 @@ import l from '../logging';
 const Chrono = ({
   timer,
   singleTimerFlag,
-  // duplicateTimer,
-  // craddTimer,
-  // removeTimer,
+  duplicateTimer,
+  craddTimer,
+  removeTimer,
   timers,
   collapsed
 }) => {
@@ -53,7 +52,7 @@ const Chrono = ({
     const newDurationhms = secondsToTime(prevSeconds + newSeconds);
 
     timer.timer = { ...timer.timer, ...newDurationhms };
-    PubSub.publish(TIMERCRU, timer);
+    PubSub.publish(craddTimer, timer);
     setTimeWatch(timer);
   };
 
@@ -73,20 +72,13 @@ const Chrono = ({
     //   timer
     // );
     // if (!singleTimerFlag) {
-    PubSub.publish(TIMERCRU, timer);
+    PubSub.publish(craddTimer, timer);
     // craddTimer(timer);
 
     //fires up player:
     // setTimeWatch(timer);
     // setPlayerVisible(() => true);
     //l('info','end of sumbintter, playerVisible', playerVisible);
-  };
-  const duplicateTimer = () => {
-    console.warn('duplicateTimer, topic, pubsub TODO');
-  };
-
-  const removeTimer = () => {
-    PubSub.publish(TIMERDELETE, timer);
   };
 
   const play = (options) => {

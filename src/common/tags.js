@@ -151,7 +151,7 @@ for (let [, value] of Object.entries(dataTestTagIds)) {
   tagids[value] = dselect(value);
 }
 
-console.log('DATATEST', dataTest, 'tagids', tagids);
+//console.log('DATATEST', dataTest, 'tagids', tagids);
 
 /*
  To conditionally add a data-test attr with no assignment 

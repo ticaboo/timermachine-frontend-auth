@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import ButtonAnimation from './ButtonAnimation';
 import PubSub from 'pubsub-js';
-import { TIMERDELETE } from '../../../pub/topics';
+//import { TIMERDELETE } from '../../../pub/topics';
 
 /*
 
@@ -24,13 +24,13 @@ const DeleteSVG = () => {
   );
 };
 
-const RemoveTimerButton = ({ disabledFlag }) => {
+const RemoveTimerButton = ({ disabledFlag, removeTimer }) => {
   const { watch } = useFormContext();
   const watchID = watch('id');
 
   const deleteTimer = () => {
-    // console.log('del time');
-    PubSub.publish(TIMERDELETE, watchID);
+    console.log('del time', removeTimer);
+    PubSub.publish(removeTimer, watchID);
   };
   return (
     <div

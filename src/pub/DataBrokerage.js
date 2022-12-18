@@ -1,7 +1,22 @@
-
 import { LOCAL_STORAGE_TIMER_KEY } from '../Use/usEnv';
-import PubSubDataBroker from './PubSubDataBroker'
-import { TIMERS, TIMERCRU, TIMERADDNEW, TIMERDELETE } from './topics';
+import PubSubDataBroker from './PubSubDataBroker';
+
+import {
+  TIMERS,
+  TIMERCRU,
+  TIMERADDNEW,
+  TIMERDELETE,
+  TIMERCLONEINPLACE
+} from './topics';
+
+import {
+  SINGLE_TIMERS,
+  SINGLE_TIMERCRU,
+  SINGLE_TIMERADDNEW,
+  SINGLE_TIMERDELETE,
+  SINGLE_TIMERCLONEINPLACE
+} from './topics';
+
 import { TIMERLOGS, TIMERLOGCRU } from './topics';
 import { defaultTimer } from '../data/timers';
 
@@ -16,42 +31,43 @@ const timersData = new PubSubDataBroker({
     pubUpdatedAll: TIMERS,
     subCrudItem: TIMERCRU,
     subNewDefaultItem: TIMERADDNEW,
-    subDeleteItem: TIMERDELETE
-  }
-});
-
-const timerLogsData = new PubSubDataBroker({
-  localStorageKey: 'Lab-timers-log-test',
-  defaultNewItem: null,
-  topics: {
-    pubUpdatedAll: TIMERLOGS,
-    subCrudItem: TIMERLOGCRU
+    subDeleteItem: TIMERDELETE,
+    subTimerCloneInPlace: TIMERCLONEINPLACE
   }
 });
 
 /*
 try out on a page with multiple single timers.
 should behave as app currently does. may need more isolation.
-*/
-const singleTimerData = new PubSubDataBroker({
-  //localStorageKey: 'Lab-timers-log-test',
-  useMem: true,
-  defaultNewItem: null,
-  topics: {
-    pubUpdatedAll: 'xxx',
-    subCrudItem: 'yyy'
-  }
-});
+// */
+// const singleTimerData = new PubSubDataBroker({
+//   //localStorageKey: 'Lab-timers-log-test',
+//   useMem: true,
+//   defaultNewItem: null,
+//   topics: {
+//     pubUpdatedAll: SINGLE_TIMERS,
+//     subCrudItem: SINGLE_TIMERCRU,
+//     subNewDefaultItem: SINGLE_TIMERADDNEW,
+//     subDeleteItem: SINGLE_TIMERDELETE,
+//     subTimerCloneInPlace: SINGLE_TIMERCLONEINPLACE
+//   }
+// });
+
+// const timerLogsData = new PubSubDataBroker({
+//   localStorageKey: 'Lab-timers-log-test',
+//   defaultNewItem: null,
+//   topics: {
+//     pubUpdatedAll: TIMERLOGS,
+//     subCrudItem: TIMERLOGCRU
+//   }
+// });
 
 console.log(timersData);
-console.log(timerLogsData);
-console.log(singleTimerData);
-
+// console.log(timerLogsData);
+// console.log(singleTimerData);
 
 const DataBrokerage = () => {
-  return <div>
-    {/* TODO: possible off page render for info purposes */}
-  </div>;
+  return <div>{/* TODO: possible off page render for info purposes */}</div>;
 };
 
 export default DataBrokerage;

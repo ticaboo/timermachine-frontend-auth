@@ -4,19 +4,18 @@ import { DuplicateIcon } from '../../icons';
 import ButtonAnimation from './ButtonAnimation';
 import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
 import PubSub from 'pubsub-js';
-import { TIMERCRU } from '../../../pub/topics';
+// import { TIMERCLONEINPLACE } from '../../../pub/topics';
 
 /*
 
 */
 
-const DuplicateTimerButton = ({ clickHandler }) => {
+const DuplicateTimerButton = ({ clickHandler, duplicateTimer }) => {
   const { watch } = useFormContext();
   //const watchID = watch('id');
 
   const duplicateTimerHandler = () => {
-    //TODO: pass position cloned timer appears to right of its template parent
-    PubSub.publish(TIMERCRU, watch());
+    PubSub.publish(duplicateTimer, watch());
   };
   return (
     <ButtonAnimation

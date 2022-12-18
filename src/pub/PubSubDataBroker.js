@@ -36,6 +36,7 @@ class PubSubDataBroker {
       subCrudItem, req
       subNewDefaultItem, opt
       subDeleteItem opt
+      subTimerCloneInPlace opt
     }
   }
   */
@@ -48,9 +49,9 @@ class PubSubDataBroker {
 
   getterData = () => {
     if (!this.useMem) {
-      console.log('getter key:', this.localStorageKey);
+      //console.log('getter key:', this.localStorageKey);
       const fromLS = localStorage.getItem(this.localStorageKey);
-      console.log('fromLS', fromLS);
+      // console.log('fromLS', fromLS);
       this.data = JSON.parse(fromLS);
     }
     return this.data;
@@ -100,6 +101,22 @@ class PubSubDataBroker {
     this.initLocalStorage();
     this.getterData();
 
+    if (options.topics.subTimerCloneInPlace) {
+      this.topics.subTimerCloneInPlace = options.topics.subTimerCloneInPlace;
+      PubSub.subscribe(this.topics.subTimerCloneInPlace, (msg, _data) => {
+        //console.log('recieved for update: _data', _data);
+        //get position from id.
+        //const postion =
+        var i = 0;
+        for (i; i < this.data.length; i++) {
+          if (this.data[i].id === _data.id) break;
+        }
+        //todo: insert at position after.
+        _data.id = '';
+        this.craddData(_data, i);
+      });
+    }
+
     PubSub.subscribe(this.topics.subCrudItem, (msg, _data) => {
       //console.log('recieved for update: _data', _data);
       this.craddData(_data);
@@ -120,26 +137,41 @@ class PubSubDataBroker {
     });
     //TODO: find better way of deference until subscribers ready.
     setTimeout(() => {
+      console.log('pub UpdateAll', this.data);
+      PubSub.getSubscriptions();
       PubSub.publish(this.topics.pubUpdatedAll, this.data);
     }, 250);
   }
 
-  craddData = (newData) => {
-    console.log('PubSubDataBroker.craddData', newData);
-    if (newData.id === '') newData.id = uuid.v4();
-    if (this.data.filter((data) => data.id === newData.id).length !== 0) {
+  craddData = (newItem, position) => {
+    console.log('PubSubDataBroker.craddData', newItem, position);
+    if (newItem.id === '') newItem.id = uuid.v4();
+    if (
+      !position &&
+      this.data.filter((data) => data.id === newItem.id).length !== 0
+    ) {
+      //update:
       this.setterData(
         this.data.map((data) => {
-          if (data.id === newData.id) {
+          if (data.id === newItem.id) {
             return {
-              ...newData
+              ...newItem
             };
           }
           return data;
         })
       );
     } else {
-      this.setterData([...this.data, newData]);
+      //create
+      if (typeof position !== 'undefined') {
+        //insert at position:
+        const newDataToInsert = [...this.data];
+        newDataToInsert.splice(position, 0, newItem); // ! splice is mutative.
+        this.setterData(newDataToInsert);
+      } else {
+        //append new:
+        this.setterData([...this.data, newItem]);
+      }
     }
   };
 
