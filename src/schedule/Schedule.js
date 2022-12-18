@@ -6,9 +6,26 @@ import cron from 'cron';
 
 const Schedule = ({ timer }) => {
   const cronJobRef = useRef();
+  const clickTimeout = useRef(null);
   const fireCron = () => {
     PubSub.publish(SCHEDULE_FIRED, timer.id);
     return () => {};
+  };
+
+  const singler = () => {
+    console.log('singler');
+    if (clickTimeout.current !== null) {
+      console.log('double click executes');
+      clearTimeout(clickTimeout.current);
+      clickTimeout.current = null;
+    } else {
+      console.log('single click');
+      clickTimeout.current = setTimeout(() => {
+        console.log('first click executes ');
+        clearTimeout(clickTimeout.current);
+        clickTimeout.current = null;
+      }, 500);
+    }
   };
 
   useEffect(() => {
@@ -25,7 +42,7 @@ const Schedule = ({ timer }) => {
       cronJobRef.current.stop();
     };
   });
-  return <button onClick={fireCron}>-Fire</button>;
+  return <button onClick={singler}>-Fire</button>;
 };
 
 export default Schedule;

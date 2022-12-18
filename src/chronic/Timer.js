@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PubSub from 'pubsub-js';
 import { HEARTBEAT } from '../pub/topics';
 import {
@@ -91,6 +90,7 @@ const Timer = ({
 
   const { playVideo, pauseVideo, getStartURL, getEndURL } = useVideo();
 
+  const pauseClickTimeout = useRef(null);
   useEffect(() => {
     const pubTokenHeartBeat = PubSub.subscribe(HEARTBEAT, HeartBeatSubscriber);
     return () => {
@@ -329,6 +329,23 @@ const Timer = ({
   });
   const { atCommenceLog, atCompleteLog } = useLogTimer(timer.id);
 
+  const pauseClickHanlder = () => {
+    if (pauseClickTimeout.current !== null) {
+      console.log('double click executes');
+      clearTimeout(pauseClickTimeout.current);
+      pauseClickTimeout.current = null;
+      edit();
+    } else {
+      console.log('single click');
+      pauseClickTimeout.current = setTimeout(() => {
+        console.log('first click executes ');
+        clearTimeout(pauseClickTimeout.current);
+        pauseClickTimeout.current = null;
+        pauser();
+      }, 200);
+    }
+  };
+
   return (
     <div
       className=""
@@ -386,7 +403,11 @@ const Timer = ({
         {/* {!active.current && <PlayButton title="Start" clickHandler={start} />} */}
         {!pause && (
           <div className="flex items-start text-green-500">
-            <PauseButton className="" title="Pause" clickHandler={pauser} />
+            <PauseButton
+              className=""
+              title="Pause"
+              clickHandler={pauseClickHanlder}
+            />
 
             {/* <span className="text-xsm ml-2 mt-[10px]">
               {(direction === -1 && remaining > 0) || direction === 1
