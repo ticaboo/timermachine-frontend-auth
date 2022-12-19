@@ -28,10 +28,10 @@ const ScheduleGroup = () => {
 
   return (
     <div className="baseWhite">
-      <div>Schedule Group</div>
+      {/* <div>Schedule Group</div> */}
       {schedules.map((timer) => (
         <div key={timer.id}>
-          name: {timer.timer.name}
+          {/* name: {timer.timer.name} */}
           <Schedule timer={timer} />
           {/* <Schedule timer={timer} /> */}
         </div>

@@ -12,22 +12,6 @@ const Schedule = ({ timer }) => {
     return () => {};
   };
 
-  const singler = () => {
-    console.log('singler');
-    if (clickTimeout.current !== null) {
-      console.log('double click executes');
-      clearTimeout(clickTimeout.current);
-      clickTimeout.current = null;
-    } else {
-      console.log('single click');
-      clickTimeout.current = setTimeout(() => {
-        console.log('first click executes ');
-        clearTimeout(clickTimeout.current);
-        clickTimeout.current = null;
-      }, 500);
-    }
-  };
-
   useEffect(() => {
     console.log('schdule loaded', timer.schedule.hasCronPattern);
 
