@@ -12,6 +12,7 @@ const ScheduleGroup = () => {
 
   useEffect(() => {
     PubSub.subscribe(TIMERS, (msg, data) => {
+      console.log('ScheduleGroup recieved TIMERS:', data);
       const filtered = data.filter(
         (timer) =>
           hasHM(timer.schedule) ||

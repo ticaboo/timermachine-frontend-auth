@@ -42,7 +42,8 @@ const Schedule = ({ timer }) => {
       cronJobRef.current.stop();
     };
   });
-  return <button onClick={singler}>-Fire</button>;
+  return <></>;
+  // <button onClick={singler}>-Fire</button>;
 };
 
 export default Schedule;

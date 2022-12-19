@@ -34,7 +34,7 @@ function SingleChronos({ timer }) {
 
   useEffect(() => {
     PubSub.subscribe(SINGLE_TIMERS, (msg, data) => {
-      console.log('singleChronos recieved TIMERS:', data.id, data);
+      console.log('singleChronos recieved TIMERS:', data);
       setTimers(data);
     });
     return () => {

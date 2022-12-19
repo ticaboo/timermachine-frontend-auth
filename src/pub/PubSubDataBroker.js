@@ -58,8 +58,9 @@ class PubSubDataBroker {
   };
   setterData = (newData) => {
     this.data = newData;
-    if (!this.useMem)
+    if (!this.useMem) {
       localStorage.setItem(this.localStorageKey, JSON.stringify(newData));
+    }
     PubSub.publish(this.topics.pubUpdatedAll, this.data);
   };
 
@@ -102,6 +103,49 @@ class PubSubDataBroker {
     this.initLocalStorage();
     this.getterData();
 
+    /* 
+      publish is ephemeral (no message queing)- if there are no subscribers its gone.
+      on first load, subscribers may not be ready. hence guard:
+    */
+    let retryCount = 0;
+    const retryDelay = 100;
+
+    const retryPublishWaitingForSubscribers = () => {
+      setTimeout(() => {
+        let subscribeUpdateAllCount = PubSub.countSubscriptions(
+          this.topics.pubUpdatedAll
+        );
+        if (subscribeUpdateAllCount >= 1) {
+          console.log(
+            'topic: ' +
+              this.topics.pubUpdatedAll +
+              ' PubSubDataBroker constructor retryPublishWaitingForSubscribers found subscribers - count:',
+            subscribeUpdateAllCount
+          );
+          PubSub.publish(this.topics.pubUpdatedAll, this.data);
+        } else {
+          retryCount++;
+          if (retryCount >= 3) {
+            console.warn(
+              'topic: ' +
+                this.topics.pubUpdatedAll +
+                'PubSubDataBroker constructor retryPublishWaitingForSubscribers found no subscribers after 3? retries with 300ms? delays per retry'
+            );
+          } else {
+            console.warn(
+              'topic: ' +
+                this.topics.pubUpdatedAll +
+                'PubSubDataBroker constructor retryPublishWaitingForSubscribers retry: ' +
+                retryCount
+            );
+            retryPublishWaitingForSubscribers();
+          }
+        }
+      }, retryDelay);
+    };
+
+    retryPublishWaitingForSubscribers();
+
     if (options.topics.subTimerCloneInPlace) {
       this.topics.subTimerCloneInPlace = options.topics.subTimerCloneInPlace;
       PubSub.subscribe(this.topics.subTimerCloneInPlace, (msg, _data) => {
@@ -119,7 +163,12 @@ class PubSubDataBroker {
     }
 
     PubSub.subscribe(this.topics.subCrudItem, (msg, _data) => {
-      console.log('recieved for update: _data', _data);
+      console.log(
+        'topic: ' +
+          this.topics.subCrudItem +
+          ' PubSubDataBroker recieved for update: _data',
+        _data
+      );
       this.craddData(_data);
     });
 
@@ -138,17 +187,16 @@ class PubSubDataBroker {
     });
     //on launch publish.
     //TODO: find better way of deference until subscribers ready.
-    setTimeout(() => {
-      console.log('pub UpdateAll:', this.topics.pubUpdatedAll, this.data);
-      //dont pub if no subscribers listening/retry
-      //PubSub.countSubscriptions(this.topics.pubUpdatedAll);
+    //!!!!!!
+    // setTimeout(() => {
+    //   console.log('pub UpdateAll:', this.topics.pubUpdatedAll, this.data);
 
-      PubSub.publish(this.topics.pubUpdatedAll, this.data);
-    }, 250);
+    //   PubSub.publish(this.topics.pubUpdatedAll, this.data);
+    // }, 250);
   }
 
   craddData = (newItem, position) => {
-    console.log('PubSubDataBroker.craddData', newItem, position);
+    /* console.log('PubSubDataBroker.craddData', newItem, position); */
     if (newItem.id === '') newItem.id = uuid.v4();
     if (
       !position &&

@@ -20,6 +20,7 @@ function PubGroup() {
 
   useEffect(() => {
     PubSub.subscribe(TIMERS, (msg, data) => {
+      console.log('PubGroup recieved TIMERS:', data);
       setTimers(data);
     });
     return () => {
