@@ -15,7 +15,7 @@ import {
 import CardAnimation from './subcomponents/buttons/CardAnimation';
 //import SettingsBar from './SettingsBar';
 
-import l from '../logging';
+//import l from '../logging';
 
 /*
   Chrono: Sole Responsibility: coordinates state between:

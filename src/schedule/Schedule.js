@@ -6,7 +6,6 @@ import cron from 'cron';
 
 const Schedule = ({ timer }) => {
   const cronJobRef = useRef();
-  const clickTimeout = useRef(null);
   const fireCron = () => {
     PubSub.publish(SCHEDULE_FIRED, timer.id);
     return () => {};

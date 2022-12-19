@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import uuid from 'uuid';
-import { stressDemoTimer } from '../data/timers';
+//import { stressDemoTimer } from '../data/timers';
 
 import Chrono from './Chrono';
 import { dateTohms } from '../Utils';
