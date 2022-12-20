@@ -6,9 +6,13 @@ import cron from 'cron';
 
 const Schedule = ({ timer }) => {
   const cronJobRef = useRef();
+
   const fireCron = () => {
-    PubSub.publish(SCHEDULE_FIRED, timer.id);
-    return () => {};
+    // idea is to getNext dates, limit to today,
+    // pub on heartbeat.
+    // PubSub.publish(SCHEDULE_FIRED, timer.id);
+    // account for app running past midnight - recalc cronfires.
+    console.log('firecron NOOP');
   };
 
   useEffect(() => {
@@ -20,9 +24,14 @@ const Schedule = ({ timer }) => {
       null,
       true
     );
-    console.log('nextdates', cronJobRef.current.nextDates(20));
+    // console.log('nextdates', cronJobRef.current.nextDates(20));
     return () => {
       cronJobRef.current.stop();
+      console.log(
+        'cron next dates after stop',
+        cronJobRef.current.nextDates(3)
+      );
+      cronJobRef.current = null; //explicity null reference hoping for garbage collection.
     };
   });
   return <></>;

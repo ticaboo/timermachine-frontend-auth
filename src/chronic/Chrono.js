@@ -113,7 +113,21 @@ const Chrono = ({
   useEffect(() => {
     PubSub.subscribe(SCHEDULE_FIRED, (msg, data) => {
       if (data === timer.id) {
-        play();
+        console.log('data === timer.id)', data === timer.id);
+        console.log(
+          'cronfire recieved by Chronos. hasCronPattern:',
+          timer.schedule.hasCronPattern,
+          ' timer: ',
+          timer.timer.name,
+          ' id: ',
+          timer.id,
+          ' data:',
+          data
+        );
+        if (timer.schedule.hasCronPattern === true) {
+          console.log('play on');
+          play();
+        }
       }
     });
   });

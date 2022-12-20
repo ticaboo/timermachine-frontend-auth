@@ -98,11 +98,12 @@ if (timerAppEls.length > 0) {
     }
     const root = ReactDOMClient.createRoot(timerAppEl);
     root.render(
-      <React.StrictMode>
+      // <React.StrictMode>
+      <>
         <PubGroup />
         <ScheduleGroup />
-        {/* <TimerGroup timer={timer} /> */}
-      </React.StrictMode>
+      </>
+      // </React.StrictMode>
     );
   }
 }
