@@ -29,6 +29,7 @@ export default () => {
       expected += interval;
       postMessage({
         expectedTime: expected,
+        expectedTimeNoMS: Math.trunc(expected / 1000) * 1000,
         actualTime: Date.now(),
         at: new Date()
       }); //no known use for expected being sent, just ensures it is different every time.

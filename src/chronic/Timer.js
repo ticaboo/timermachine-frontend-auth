@@ -165,7 +165,7 @@ const Timer = ({
     };
 
     //stopwatch
-    console.log('direction', direction);
+    // console.log('direction', direction);
     if (direction === 1 && remaining === originalDuration) {
       atStart();
     }

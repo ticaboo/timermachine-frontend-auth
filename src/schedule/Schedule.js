@@ -20,7 +20,9 @@ const Schedule = ({ timer }) => {
 
     cronJobRef.current = new cron.CronJob(
       timer.schedule.cronPattern,
-      fireCron,
+      () => {
+        //NOOP : library node-cron erratic in browser (designed for server)
+      },
       null,
       true
     );
