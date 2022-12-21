@@ -6,16 +6,17 @@ import { hasHM } from '../Utils';
 //import Schedule from './ZZSchedule';
 import PubSub from 'pubsub-js';
 import { TIMERS, HEARTBEAT, SCHEDULE_FIRED } from '../pub/topics';
-import Schedule from './Schedule';
+//import Schedule from './Schedule';
+import TimeLine from './TimeLine';
+import { timeToHMformat } from '../Utils';
 
 let scheduleArray = [];
 const setScheduleArray = (newArr) => {
   scheduleArray = newArr;
 };
-//let scheduleObj = {};
 
 const ScheduleGroup = () => {
-  const [schedules, setSchedules] = useState([]);
+  const [scheduledTimers, setScheduledTimers] = useState([]);
 
   useEffect(() => {
     PubSub.subscribe(TIMERS, (msg, data) => {
@@ -26,7 +27,7 @@ const ScheduleGroup = () => {
           (timer.schedule.hasCronPattern && timer.schedule.cronPattern)
       );
       console.log('ScheduleGroup', data, filtered);
-      setSchedules(filtered);
+      setScheduledTimers(filtered);
     });
 
     PubSub.subscribe(HEARTBEAT, (msg, data) => {
@@ -34,10 +35,12 @@ const ScheduleGroup = () => {
       let anyFired = false;
       scheduleArray.forEach((schedule) => {
         //TODO: if negative means it was missed. pop up Notifications.
-        //console.log(schedule.nextDate[0].ts - beatTime);
-        if (schedule.nextDate[0].ts === beatTime) {
-          PubSub.publish(SCHEDULE_FIRED, schedule.id);
+        //console.log(schedule.nextDate- beatTime);
+        if (schedule.nextDate === beatTime) {
           anyFired = true;
+          schedule.timers.forEach((timer) => {
+            PubSub.publish(SCHEDULE_FIRED, timer.id);
+          });
         }
       });
       if (anyFired === true) {
@@ -52,13 +55,14 @@ const ScheduleGroup = () => {
       PubSub.unsubscribe(HEARTBEAT);
     };
   });
+  // end useEffect
 
   /*
   when schedules change, recalculate next schedules
   */
   useEffect(() => {
     updateCronSchedules();
-  }, [schedules]);
+  }, [scheduledTimers]);
 
   //TODO: listen to heartbeat, check if fires cronjob.
   //Then recalc schedules.
@@ -76,26 +80,66 @@ const ScheduleGroup = () => {
     );
   };
 
+  /*
+
+  1. schedules to scheduledTimers √
+  2. [0].ts X √
+
+[ {nextDate: Array(1), id: '43k5jh345' } ]
+3:
+to: 
+  at: ts,
+  timers: [ {{id:'', name: ''}]
+  loop timers - one pub for each.
+*/
+
   const updateCronSchedules = () => {
     const nextSchedules = [];
-    for (var key in schedules) {
-      var job = getCron(schedules[key]);
-      nextSchedules.push({
-        nextDate: job.nextDates(1),
-        id: schedules[key]['id']
-      });
-    }
 
-    //TODO: sort array by el.ts
+    /*
+     fix unsafe: async?
+     two pass: 
+     -> [ all ts], reduce.
+     -> attach timers
+    */
+    for (var key in scheduledTimers) {
+      var job = getCron(scheduledTimers[key]);
+
+      const matchedSchedules = nextSchedules.filter(
+        //todo fix: Function declared in a loop contains unsafe references to variable(s) 'job'.eslintno-loop-func
+        (schedule) => schedule.nextDate === job.nextDates(1)[0].ts
+      );
+      if (matchedSchedules.length === 1) {
+        //indexof nextScedules where at =  job.. ts found, add timer to it.
+        matchedSchedules[0].timers.push({
+          id: scheduledTimers[key]['id'],
+          name: scheduledTimers[key]['timer']['name']
+        });
+      } else {
+        //new ts
+        nextSchedules.push({
+          nextDate: job.nextDates(1)[0].ts,
+          dateFormatted: timeToHMformat(new Date(job.nextDates(1)[0].ts)),
+          timers: [
+            {
+              id: scheduledTimers[key]['id'],
+              name: scheduledTimers[key]['timer']['name']
+            }
+          ]
+        });
+      }
+    }
+    nextSchedules.sort((a, b) => {
+      return a.nextDate < b.nextDate;
+    });
+
     setScheduleArray(nextSchedules);
     console.log('updateCronSchedules', scheduleArray);
   };
 
   return (
     <div className="baseWhite">
-      {scheduleArray.forEach((schedule) => {
-        <div>Sch: {schedule.nextDate[0].ts}</div>;
-      })}
+      <TimeLine schedules={scheduleArray} />
 
       {/* {schedules.map((timer) => (
         <div key={timer.id}>
