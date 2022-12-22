@@ -245,10 +245,11 @@ export function debounce(func, wait, immediate) {
 }
 
 /*
-  Schedules only concerened with Hours and Minutes, NOT seconds.
+  Deprecated. as using cron now. keeping for reference - for when add Seconds
+  Schedules were only concerened with Hours and Minutes, NOT seconds.
   Utility function (probably only used for schedules/determining if has a schedule.)
 */
-export const hasHM = (obj) => {
+export const xhasHM = (obj) => {
   let res = false;
   if (obj.h && obj.h.length > 0) res = true;
   if (obj.m && obj.m.length > 0) res = true;

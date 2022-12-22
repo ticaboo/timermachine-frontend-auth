@@ -21,29 +21,31 @@ var token = PubSub.subscribe(topics.HEARTBEAT, subscriberFn);
  possible improvements: document/hit/enforce message types of publications/subscriptions.
 */
 
+// Topics which are not backed with data storage/memory
 export const HEARTBEAT = 'HEARTBEAT';
 export const VIDEO_ID = 'VIDEO_ID';
 export const VIDEO_PLAY = 'VIDEO_PLAY';
 export const VIDEO_PLAYER_CURRENT = 'VIDEO_PLAYER_CURRENT';
+export const SCHEDULE_FIRED = Symbol('SCHEDULE_FIRED');
+export const SCHEDULES_CHANGED = Symbol('SCHEDULES_CHANGED'); //sheduling emits, timeline subscribes
 
+//timers Data Brokered with local storage
 export const TIMERS = 'TIMERS';
 export const TIMERCRU = 'TIMERCRU'; //Create or Upda
 export const TIMERADDNEW = 'TIMERADDNEW'; //Add new based on default item opti
 export const TIMERDELETE = 'TIMERDELETE';
 export const TIMERCLONEINPLACE = 'TIMERCLONEINPLACE';
 
-//TODO: SINGLE TIMER TOPICS?...
+//singleTimers Data Brokered with memory storage
 export const SINGLE_TIMERS = 'SINGLE_TIMERS';
 export const SINGLE_TIMERCRU = 'SINGLE_TIMERCRU'; //Create or Upda
 export const SINGLE_TIMERADDNEW = 'SINGLE_TIMERADDNEW'; //Add new based on default item opti
 export const SINGLE_TIMERDELETE = 'SINGLE_TIMERDELETE';
 export const SINGLE_TIMERCLONEINPLACE = 'SINGLE_TIMERCLONEINPLACE';
 
-//TODO - timer logs
+//TODO - timer logs Data Brokered with local storage
 export const TIMERLOGS = 'TIMERLOGS';
 export const TIMERLOGCRU = 'TIMERLOGCRUD';
-
-export const SCHEDULE_FIRED = Symbol('SCHEDULE_FIRED');
 
 //BACKTOLIBRARY
 

@@ -48,7 +48,9 @@
     "test:prod": "npx cypress run --config baseUrl=https://timermachine.com",
     "eject": "react-scripts eject",
     "cycucumber": "cypress run --config-file cypress/cypress-cucumber.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +60,17 @@
     ],
     "rules": {
       "react-hooks/exhaustive-deps": "off"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -73,17 +85,30 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/node-logger": "^6.5.15",
+    "@storybook/preset-create-react-app": "^4.1.2",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.8",
+    "babel-plugin-named-exports-order": "^0.0.2",
     "cucumber": "^6.0.7",
     "cypress": "^11.0.1",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint-plugin-cypress": "^2.12.1",
     "husky": "^8.0.0",
     "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "prop-types": "^15.8.1",
+    "tailwindcss": "^3.1.8",
+    "webpack": "^5.75.0"
   },
   "engines": {
     "node": ">=18.0.0"

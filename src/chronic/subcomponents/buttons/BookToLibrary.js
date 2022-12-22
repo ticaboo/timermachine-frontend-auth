@@ -1,3 +1,4 @@
+/* BookToLibrary button */
 import React from 'react';
 import ButtonAnimation from './ButtonAnimation';
 import { ArrowCurveLeftIcon } from '../../icons';
@@ -11,6 +12,7 @@ import { ArrowCurveLeftIcon } from '../../icons';
 import PubSub from 'pubsub-js';
 import { TIMERCRU } from '../../../pub/topics';
 import { dataTestAttr, dataTestTagIds } from '../../../common/tags';
+import PropTypes from 'prop-types';
 /*
 
 */
@@ -32,7 +34,7 @@ const BookToLibraryButton = ({ timer }) => {
    ux feedback tbd. -thinking animate in later based on creation time < now - 3000 such
 */
   const toLibSaver = () => {
-    console.log('toLibSaver grrrrrrrrrr');
+    console.log('BookToLibraryButton clicked ');
     const toSaveTimer = { ...timer };
     toSaveTimer.id = '';
     PubSub.publish(TIMERCRU, toSaveTimer);
@@ -90,6 +92,10 @@ const BookToLibraryButton = ({ timer }) => {
       </ButtonAnimation>
     </div>
   );
+};
+
+BookToLibraryButton.propTypes = {
+  timer: PropTypes.object
 };
 
 export default BookToLibraryButton;

@@ -108,7 +108,7 @@ class PubSubDataBroker {
       on first load, subscribers may not be ready. hence guard:
     */
     let retryCount = 0;
-    const retryDelay = 100;
+    const retryDelay = 150;
 
     const retryPublishWaitingForSubscribers = () => {
       setTimeout(() => {
@@ -122,17 +122,19 @@ class PubSubDataBroker {
               ' PubSubDataBroker constructor retryPublishWaitingForSubscribers found subscribers - count:',
             subscribeUpdateAllCount
           );
+          //instead of timeout should config how many subscribers required before first publish
+          //(better: make a queue so publishes dont get lost, on subscriber creation,)
           PubSub.publish(this.topics.pubUpdatedAll, this.data);
         } else {
           retryCount++;
-          if (retryCount >= 3) {
+          if (retryCount >= 5) {
             console.warn(
               'topic: ' +
                 this.topics.pubUpdatedAll +
-                'PubSubDataBroker constructor retryPublishWaitingForSubscribers found no subscribers after 3? retries with 300ms? delays per retry'
+                'NO SUBSCRIBERS AFTER 3 RETRIES. PubSubDataBroker constructor retryPublishWaitingForSubscribers found no subscribers after 3? retries with 300ms? delays per retry'
             );
           } else {
-            console.warn(
+            console.info(
               'topic: ' +
                 this.topics.pubUpdatedAll +
                 'PubSubDataBroker constructor retryPublishWaitingForSubscribers retry: ' +

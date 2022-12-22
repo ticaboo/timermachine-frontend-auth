@@ -7,8 +7,8 @@ import {
   TIMERCLONEINPLACE
 } from '../pub/topics';
 import AddNewTimer from './subcomponents/buttons/AddNewTimer';
+import TimeLine from '../schedule/TimeLine';
 import Chrono from './Chrono';
-//import ScheduleGroup from './ScheduleGroup';
 
 function PubGroup() {
   const [timers, setTimers] = useState([]);
@@ -33,7 +33,6 @@ function PubGroup() {
       {/* <div>
         <button onClick={collapseAll}>{collapsed ? '+' : '-'}</button>
       </div> */}
-      {/* <ScheduleGroup timers={timers} /> */}
       {timers.map((timer, index) => (
         <div key={timer.id} className={` flex flex-col m-2 z-${100 - index}`}>
           {/* <div className="baseWhite">PubGroup</div> */}
@@ -52,6 +51,7 @@ function PubGroup() {
       ))}
       <div key="addnewcell010101" className=" flex flex-col m-2 z-0">
         <AddNewTimer />
+        <TimeLine />
       </div>
     </div>
   );
