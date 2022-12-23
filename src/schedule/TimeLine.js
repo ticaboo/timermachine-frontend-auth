@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import PubSub from 'pubsub-js';
 import { SCHEDULES_CHANGED } from '../pub/topics';
 import { getNextSchedules } from './scheduleDataHelper';
-import './timeline.css';
+
+import TimeLineD from './TimeLineD';
 
 const TimeLine = () => {
-  const [scheduleArray, setScheduleArray] = useState([]);
+  const [schedules, setSchedules] = useState([]);
 
   useEffect(() => {
     PubSub.subscribe(SCHEDULES_CHANGED, (msg, scheduledTimers) => {
@@ -15,7 +16,8 @@ const TimeLine = () => {
         numberOfUpcomingSchedleEventsToCalculate,
         scheduledTimers
       );
-      setScheduleArray(longRangeSchedules);
+      console.log('longRangeSchedules', longRangeSchedules);
+      setSchedules(longRangeSchedules);
     });
 
     return () => {
@@ -29,20 +31,7 @@ todo: storybook - feel it should be a dumb display component that this sends con
 
   return (
     <div className="baseWhite">
-      <div className="vtl">
-        {/* {schedules.length} */}
-        {scheduleArray.map((schedule, index) => (
-          <div className="event" key={index}>
-            <p className="date">{schedule.dateFormatted}</p>
-            {schedule.timers.map((timer) => (
-              <p className="txt" key={timer.id}>
-                {/* <span className="timer-avatar">T</span> */}
-                {timer.name}
-              </p>
-            ))}
-          </div>
-        ))}
-      </div>
+      <TimeLineD schedules={schedules} />
     </div>
   );
 };

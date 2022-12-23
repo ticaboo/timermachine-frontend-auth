@@ -1,3 +1,5 @@
+/* timers (data structures) */
+
 export const latestStructure = {
   id: '',
   direction: -1, //deprecate?
