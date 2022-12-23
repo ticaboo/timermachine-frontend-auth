@@ -27,14 +27,18 @@ describe('gets schedules for timers from now forwards', () => {
     expect(res[0].timers).to.deep.equal(singleEventTwoItems[0].timers);
   });
 
-  it.only('collates: when called with size 2 and two timers with same cron, will provide two events, each with both timers', () => {
+  it('collates: when called with size 2 and two timers with same cron, will provide two events, each with both timers', () => {
     const timers = [
       {
         id: '1',
         timer: { name: 't1' },
         schedule: { cronPattern: '* * * * *' }
       },
-      { id: '2', timer: { name: 't2' }, schedule: { cronPattern: '* * * * *' } }
+      {
+        id: '2',
+        timer: { name: 't2' },
+        schedule: { cronPattern: '* * * * *' }
+      }
     ];
     const size = 2;
 

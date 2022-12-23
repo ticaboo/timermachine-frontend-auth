@@ -14,18 +14,6 @@ const getCron = (timer) => {
   );
 };
 
-/*
-[
-    "2022-12-23T08:28:00.000+00:00"
-]
-
-[
-    "2022-12-23T08:27:00.000+00:00",
-    "2022-12-23T08:28:00.000+00:00"
-]
-
-*/
-
 export const getNextSchedules = (size, scheduledTimers) => {
   const nextSchedules = [];
 
@@ -47,7 +35,7 @@ export const getNextSchedules = (size, scheduledTimers) => {
       });
     }
   }
-  console.log('nextSchedules', nextSchedules);
+  //console.log('nextSchedules', nextSchedules);
   // reduce it by nextDate
   let res = [];
   for (let i = 0; i < nextSchedules.length; i++) {
