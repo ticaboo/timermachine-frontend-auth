@@ -19,7 +19,11 @@ export const Clock = ({ seconds }) => {
         {hms.h}:{hms.m}
       </span>
       {/* todo - superscript it up 50% cant fucking do it!!!! i hate css */}
-      <span className="text-2xl"> {hms.s}</span>
+      <span
+        className="text-2xl"
+        {...dataTestAttr(dataTestTagIds.counterclockSeconds)}>
+        {hms.s}
+      </span>
     </div>
   );
 };
@@ -35,7 +39,11 @@ export const OverClock = ({ seconds }) => {
         {' '}
         + {hms.h}:{hms.m}
       </span>
-      <span className="text-1xl mb-2"> {hms.s}</span>
+      <span
+        className="text-1xl mb-2"
+        {...dataTestAttr(dataTestTagIds.counterclockoverclockSeconds)}>
+        {hms.s}
+      </span>
     </div>
   );
 };

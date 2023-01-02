@@ -55,7 +55,11 @@ const dataTestTagIds = {
   isAnnouncing: 'isannouncing',
   //clocks
   counterclock: 'counterclock',
+  counterclockSeconds: 'counterclockseconds',
+  counterclockMinutes: 'counterclockminutes',
+  counterclockHours: 'counterclockhours',
   counteroverclock: 'counteroverclock',
+  counterclockoverclockSeconds: 'counterclockoverclockseconds',
   clock: 'clock',
   //simple textinput
   'timer.name.inputtext': 'timer-input-name',

@@ -1,3 +1,4 @@
+/* SettingsBar */
 import React from 'react';
 import Tabs from './subcomponents/Tabs';
 import OnSchedleForm from './TimerForm/OnSchedleForm';

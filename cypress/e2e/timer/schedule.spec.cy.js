@@ -2,7 +2,7 @@
 import { testTimers, setLocalStorageTimers } from '../../support/utils';
 import { tagids } from '../../../src/common/tags';
 import { waitFor } from '@testing-library/react';
-console.log('tagids', tagids);
+//console.log('tagids', tagids);
 /*
 activate when 
   minute, set of minutes (eg * / 5) from db.

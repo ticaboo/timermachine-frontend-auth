@@ -24,7 +24,7 @@ const Clock = () => {
   });
 
   return (
-    <div className="ml-2 mt-2" {...dataTestAttr(dataTestTagIds.clock)}>
+    <div className="ml-2 mt-2">
       {lpad(hms.h)}:{lpad(hms.m)}:{lpad(hms.s)}
     </div>
   );

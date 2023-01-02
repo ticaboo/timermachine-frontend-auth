@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import FormChronos from './TimerForm/FormChronos';
 import Timer from './Timer';
 import PubSub from 'pubsub-js';
@@ -219,6 +220,15 @@ const Chrono = ({
       </CardAnimation>
     </div>
   );
+};
+Chrono.propTypes = {
+  timer: PropTypes.object,
+  singleTimerFlag: PropTypes.bool,
+  duplicateTimer: PropTypes.func,
+  craddTimer: PropTypes.func,
+  removeTimer: PropTypes.func,
+  timers: PropTypes.array,
+  collapsed: PropTypes.bool
 };
 
 export default Chrono;

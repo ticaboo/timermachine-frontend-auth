@@ -9,6 +9,9 @@ import {
 import AddNewTimer from './subcomponents/buttons/AddNewTimer';
 import TimeLine from '../schedule/TimeLine';
 import Chrono from './Chrono';
+import LibContainer from '../common/LibContainer';
+import DemoStressTest from './DemoStressTest';
+import Basic from './subcomponents/Basic';
 
 function PubGroup() {
   const [timers, setTimers] = useState([]);
@@ -49,10 +52,18 @@ function PubGroup() {
           />
         </div>
       ))}
-      <div key="addnewcell010101" className=" flex flex-col m-2 z-0">
-        <AddNewTimer />
+      {/* <div key="addnewcell010101" className=" flex flex-col m-2 z-0"> */}
+      {/* <DemoStressTest></DemoStressTest>
+        <LibContainer>
+       
+        </LibContainer>
+      */}
+      {/* </div> */}
+      {/* <AddNewTimer /> */}
+      <LibContainer>
         <TimeLine />
-      </div>
+        <Basic>hello</Basic>
+      </LibContainer>
     </div>
   );
 }
