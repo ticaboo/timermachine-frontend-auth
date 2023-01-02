@@ -27,6 +27,10 @@ import AuthMenu from './auth/AuthMenu';
 import DataBrokerage from './pub/DataBrokerage';
 import PubGroup from './chronic/PubGroup';
 import Scheduling from './schedule/Scheduling';
+
+import { ThemeProvider } from 'styled-components';
+import { theme } from './chronic/subcomponents/sharedStyles';
+import GlobalStyles from './chronic/subcomponents/globalStyles';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
 
@@ -99,10 +103,11 @@ if (timerAppEls.length > 0) {
     const root = ReactDOMClient.createRoot(timerAppEl);
     root.render(
       // <React.StrictMode>
-      <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <PubGroup />
         <Scheduling />
-      </>
+      </ThemeProvider>
       // </React.StrictMode>
     );
   }
