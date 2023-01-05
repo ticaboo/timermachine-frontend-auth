@@ -22,11 +22,11 @@ export const twoEventsBothWithTwoItems = [
     timers: [
       {
         id: '1',
-        name: 't1'
+        name: 'Meditation'
       },
       {
         id: '2',
-        name: 't2'
+        name: 'HIT Exercise'
       }
     ]
   },
@@ -36,11 +36,11 @@ export const twoEventsBothWithTwoItems = [
     timers: [
       {
         id: '1',
-        name: 't1'
+        name: 'Coding'
       },
       {
         id: '2',
-        name: 't2'
+        name: 'Client Search'
       }
     ]
   }

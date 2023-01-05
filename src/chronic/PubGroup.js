@@ -8,8 +8,9 @@ import {
 } from '../pub/topics';
 import AddNewTimer from './subcomponents/buttons/AddNewTimer';
 import Chrono from './Chrono';
-// import LibContainer from '../common/LibContainer';
-// import TimeLine from '../schedule/TimeLine';
+import LibContainer from '../common/LibContainer';
+import TimeLine from '../schedule/TimeLine';
+import Basic from '../libs/shared-ui/SampleUIComponent';
 //import DemoStressTest from './DemoStressTest';
 
 function PubGroup() {
@@ -62,9 +63,10 @@ function PubGroup() {
       */}
       {/* </div> */}
       <AddNewTimer />
-      {/* <LibContainer>
+      <LibContainer>
         <TimeLine />
-      </LibContainer> */}
+      </LibContainer>
+      <Basic>Kids</Basic>
     </div>
   );
 }

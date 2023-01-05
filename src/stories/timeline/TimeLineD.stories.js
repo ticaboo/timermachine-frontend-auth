@@ -1,6 +1,6 @@
 /* BookToLibrary button  Story */
 import TimeLineD from '../../schedule/TimeLineD';
-import '../../index.css';
+// import '../../index.css';
 import {
   singleEventTwoItems,
   twoEventsBothWithTwoItems
@@ -24,6 +24,12 @@ export const SingleEvent = Template.bind({});
 
 SingleEvent.args = {
   schedules: singleEventTwoItems
+};
+
+export const twoEvents = Template.bind({});
+
+twoEvents.args = {
+  schedules: twoEventsBothWithTwoItems
 };
 
 export const Empty = Template.bind({});

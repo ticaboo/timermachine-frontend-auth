@@ -11,7 +11,7 @@ const TimeLine = () => {
 
   useEffect(() => {
     PubSub.subscribe(SCHEDULES_CHANGED, (msg, scheduledTimers) => {
-      const numberOfUpcomingSchedleEventsToCalculate = 3;
+      const numberOfUpcomingSchedleEventsToCalculate = 10;
       const longRangeSchedules = getNextSchedules(
         numberOfUpcomingSchedleEventsToCalculate,
         scheduledTimers

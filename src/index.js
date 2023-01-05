@@ -29,8 +29,8 @@ import PubGroup from './chronic/PubGroup';
 import Scheduling from './schedule/Scheduling';
 
 import { ThemeProvider } from 'styled-components';
-import { theme } from './chronic/subcomponents/sharedStyles';
-import GlobalStyles from './chronic/subcomponents/globalStyles';
+import { theme } from './libs/shared-ui/sharedStyles';
+import GlobalStyles from './libs/shared-ui/globalStyles';
 import { SuperTokensConfig } from './auth/config';
 SuperTokens.init(SuperTokensConfig);
 

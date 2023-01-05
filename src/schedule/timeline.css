@@ -1,13 +1,17 @@
 /* (A) TIMELINE CONTAINER */
+.timeline {
+  overflow-y: auto;
+  max-height: 200px;
+}
 .vtl {
   /* (A1) RELATIVE POSITION REQUIRED TO PROPERLY POSITION THE TIMELINE */
   position: relative;
 
   /* (A2) RESERVE MORE SPACE TO THE LEFT FOR THE TIMELINE */
-  padding: 10px 10px 10px 50px;
+  padding: 10px 10px 10px 30px;
 
   /* (A3) OPTIONAL WIDTH RESTRICTION */
-  max-width: 220px;
+  max-width: 200px;
   /* border: solid 1px white; */
   /* background-color: #282c34; */
 }
@@ -20,14 +24,14 @@
 .vtl::before {
   /* (B1) VERTICAL LINE */
   content: '';
-  width: 4px;
+  width: 2px;
   background-color: rgb(248, 168, 7);
 
   /* (B2) POSITION TO THE LEFT */
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 25px; /* timeline pos */
+  left: 20px; /* timeline pos */
 }
 
 /* (F) CIRCLE ON TIMELINE */
@@ -35,15 +39,15 @@ div.event::after {
   /* (F1) "MAGIC CIRCLE" */
   content: '';
   background-color: rgb(248, 168, 7);
-  border: 6px solid rgb(248, 168, 7);
-  width: 12px;
-  height: 12px;
+  border: 4px solid rgb(248, 168, 7);
+  width: 6px;
+  height: 6px;
   border-radius: 100%;
 
   /* (F2) POSITION TO THE LEFT */
   position: absolute;
-  top: 20%;
-  left: -29px; /* timeline pos */
+  top: 10%;
+  left: -13px; /* timeline pos */
   background-color: #282c34;
 }
 
@@ -51,24 +55,46 @@ div.event::after {
 div.event {
   position: relative;
   padding: 2px 2px;
+  line-height: 14px;
+  margin-bottom: 10px;
   /* background-color: #ffebeb;
   border-radius: 6px;
   margin-bottom: 10px; */
 }
 
 /* (D) COSMETICS FOR EVENT DATE & TEXT */
-p.date {
-  font-size: 0.8em;
-  font-weight: 700;
-  color: green;
+span.date {
+  font-size: 0.9em;
+  font-weight: 800;
+  color: rgb(248, 168, 7);
   margin-block-end: 0em;
+  margin-right: 4px;
   /* left: -30px; */
 }
-p.txt {
-  font-size: 0.7em;
-  margin: 2px 0 0 0;
-  color: yellow;
+
+.comma-list {
+  display: inline;
+  list-style: none;
+  padding: 0px;
+}
+
+.txt {
+  font-size: 0.9em;
+  margin: 8px 0 0 0;
+  color: rgb(219, 219, 213);
   text-align: left;
+}
+
+.comma-list li {
+  display: inline;
+}
+
+.comma-list li::after {
+  content: ', ';
+}
+
+.comma-list li:last-child::after {
+  content: '';
 }
 
 .timer-avatar {
