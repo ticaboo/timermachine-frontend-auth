@@ -10,7 +10,7 @@ import AddNewTimer from './subcomponents/buttons/AddNewTimer';
 import Chrono from './Chrono';
 import LibContainer from '../common/LibContainer';
 import TimeLine from '../schedule/TimeLine';
-import Basic from '../libs/shared-ui/SampleUIComponent';
+// import Basic from '../libs/shared-ui/SampleUIComponent';
 //import DemoStressTest from './DemoStressTest';
 
 function PubGroup() {
@@ -62,11 +62,14 @@ function PubGroup() {
         </LibContainer>
       */}
       {/* </div> */}
-      <AddNewTimer />
+      <LibContainer>
+        <AddNewTimer />
+      </LibContainer>
+
       <LibContainer>
         <TimeLine />
       </LibContainer>
-      <Basic>Kids</Basic>
+      {/* <Basic>Kids</Basic> */}
     </div>
   );
 }

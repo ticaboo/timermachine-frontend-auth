@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 const TimeLineD = ({ schedules }) => {
   return (
-    <div className="baseWhite timeline">
+    <div className="baseWhite timeline" title="Schedule">
       <div className="vtl" data-test-time-line>
-        {/* {schedules.length} */}
+        <div className="now-indicator"></div>
         {schedules.map((schedule, index) => (
           <div className="event" key={index} data-test-time-line-event>
             <span className="date" data-test-time-line-date>

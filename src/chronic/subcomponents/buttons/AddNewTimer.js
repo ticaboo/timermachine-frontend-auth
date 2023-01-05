@@ -14,7 +14,7 @@ const AddNewTimer = () => {
   return (
     <>
       <CardAnimation>
-        <div className="relative z-0 ml-0 flex flex-col rounded-3xl w-[200px] h-[200px]  baseCard baseWhite furniture-border px-2">
+        <div className="relative w-[200px] h-[180px]  ">
           <Clock />
           <Quote />
           {/* <div className='h-[202px]'></div> */}
