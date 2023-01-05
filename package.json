@@ -44,6 +44,7 @@
     "buildsource": "GENERATE_SOURCEMAP=true react-scripts build && ./pushtositewithsource.sh",
     "buildlocal": "GENERATE_SOURCEMAP=true react-scripts build && serve build",
     "test": "",
+    "howdeploy" : "echo 'How to Deploy: simply push main branch to github: deploys to netlify'",
     "dev": "npx cypress open --config baseUrl=http://localhost:3000 --record --key 26747dc8-0c81-4882-98a3-a44992933781",
     "test:dev": "npx cypress open --config baseUrl=http://localhost:3000 ",
     "test:devx": "npx cypress run  --spec '/cypress/e2e/schedule.spec.cy.js'",

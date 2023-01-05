@@ -7,9 +7,9 @@ import {
   TIMERCLONEINPLACE
 } from '../pub/topics';
 import AddNewTimer from './subcomponents/buttons/AddNewTimer';
-import TimeLine from '../schedule/TimeLine';
 import Chrono from './Chrono';
-import LibContainer from '../common/LibContainer';
+// import LibContainer from '../common/LibContainer';
+// import TimeLine from '../schedule/TimeLine';
 //import DemoStressTest from './DemoStressTest';
 
 function PubGroup() {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { sharedText, sharedView } from './styles';
+import { sharedText } from './styles';
 
 export const View = styled.div`
   background-color: ${({ theme }) => theme.colors.header};
