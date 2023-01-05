@@ -84,7 +84,7 @@ const FormChronos = ({
             </div>
           </div>
 
-          <div className={` -mt-4 ${activeTab && ' relative z-99'} `}>
+          <div className={` -mt-4 ${activeTab && ' relative'} `}>
             {/* <Collapse
               timer="timer"
               title="Settings"

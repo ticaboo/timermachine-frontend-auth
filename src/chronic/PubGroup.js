@@ -10,8 +10,7 @@ import AddNewTimer from './subcomponents/buttons/AddNewTimer';
 import TimeLine from '../schedule/TimeLine';
 import Chrono from './Chrono';
 import LibContainer from '../common/LibContainer';
-import DemoStressTest from './DemoStressTest';
-import Basic from './subcomponents/Basic';
+//import DemoStressTest from './DemoStressTest';
 
 function PubGroup() {
   const [timers, setTimers] = useState([]);
@@ -37,7 +36,10 @@ function PubGroup() {
         <button onClick={collapseAll}>{collapsed ? '+' : '-'}</button>
       </div> */}
       {timers.map((timer, index) => (
-        <div key={timer.id} className={` flex flex-col m-2 z-${100 - index}`}>
+        <div
+          key={timer.id}
+          className={` flex flex-col m-2 `}
+          style={{ zIndex: timers.length - index }}>
           {/* <div className="baseWhite">PubGroup</div> */}
           <Chrono
             className=""
@@ -59,11 +61,10 @@ function PubGroup() {
         </LibContainer>
       */}
       {/* </div> */}
-      {/* <AddNewTimer /> */}
-      <LibContainer>
+      <AddNewTimer />
+      {/* <LibContainer>
         <TimeLine />
-        <Basic>hello</Basic>
-      </LibContainer>
+      </LibContainer> */}
     </div>
   );
 }

@@ -7,8 +7,10 @@ import React from 'react';
 
 const LibContainer = ({ children }) => {
   return (
-    <div className="flex flex-row mt-3 flex-wrap list-timers baseWhite furniture-border  rounded-3xl settingsCard ">
-      <div class="  mt-2 ">content A {children}</div>
+    <div className="flex z-1 flex-row mt-3 flex-wrap list-timers baseWhite furniture-border  rounded-3xl settingsCard ">
+      <div class="  mt-2 " style={{ zIndex: 0 }}>
+        {children}
+      </div>
     </div>
   );
 };

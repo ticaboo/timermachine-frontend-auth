@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const TimeLineD = ({ schedules }) => {
   return (
-    <div className="baseWhite">
+    <div className="baseWhite z-2">
       <div className="vtl" data-test-time-line>
         {/* {schedules.length} */}
         {schedules.map((schedule, index) => (
@@ -14,10 +14,10 @@ const TimeLineD = ({ schedules }) => {
               {schedule.dateFormatted}
             </p>
             {schedule.timers.map((timer) => (
-              <p className="txt" key={timer.id} data-test-time-line-timer>
+              <span className="txt" key={timer.id} data-test-time-line-timer>
                 {/* <span className="timer-avatar">T</span> */}
-                {timer.name}
-              </p>
+                {timer.name}{' '}
+              </span>
             ))}
           </div>
         ))}

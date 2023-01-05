@@ -26,3 +26,6 @@ yarn-error.log*
 .netlify
 
 cypress/videos
+
+# React Component Preview
+previewConfig.json

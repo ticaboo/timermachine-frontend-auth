@@ -21,6 +21,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.0",
     "react-icons": "^4.4.0",
+    "react-native-web": "^0.18.10",
     "react-notifications-component": "^4.0.1",
     "react-player": "^2.11.0",
     "react-router": "^6.3.0",
@@ -33,6 +34,9 @@
     "uuid": "^3.3.3",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
+  },
+  "alias": {
+    "react-native": "react-native-web"
   },
   "scripts": {
     "start": "ENV=DEV react-scripts start",

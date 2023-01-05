@@ -7,7 +7,7 @@ import { View, Text, Title } from './sharedStyles';
 export default function BasicPorted({ children }) {
   return (
     <View data-test-aview>
-      <Title bg="red">Tits</Title>
+      <Title bg="red">RNW basic</Title>
       <Text data-test-atext data-test-basic-children bg="red">
         {children}
       </Text>

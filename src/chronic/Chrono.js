@@ -173,7 +173,7 @@ const Chrono = ({
           <div
             onFocus={handleFocus}
             onBlur={handleBlur}
-            className={`baseBlack baseWhite baseCard z-0 w-[200px] rounded-3xl furniture-border  `}>
+            className={`baseBlack baseWhite baseCard w-[200px] rounded-3xl furniture-border  `}>
             {!playerVisible && (
               <div>
                 {/* {timeWatch &&
